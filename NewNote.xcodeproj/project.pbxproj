@@ -11,6 +11,10 @@
 		E4FC88002B774CA8005DCC4B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FC87FF2B774CA8005DCC4B /* ContentView.swift */; };
 		E4FC88022B774CA9005DCC4B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4FC88012B774CA9005DCC4B /* Assets.xcassets */; };
 		E4FC88052B774CA9005DCC4B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4FC88042B774CA9005DCC4B /* Preview Assets.xcassets */; };
+		E4FC880E2B774CE0005DCC4B /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FC880D2B774CE0005DCC4B /* Note.swift */; };
+		E4FC88102B774CE8005DCC4B /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FC880F2B774CE8005DCC4B /* Home.swift */; };
+		E4FC88122B774CF9005DCC4B /* CompletedNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FC88112B774CF9005DCC4B /* CompletedNoteView.swift */; };
+		E4FC88142B774D06005DCC4B /* NoteRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FC88132B774D06005DCC4B /* NoteRowView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +23,10 @@
 		E4FC87FF2B774CA8005DCC4B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E4FC88012B774CA9005DCC4B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E4FC88042B774CA9005DCC4B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		E4FC880D2B774CE0005DCC4B /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		E4FC880F2B774CE8005DCC4B /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		E4FC88112B774CF9005DCC4B /* CompletedNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedNoteView.swift; sourceTree = "<group>"; };
+		E4FC88132B774D06005DCC4B /* NoteRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteRowView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +60,8 @@
 			isa = PBXGroup;
 			children = (
 				E4FC87FD2B774CA8005DCC4B /* NewNoteApp.swift */,
+				E4FC880B2B774CB0005DCC4B /* Model */,
+				E4FC880C2B774CB7005DCC4B /* View */,
 				E4FC87FF2B774CA8005DCC4B /* ContentView.swift */,
 				E4FC88012B774CA9005DCC4B /* Assets.xcassets */,
 				E4FC88032B774CA9005DCC4B /* Preview Content */,
@@ -65,6 +75,24 @@
 				E4FC88042B774CA9005DCC4B /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		E4FC880B2B774CB0005DCC4B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E4FC880D2B774CE0005DCC4B /* Note.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E4FC880C2B774CB7005DCC4B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E4FC880F2B774CE8005DCC4B /* Home.swift */,
+				E4FC88112B774CF9005DCC4B /* CompletedNoteView.swift */,
+				E4FC88132B774D06005DCC4B /* NoteRowView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,6 +167,10 @@
 			files = (
 				E4FC88002B774CA8005DCC4B /* ContentView.swift in Sources */,
 				E4FC87FE2B774CA8005DCC4B /* NewNoteApp.swift in Sources */,
+				E4FC88122B774CF9005DCC4B /* CompletedNoteView.swift in Sources */,
+				E4FC88142B774D06005DCC4B /* NoteRowView.swift in Sources */,
+				E4FC88102B774CE8005DCC4B /* Home.swift in Sources */,
+				E4FC880E2B774CE0005DCC4B /* Note.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
