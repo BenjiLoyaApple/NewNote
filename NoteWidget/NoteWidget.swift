@@ -47,7 +47,7 @@ struct NoteWidgetEntryView : View {
                         Image(systemName: "circle")
                     }
                     .font(.callout)
-                    .tint(note.tag.color.gradient)
+                    .tint(note.tag?.color.gradient)
                     .buttonBorderShape(.circle)
                     
                     VStack(alignment: .leading, spacing: 2) {
@@ -59,7 +59,6 @@ struct NoteWidgetEntryView : View {
                             .font(.caption2)
                             .foregroundStyle(.secondary)
                             .lineLimit(1)
-                        
                     }
                     
                     
@@ -90,7 +89,7 @@ struct NoteWidgetEntryView : View {
 }
 
 struct NoteWidget: Widget {
-    let kind: String = "Todo List"
+    let kind: String = "Note List"
 
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
@@ -100,7 +99,7 @@ struct NoteWidget: Widget {
                     .modelContainer(for: Note.self)
         }
         .supportedFamilies([.systemSmall, .systemMedium])
-        .configurationDisplayName("Tasks")
+        .configurationDisplayName("Notes")
         .description("This is a Todo List.")
     }
 }

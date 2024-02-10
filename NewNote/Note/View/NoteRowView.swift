@@ -15,6 +15,13 @@ struct NoteRowView: View {
     @FocusState private var isActive: Bool
     @Environment(\.modelContext) private var context
     @Environment(\.scenePhase) private var phase
+    
+    // Date Properties
+    private let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM dd"
+        return formatter }()
+    
     var body: some View {
         HStack(spacing: 8) {
             if !isActive && !note.title.isEmpty {
@@ -34,23 +41,24 @@ struct NoteRowView: View {
             
             VStack(alignment: .leading, spacing: 4) {
                 
-                
-                VStack {
-                    // Image
-                    if let imageData = note.image,
-                       let uiImage = UIImage(data: imageData) {
-                        Image(uiImage: uiImage)
-                            .resizable()
-                            .scaledToFill()
-                            .frame(height: 170)
-                            .cornerRadius(10)
-                            .contentShape(Rectangle())
-                        // Video
+                if !note.isCompleted {
+                    VStack {
+                        // Image
+                        if let imageData = note.image,
+                           let uiImage = UIImage(data: imageData) {
+                            Image(uiImage: uiImage)
+                                .resizable()
+                                .scaledToFill()
+                                .frame(height: 170)
+                                .cornerRadius(10)
+                                .contentShape(Rectangle())
+                            // Video
+                        }
                     }
+                    .cornerRadius(12)
                 }
-                .cornerRadius(12)
                 
-                TextField("Write task", text: $note.title)
+                Text(note.title)
                     .font(.title3.bold())
                     .strikethrough(note.isCompleted)
                     .foregroundStyle(note.isCompleted ? .gray : .primary)
@@ -61,29 +69,45 @@ struct NoteRowView: View {
                     .strikethrough(note.isCompleted)
                     .foregroundStyle(.secondary)
                     .focused($isActive)
-            }
-            
-            
-            
-            if !isActive && !note.title.isEmpty {
-                /// Priority Menu Button (For Updating)
-                Menu {
-                    ForEach(Tag.allCases, id: \.rawValue) { tag in
-                        Button(action: { note.tag = tag }, label: {
-                            HStack {
-                                Text(tag.rawValue)
-                                
-                                if note.tag == tag { Image(systemName: "checkmark") }
+                    .lineLimit(note.isCompleted ? 1 : nil)
+                
+                if !note.isCompleted {
+                    HStack(spacing: 4) {
+                        if let tag = note.tag {
+                            Menu {
+                                ForEach(Tag.allCases, id: \.rawValue) { tag in
+                                    Button(action: { note.tag = tag }, label: {
+                                        HStack {
+                                            Text(tag.rawValue)
+                                            
+                                            if note.tag == tag { Image(systemName: "checkmark") }
+                                        }
+                                    })
+                                }
+                            } label: {
+                                HStack(spacing: 5) {
+                                    if let tag = note.tag {
+                                        Image(systemName: "circle.fill")
+                                            .frame(height: 10)
+                                            .padding(3)
+                                            .containerShape(.rect)
+                                            .foregroundStyle(tag.color.gradient)
+                                    }
+                                    
+                                    Text(tag.name)
+                                }
                             }
-                        })
+                        }
+                        
+                        Spacer()
+                        
+                        Text(note.date, formatter: dateFormatter)
                     }
-                } label: {
-                    Image(systemName: "circle.fill")
-                        .font(.title2)
-                        .padding(3)
-                        .containerShape(.rect)
-                        .foregroundStyle(note.tag.color.gradient)
+                    .font(.footnote)
+                    .foregroundColor(.primary.opacity(0.4))
+                    .padding(.top, 10)
                 }
+                
             }
         }
         .listRowInsets(.init(top: 10, leading: 10, bottom: 10, trailing: 10))

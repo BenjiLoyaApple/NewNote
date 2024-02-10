@@ -27,6 +27,7 @@
 		E4FC883A2B775FC8005DCC4B /* NoteContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FC88392B775FC8005DCC4B /* NoteContent.swift */; };
 		E4FC883C2B775FD9005DCC4B /* PreviewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FC883B2B775FD9005DCC4B /* PreviewContainer.swift */; };
 		E4FC883E2B776463005DCC4B /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FC883D2B776463005DCC4B /* ViewExtensions.swift */; };
+		E4FC88402B77E523005DCC4B /* EditNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FC883F2B77E523005DCC4B /* EditNoteView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		E4FC88392B775FC8005DCC4B /* NoteContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteContent.swift; sourceTree = "<group>"; };
 		E4FC883B2B775FD9005DCC4B /* PreviewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewContainer.swift; sourceTree = "<group>"; };
 		E4FC883D2B776463005DCC4B /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
+		E4FC883F2B77E523005DCC4B /* EditNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNoteView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +159,7 @@
 				E4FC88112B774CF9005DCC4B /* CompletedNoteView.swift */,
 				E4FC88132B774D06005DCC4B /* NoteRowView.swift */,
 				E4FC88332B775D3B005DCC4B /* AddNoteView.swift */,
+				E4FC883F2B77E523005DCC4B /* EditNoteView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 				E4FC88002B774CA8005DCC4B /* ContentView.swift in Sources */,
 				E4FC87FE2B774CA8005DCC4B /* NewNoteApp.swift in Sources */,
 				E4FC88122B774CF9005DCC4B /* CompletedNoteView.swift in Sources */,
+				E4FC88402B77E523005DCC4B /* EditNoteView.swift in Sources */,
 				E4FC88142B774D06005DCC4B /* NoteRowView.swift in Sources */,
 				E4FC883C2B775FD9005DCC4B /* PreviewContainer.swift in Sources */,
 				E4FC883A2B775FC8005DCC4B /* NoteContent.swift in Sources */,
@@ -487,8 +491,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -518,8 +521,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

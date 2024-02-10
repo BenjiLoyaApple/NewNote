@@ -16,20 +16,16 @@ class Note {
     var date: Date = Date.now
     var image: Data?
     var isCompleted: Bool = false
-    var tag: Tag = Tag.clear
-    
-//    init(title: String, subTitle: String, tag: Tag) {
-//        self.title = title
-//        self.subTitle = subTitle
-//        self.tag = tag
-//    }
+//    var tag: Tag = Tag.clear
+    var tag: Tag?
     
     init(
         title: String,
         subTitle: String,
         date: Date = Date.now,
         image: Data? = nil,
-        tag: Tag
+//        tag: Tag
+        tag: Tag? = nil
     ) {
         self.title = title
         self.subTitle = subTitle
@@ -39,6 +35,7 @@ class Note {
     }
 }
 
+/*
 // Priority Status
 enum Tag: String, Codable, CaseIterable {
     case clear = "Empty"
@@ -81,3 +78,67 @@ enum Tag: String, Codable, CaseIterable {
         }
     }
 }
+*/
+
+enum Tag: String, Codable, Identifiable, CaseIterable {
+    case yellow, orange, red, green, blue, purple, gray, personal, work,  important
+
+    var id: Self {
+        self
+    }
+
+    var name: LocalizedStringKey {
+        switch self {
+//        case .clear:
+//            return "Empty"
+        case .yellow:
+            return "Yellow"
+        case .orange:
+            return "Orange"
+        case .red:
+            return "Red"
+        case .green:
+            return "Green"
+        case .blue:
+            return "Blue"
+        case .purple:
+            return "Purple"
+        case .gray:
+            return "Gray"
+        case .personal:
+            return "Personal"
+        case .work:
+            return "Work"
+        case .important:
+            return "Important"
+        }
+    }
+
+    var color: Color {
+        switch self {
+//        case .clear:
+//            return Color.clear
+        case .yellow:
+            return Color.yellow
+        case .orange:
+            return Color.orange
+        case .red:
+            return Color.red
+        case .green:
+            return Color.green
+        case .blue:
+            return Color.blue
+        case .purple:
+            return Color.purple
+        case .gray:
+            return Color.gray
+        case .personal:
+            return Color.mint
+        case .work:
+            return Color.indigo
+        case .important:
+            return Color.teal
+        }
+    }
+}
+

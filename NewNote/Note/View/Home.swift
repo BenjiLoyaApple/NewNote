@@ -19,17 +19,22 @@ struct Home: View {
     @State private var addNote: Bool = false
     
     var body: some View {
-        List {
-            Section(activeSectionTitle) {
-                ForEach(activeList) {
-                    NoteRowView(note: $0)
+           List {
+//        ScrollView(.vertical) {
+//            VStack {
+                Section(activeSectionTitle) {
+                    ForEach(activeList) {
+                        NoteRowView(note: $0)
+                    }
                 }
-            }
-            
-            /// Completed List
-            CompletedNoteList(showAll: $showAll)
-            
+                
+                /// Completed List
+                CompletedNoteList(showAll: $showAll)
+                
+//            }
         }
+     //   .scrollIndicators(.hidden)
+           .listStyle(.plain)
         .toolbar {
             ToolbarItem(placement: .bottomBar) {
                 Button(action: {
@@ -43,10 +48,10 @@ struct Home: View {
         }
         .sheet(isPresented: $addNote) {
             AddNotesView()
-              //  .interactiveDismissDisabled()
-//                .onAppear {
-//                    Task { await DeleteNoteTip.deleteNoteVisitedEvent.donate()}
-//                }
+              .interactiveDismissDisabled()
+            //                .onAppear {
+            //                    Task { await DeleteNoteTip.deleteNoteVisitedEvent.donate()}
+            //                }
         }
     }
     

@@ -19,10 +19,20 @@ struct AddNotesView: View {
     @State private var title: String = ""
     @State private var subTitle: String = ""
     @State private var image: Data?
+    @State private var tag: Tag?
+    @State private var date: Date = .init()
     
     /// Image properties
     @State private var selectedPhoto: PhotosPickerItem?
     @State private var showPhotoPicker: Bool = false
+    @State private var showDatePicker = false
+    @State private var isDateVisible = false
+    
+    // Date Properties
+    private let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM dd"
+        return formatter }()
     
     var body: some View {
         NavigationStack {
@@ -36,7 +46,6 @@ struct AddNotesView: View {
                         .padding(.horizontal)
                 }
                 .padding(.bottom, 330)
-             //   .padding([.horizontal, .top])
                 
             }
             .navigationTitle("Add Entry")
@@ -72,32 +81,37 @@ struct AddNotesView: View {
             .scrollDismissesKeyboard(.interactively)
             .ignoresSafeArea(.keyboard)
            
+            .sheet(isPresented: $showDatePicker) {
+                VStack {
+                    HStack {
+                        Image(systemName: "calendar")
+                        Text("Set Custom Date")
+                        Spacer()
+                    }
+                    .font(.headline)
+                    .padding(.leading, 30)
+                    
+                    DatePicker("Select a date", selection: $date, displayedComponents: [.date])
+                        .padding(.horizontal)
+                        .datePickerStyle(.graphical)
+                        .presentationDetents([.medium])
+                        .presentationCornerRadius(25)
+                }
+            }
             .photosPicker(isPresented: $showPhotoPicker, selection: $selectedPhoto, matching: .any(of: [.images]))
             .onChange(of: selectedPhoto) { newValue in
-//                Task {
-//                    isVideoProcessing = true
-//                    do {
-//                        if let pickedMovie = try? await newValue?.loadTransferable(type: VideoPickerTransferable.self) {
-//                            DispatchQueue.main.async {
-//                                videoURL = pickedMovie.videoURL
-//                                image = nil // Очищаем изображение при выборе видео
-//                            }
-//                        }
-//                    }
-//                    isVideoProcessing = false
-//                }
                 Task {
                     do {
                         /// preobrazyem foto v daniie
                         if let data = try? await selectedPhoto?.loadTransferable(type: Data.self) {
                             DispatchQueue.main.async {
                                 image = data
-                        //        videoURL = nil // Очищаем видео при выборе изображения
                             }
                         }
                     }
                 }
             }
+            
         }
     }
     
@@ -123,13 +137,46 @@ struct AddNotesView: View {
                 }
             
             TextField("Description", text: $subTitle, axis: .vertical)
+            
+            HStack(spacing: 4) {
+                if isDateVisible {
+                    Text(date, formatter: dateFormatter)
+                        .transition(.opacity)
+                }
+                
+                Spacer()
+                
+                if let tag = tag {
+                    Circle()
+                        .frame(height: 10)
+                        .foregroundColor(tag.color)
+                        .padding(4)
+                    
+                    Text(tag.name)
+                }
+            }
+            .font(.footnote)
+            .foregroundColor(.primary.opacity(0.4))
+            .padding(.top, 10)
+            .onChange(of: date) { newDate in
+                withAnimation {
+                    isDateVisible = true
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                    withAnimation {
+                        isDateVisible = false
+                    }
+                }
+            }
+
+
+            
         }
     }
     
-    //MARK: - Photo & video
-    // Photo
+    //MARK: - Photo
     @ViewBuilder
-    private func PhotoDetail()->some View {
+    private func PhotoDetail() -> some View {
         // Photo
         VStack {
             if let imageData = image,
@@ -141,12 +188,12 @@ struct AddNotesView: View {
                     .clipShape(.rect(cornerRadius: 10))
             }
         }
-        .shadow(color: .black.opacity(0.4), radius: 10, x: 2, y: 7)
+        .shadow(color: .black.opacity(0.25), radius: 10, x: 2, y: 7)
         .overlay(alignment: .topTrailing) {
             if image != nil {
                 Button(role: .destructive) {
                     withAnimation {
-                        deleteVideo()
+                        deletePhoto()
                     }
                 } label: {
                     Image(systemName: "xmark.circle.fill")
@@ -165,51 +212,49 @@ struct AddNotesView: View {
     @ViewBuilder
     private func OverlayButtons() -> some View {
         Menu {
-            //Photo
+            ///Photo
             Button(action: {
                 withAnimation(.bouncy) {
                     showPhotoPicker.toggle()
                 }
             }, label: {
-                Text("Photo and Video")
+                Text("Select Photo")
                 Image(systemName: "photo.on.rectangle.angled")
             })
             .sensoryFeedback(.selection, trigger: showPhotoPicker)
             
-            //Calendar
-//            Button(action: {
-//                withAnimation(.bouncy) {
-//                    showDatePicker.toggle()
-//                }
-//            }, label: {
-//                Text("Date")
-//                Image(systemName: "calendar")
-//            })
-//            .sensoryFeedback(.selection, trigger: showDatePicker)
+            ///Calendar
+            Button(action: {
+                withAnimation(.bouncy) {
+                    showDatePicker.toggle()
+                }
+            }, label: {
+                Text("Date")
+                Image(systemName: "calendar")
+            })
             
             /// Tag
-//            Menu {
-//                ForEach(Tag.allCases, id: \.self) { tag in
-//                    Button {
-//                        self.tag = tag
-//                    } label: {
-//                        Button {
-//                            self.tag = tag
-//                        } label: {
-//                            Text(tag.name)
-//                        }
-//                    }
-//                }
-//                
-//            } label: {
-//                if let selectedTag = tag {
-//                    Text(selectedTag.name)
-//                        Image(systemName: "circle")
-//                } else {
-//                    Text("Tag")
-//                    Image(systemName: "square.stack")
-//                }
-//            }
+            Menu {
+                ForEach(Tag.allCases, id: \.self) { tag in
+                    Button {
+                        self.tag = tag
+                    } label: {
+                        Button {
+                            self.tag = tag
+                        } label: {
+                            Text(tag.name)
+                        }
+                    }
+                }
+            } label: {
+                if let selectedTag = tag {
+                    Text(selectedTag.name)
+                        Image(systemName: "circle")
+                } else {
+                    Text("Tag")
+                    Image(systemName: "square.stack")
+                }
+            }
   
         }label: {
             Image(systemName: "plus.circle")
@@ -218,22 +263,11 @@ struct AddNotesView: View {
     }
     
     /// Delete
-    func deleteVideo() {
-        do {
-//            if let selectedVideoURL = videoURL {
-//                try FileManager.default.removeItem(at: selectedVideoURL)
-//                self.videoURL = nil
-//                selectedPhoto = nil
-//            }
-
-            // Добавляем удаление выбранного изображения
+    func deletePhoto() {
             if image != nil {
                 selectedPhoto = nil
                 image = nil
             }
-        } catch {
-            print(error.localizedDescription)
-        }
     }
     
     //MARK: - Add Note
@@ -242,8 +276,9 @@ struct AddNotesView: View {
         let note = Note(
             title: title,
             subTitle: subTitle,
+            date: date,
             image: image ?? nil,
-            tag: .clear
+            tag: tag ?? nil
         )
         context.insert(note)
         
