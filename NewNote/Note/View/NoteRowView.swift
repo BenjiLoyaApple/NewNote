@@ -21,7 +21,7 @@ struct TodoRowView: View {
                 Button(action: {
                     note.isCompleted.toggle()
                     note.date = .now
-              //      WidgetCenter.shared.reloadAllTimelines()
+                    WidgetCenter.shared.reloadAllTimelines()
                 }, label: {
                 Image(systemName: note.isCompleted ? "checkmark.circle.fill" : "circle")
                     .font(.title2)
@@ -67,7 +67,7 @@ struct TodoRowView: View {
         .swipeActions(edge: .trailing, allowsFullSwipe: false) {
             Button("", systemImage: "trash") {
                 context.delete(note)
-             //   WidgetCenter.shared.reloadAllTimelines()
+                WidgetCenter.shared.reloadAllTimelines()
             }
             .tint(.red)
         }
@@ -75,13 +75,13 @@ struct TodoRowView: View {
             if note.title.isEmpty {
                 /// Deleting Empty Todo
                 context.delete(note)
-          //      WidgetCenter.shared.reloadAllTimelines()
+                WidgetCenter.shared.reloadAllTimelines()
             }
         }
         .onChange(of: phase) { oldValue, newValue in
             if newValue != .active && note.title.isEmpty {
                 context.delete(note)
-          //      WidgetCenter.shared.reloadAllTimelines()
+                WidgetCenter.shared.reloadAllTimelines()
             }
         }
         .task {
