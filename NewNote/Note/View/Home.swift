@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import TipKit
 
 struct Home: View {
     ///Active Todo's
@@ -18,13 +19,19 @@ struct Home: View {
     
     @State private var addNote: Bool = false
     
+    // Note Tip
+    @State private var noteTip = NoteTip()
+    @State private var deleteNoteTip = DeleteNoteTip()
+    
     var body: some View {
            List {
 //        ScrollView(.vertical) {
 //            VStack {
                 Section(activeSectionTitle) {
                     ForEach(activeList) {
-                        NoteRowView(note: $0)
+                     //   NoteRowView(note: $0)
+                        NoteCardView(note: $0)
+                            .listRowSeparator(.hidden)
                     }
                 }
                 

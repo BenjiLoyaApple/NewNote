@@ -168,9 +168,7 @@ struct AddNotesView: View {
                     }
                 }
             }
-
-
-            
+ 
         }
     }
     
@@ -262,7 +260,7 @@ struct AddNotesView: View {
         }
     }
     
-    /// Delete
+    //MARK: - Delete Photo
     func deletePhoto() {
             if image != nil {
                 selectedPhoto = nil

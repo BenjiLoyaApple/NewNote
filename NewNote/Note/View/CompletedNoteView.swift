@@ -28,7 +28,8 @@ struct CompletedNoteList: View {
     var body: some View {
         Section {
             ForEach(completedList) {
-                NoteRowView(note: $0)
+             //   NoteRowView(note: $0)
+                NoteCardView(note: $0)
             }
         } header: {
             HStack {
