@@ -22,12 +22,12 @@ struct Home: View {
         List {
             Section(activeSectionTitle) {
                 ForEach(activeList) {
-                    TodoRowView(note: $0)
+                    NoteRowView(note: $0)
                 }
             }
             
             /// Completed List
-            CompletedTodoList(showAll: $showAll)
+            CompletedNoteList(showAll: $showAll)
             
         }
         .toolbar {

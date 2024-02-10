@@ -11,15 +11,30 @@ import SwiftData
 @Model
 class Note {
     private(set) var noteID: String = UUID().uuidString
-    var title: String
-    var subTitle: String
+    var title: String = ""
+    var subTitle: String = ""
+    var date: Date = Date.now
+    var image: Data?
     var isCompleted: Bool = false
     var tag: Tag = Tag.clear
-    var date: Date = Date.now
     
-    init(title: String, subTitle: String, tag: Tag) {
+//    init(title: String, subTitle: String, tag: Tag) {
+//        self.title = title
+//        self.subTitle = subTitle
+//        self.tag = tag
+//    }
+    
+    init(
+        title: String,
+        subTitle: String,
+        date: Date = Date.now,
+        image: Data? = nil,
+        tag: Tag
+    ) {
         self.title = title
         self.subTitle = subTitle
+        self.date = date
+        self.image = image
         self.tag = tag
     }
 }

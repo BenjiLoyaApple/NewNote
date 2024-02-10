@@ -8,7 +8,7 @@
 import SwiftUI
 import WidgetKit
 
-struct TodoRowView: View {
+struct NoteRowView: View {
     
     @Bindable var note: Note
     /// View Properties
@@ -33,6 +33,23 @@ struct TodoRowView: View {
         }
             
             VStack(alignment: .leading, spacing: 4) {
+                
+                
+                VStack {
+                    // Image
+                    if let imageData = note.image,
+                       let uiImage = UIImage(data: imageData) {
+                        Image(uiImage: uiImage)
+                            .resizable()
+                            .scaledToFill()
+                            .frame(height: 170)
+                            .cornerRadius(10)
+                            .contentShape(Rectangle())
+                        // Video
+                    }
+                }
+                .cornerRadius(12)
+                
                 TextField("Write task", text: $note.title)
                     .font(.title3.bold())
                     .strikethrough(note.isCompleted)

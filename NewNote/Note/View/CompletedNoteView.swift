@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftData
 
-struct CompletedTodoList: View {
+struct CompletedNoteList: View {
     
     @Binding var showAll: Bool
     @Query private var completedList: [Note]
@@ -28,7 +28,7 @@ struct CompletedTodoList: View {
     var body: some View {
         Section {
             ForEach(completedList) {
-                TodoRowView(note: $0)
+                NoteRowView(note: $0)
             }
         } header: {
             HStack {
