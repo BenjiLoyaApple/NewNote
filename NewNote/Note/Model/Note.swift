@@ -12,31 +12,57 @@ import SwiftData
 class Note {
     private(set) var noteID: String = UUID().uuidString
     var title: String
+    var subTitle: String
     var isCompleted: Bool = false
-    var priority: Priority = Priority.normal
+    var tag: Tag = Tag.clear
     var date: Date = Date.now
     
-    init(title: String, priority: Priority) {
+    init(title: String, subTitle: String, tag: Tag) {
         self.title = title
-        self.priority = priority
+        self.subTitle = subTitle
+        self.tag = tag
     }
 }
 
 // Priority Status
-enum Priority: String, Codable, CaseIterable {
-    case normal = "Normal"
-    case medium = "Medium"
-    case high = "High"
+enum Tag: String, Codable, CaseIterable {
+    case clear = "Empty"
+    case yellow = "Yellow"
+    case orange = "Orange"
+    case red = "Red"
+    case green = "Green"
+    case blue = "Blue"
+    case purple = "Purple"
+    case gray = "Gray"
+    case personal = "Personal"
+    case work = "Work"
+    case important = "Important"
     
     ///Priority Color
     var color: Color {
         switch self {
-        case .normal:
-            return .green
-        case .medium:
-            return .yellow
-        case .high:
-            return .red
+        case .clear:
+            return Color.gray.opacity(0.15)
+        case .yellow:
+            return Color.yellow
+        case .orange:
+            return Color.orange
+        case .red:
+            return Color.red
+        case .green:
+            return Color.green
+        case .blue:
+            return Color.blue
+        case .purple:
+            return Color.purple
+        case .gray:
+            return Color.gray
+        case .personal:
+            return Color.mint // You can replace this with the desired color
+        case .work:
+            return Color.indigo // You can replace this with the desired color
+        case .important:
+            return Color.teal // You can replace this with the desired color
         }
     }
 }

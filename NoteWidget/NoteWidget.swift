@@ -47,12 +47,21 @@ struct NoteWidgetEntryView : View {
                         Image(systemName: "circle")
                     }
                     .font(.callout)
-                    .tint(note.priority.color.gradient)
+                    .tint(note.tag.color.gradient)
                     .buttonBorderShape(.circle)
                     
-                    Text(note.title)
-                        .font(.callout)
-                        .lineLimit(1)
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text(note.title)
+                            .font(.callout.bold())
+                            .lineLimit(1)
+                        
+                        Text(note.subTitle)
+                            .font(.caption2)
+                            .foregroundStyle(.secondary)
+                            .lineLimit(1)
+                        
+                    }
+                    
                     
                     Spacer(minLength: 0)
                 }
@@ -63,7 +72,7 @@ struct NoteWidgetEntryView : View {
         .overlay {
             if activeList.isEmpty {
                 Text("No Entires")
-                    .font(.callout)
+                    .font(.title3.bold())
                     .transition(.push(from: .bottom))
             }
         }

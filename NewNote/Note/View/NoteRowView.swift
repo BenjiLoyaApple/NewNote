@@ -32,20 +32,31 @@ struct TodoRowView: View {
             })
         }
             
-            TextField("Write task", text: $note.title)
-                .strikethrough(note.isCompleted)
-                .foregroundStyle(note.isCompleted ? .gray : .primary)
-                .focused($isActive)
+            VStack(alignment: .leading, spacing: 4) {
+                TextField("Write task", text: $note.title)
+                    .font(.title3.bold())
+                    .strikethrough(note.isCompleted)
+                    .foregroundStyle(note.isCompleted ? .gray : .primary)
+                    .focused($isActive)
+                
+                Text(note.subTitle)
+                    .font(.subheadline)
+                    .strikethrough(note.isCompleted)
+                    .foregroundStyle(.secondary)
+                    .focused($isActive)
+            }
+            
+            
             
             if !isActive && !note.title.isEmpty {
                 /// Priority Menu Button (For Updating)
                 Menu {
-                    ForEach(Priority.allCases, id: \.rawValue) { priority in
-                        Button(action: { note.priority = priority }, label: {
+                    ForEach(Tag.allCases, id: \.rawValue) { tag in
+                        Button(action: { note.tag = tag }, label: {
                             HStack {
-                                Text(priority.rawValue)
+                                Text(tag.rawValue)
                                 
-                                if note.priority == priority { Image(systemName: "checkmark") }
+                                if note.tag == tag { Image(systemName: "checkmark") }
                             }
                         })
                     }
@@ -54,7 +65,7 @@ struct TodoRowView: View {
                         .font(.title2)
                         .padding(3)
                         .containerShape(.rect)
-                        .foregroundStyle(note.priority.color.gradient)
+                        .foregroundStyle(note.tag.color.gradient)
                 }
             }
         }

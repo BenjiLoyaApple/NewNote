@@ -15,6 +15,9 @@ struct Home: View {
     /// Model Context
     @Environment(\.modelContext) private var context
     @State private var showAll: Bool = false
+    
+    @State private var addNote: Bool = false
+    
     var body: some View {
         List {
             Section(activeSectionTitle) {
@@ -30,16 +33,20 @@ struct Home: View {
         .toolbar {
             ToolbarItem(placement: .bottomBar) {
                 Button(action: {
-                    /// Creating an Empty Todo Task
-                    let note = Note(title: "", priority: .normal)
-                    /// Saving item into context
-                    context.insert(note)
+                    addNote.toggle()
                 }, label: {
                     Image(systemName: "plus.circle.fill")
                         .fontWeight(.light)
                         .font(.system(size: 41))
                 })
             }
+        }
+        .sheet(isPresented: $addNote) {
+            AddNotesView()
+              //  .interactiveDismissDisabled()
+//                .onAppear {
+//                    Task { await DeleteNoteTip.deleteNoteVisitedEvent.donate()}
+//                }
         }
     }
     

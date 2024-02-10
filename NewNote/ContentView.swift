@@ -11,7 +11,7 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             Home()
-                .navigationTitle("Todo List")
+                .navigationTitle("Just Journal")
         }
     }
 }
