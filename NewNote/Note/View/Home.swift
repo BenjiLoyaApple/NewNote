@@ -36,7 +36,8 @@ struct Home: View {
                     }
                 } header: {
                     HStack {
-                        Text("Active (\(activeSectionTitle.count))")
+                      //  Text("Active (\(activeSectionTitle.count))")
+                        Text("Active")
                             .font(.subheadline.bold())
                             .foregroundStyle(.secondary)
                             .padding(.leading)
@@ -80,10 +81,6 @@ struct Home: View {
     }
     
 }
-
-//#Preview {
-//    ContentView()
-//}
 
 #Preview("English") {
     let preview = Preview(Note.self)

@@ -16,7 +16,6 @@ class Note {
     var date: Date = Date.now
     var image: Data?
     var isCompleted: Bool = false
-//    var tag: Tag = Tag.clear
     var tag: Tag?
     
     init(
@@ -24,7 +23,6 @@ class Note {
         subTitle: String,
         date: Date = Date.now,
         image: Data? = nil,
-//        tag: Tag
         tag: Tag? = nil
     ) {
         self.title = title
@@ -35,50 +33,6 @@ class Note {
     }
 }
 
-/*
-// Priority Status
-enum Tag: String, Codable, CaseIterable {
-    case clear = "Empty"
-    case yellow = "Yellow"
-    case orange = "Orange"
-    case red = "Red"
-    case green = "Green"
-    case blue = "Blue"
-    case purple = "Purple"
-    case gray = "Gray"
-    case personal = "Personal"
-    case work = "Work"
-    case important = "Important"
-    
-    ///Priority Color
-    var color: Color {
-        switch self {
-        case .clear:
-            return Color.gray.opacity(0.15)
-        case .yellow:
-            return Color.yellow
-        case .orange:
-            return Color.orange
-        case .red:
-            return Color.red
-        case .green:
-            return Color.green
-        case .blue:
-            return Color.blue
-        case .purple:
-            return Color.purple
-        case .gray:
-            return Color.gray
-        case .personal:
-            return Color.mint // You can replace this with the desired color
-        case .work:
-            return Color.indigo // You can replace this with the desired color
-        case .important:
-            return Color.teal // You can replace this with the desired color
-        }
-    }
-}
-*/
 
 enum Tag: String, Codable, Identifiable, CaseIterable {
     case yellow, orange, red, green, blue, purple, gray, personal, work,  important
@@ -89,8 +43,6 @@ enum Tag: String, Codable, Identifiable, CaseIterable {
 
     var name: LocalizedStringKey {
         switch self {
-//        case .clear:
-//            return "Empty"
         case .yellow:
             return "Yellow"
         case .orange:
@@ -116,8 +68,6 @@ enum Tag: String, Codable, Identifiable, CaseIterable {
 
     var color: Color {
         switch self {
-//        case .clear:
-//            return Color.clear
         case .yellow:
             return Color.yellow
         case .orange:
@@ -141,4 +91,3 @@ enum Tag: String, Codable, Identifiable, CaseIterable {
         }
     }
 }
-

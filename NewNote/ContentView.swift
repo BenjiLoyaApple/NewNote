@@ -6,21 +6,33 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ContentView: View {
     @AppStorage("log_status") var logStatus: Bool = false
     var body: some View {
-     ///    Redirecting User Based on Log Status
-        if logStatus {
-//            IntosView()
-            Home()
-                .navigationTitle("Just Journal")
-        } else {
-            HomeOnBoard()
+        NavigationStack {
+            /// Redirecting User Based on Log Status
+            if logStatus {
+                // IntosView()
+                Home()
+                    .navigationTitle("Just Journal")
+            } else {
+                HomeOnBoard()
+            }
         }
     }
 }
 
-#Preview {
-    ContentView()
+//#Preview {
+//    ContentView()
+//}
+
+#Preview("English") {
+    let preview = Preview(Note.self)
+    let notes = Note.sampleNotes
+    preview.addExamples(notes)
+    return ContentView()
+        .modelContainer(preview.container)
+        .environment(\.locale, Locale(identifier: "EN"))
 }
