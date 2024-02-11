@@ -24,14 +24,15 @@ struct Home: View {
     @State private var deleteNoteTip = DeleteNoteTip()
     
     var body: some View {
-//           List {
         ScrollView(.vertical) {
+            
+            TipView(deleteNoteTip)
+                .padding(.horizontal)
+            
             VStack {
                 Section {
                     ForEach(activeList) {
-                     //   NoteRowView(note: $0)
                         NoteCardView(note: $0)
-                       //     .listRowSeparator(.hidden)
                     }
                 } header: {
                     HStack {
@@ -41,37 +42,35 @@ struct Home: View {
                             .padding(.leading)
                         
                         Spacer(minLength: 0)
-                        
-                        
                     }
-                    
                 }
-                
                 /// Completed List
                 CompletedNoteList(showAll: $showAll)
-          //         .listRowSeparator(.hidden)
                 
             }
         }
         .scrollIndicators(.hidden)
-//           .listStyle(.plain)
         .toolbar {
             ToolbarItem(placement: .bottomBar) {
-                Button(action: {
+                Button {
                     addNote.toggle()
-                }, label: {
+                    noteTip.invalidate(reason: .actionPerformed)
+                } label: {
                     Image(systemName: "plus.circle.fill")
                         .fontWeight(.light)
                         .font(.system(size: 41))
-                })
+                }
+                .popoverTip(noteTip)
+                .sensoryFeedback(.start, trigger: addNote)
             }
         }
         .sheet(isPresented: $addNote) {
             AddNotesView()
               .interactiveDismissDisabled()
-            //                .onAppear {
-            //                    Task { await DeleteNoteTip.deleteNoteVisitedEvent.donate()}
-            //                }
+              .onAppear {
+                  Task { await DeleteNoteTip.deleteNoteVisitedEvent.donate()}
+              }
+            
         }
     }
     
@@ -82,6 +81,23 @@ struct Home: View {
     
 }
 
-#Preview {
-    ContentView()
+//#Preview {
+//    ContentView()
+//}
+
+#Preview("English") {
+    let preview = Preview(Note.self)
+    let notes = Note.sampleNotes
+    preview.addExamples(notes)
+    return Home()
+        .modelContainer(preview.container)
+        .environment(\.locale, Locale(identifier: "EN"))
+        .task {
+            try? Tips.resetDatastore()
+            /// Configure and load your tips at app launch.
+            try? Tips.configure([
+                // .displayFrequency(.immediate),
+                .datastoreLocation(.applicationDefault)
+            ])
+        }
 }

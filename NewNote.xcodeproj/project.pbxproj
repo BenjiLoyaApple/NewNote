@@ -165,11 +165,11 @@
 			isa = PBXGroup;
 			children = (
 				E4FC880F2B774CE8005DCC4B /* Home.swift */,
-				E4FC88112B774CF9005DCC4B /* CompletedNoteView.swift */,
-				E4FC88132B774D06005DCC4B /* NoteRowView.swift */,
-				E4FC88332B775D3B005DCC4B /* AddNoteView.swift */,
 				E4FC88412B77FBE1005DCC4B /* NoteCard.swift */,
+				E4FC88112B774CF9005DCC4B /* CompletedNoteView.swift */,
+				E4FC88332B775D3B005DCC4B /* AddNoteView.swift */,
 				E4FC883F2B77E523005DCC4B /* EditNoteView.swift */,
+				E4FC88132B774D06005DCC4B /* NoteRowView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";

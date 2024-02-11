@@ -15,7 +15,11 @@ struct NoteCardView: View {
     @Environment(\.modelContext) private var context
     @Environment(\.scenePhase) private var phase
     
-    @State private var showDetailview: Bool = false
+    @State private var showDetailView: Bool = false
+    @State private var showEditView: Bool = false
+    
+    @State private var isTextDetailContent: Bool = false
+    @State private var maxTextLines: Int = 5
     
     // Date Properties
     private let dateFormatter: DateFormatter = {
@@ -47,7 +51,8 @@ struct NoteCardView: View {
             /// Edit
             Action(tint: ColorManager.bgColor, icon: "pencil.circle.fill", iconTint: .blue) {
                 print("Edit note")
-                showDetailview.toggle()
+                showEditView.toggle()
+                WidgetCenter.shared.reloadAllTimelines()
             }
             /// Delete
             Action(tint: ColorManager.bgColor, icon: "trash.circle.fill", iconTint: .red) {
@@ -90,8 +95,8 @@ struct NoteCardView: View {
         .task {
             note.isCompleted = note.isCompleted
         }
-        .fullScreenCover(isPresented: $showDetailview) {
-            EditNoteView()
+        .fullScreenCover(isPresented: $showEditView) {
+            EditNoteView(note: note)
         }
         
     }
@@ -108,7 +113,7 @@ struct NoteCardView: View {
                         Image(uiImage: uiImage)
                             .resizable()
                             .scaledToFill()
-                            .frame(height: 170)
+                            .frame(height: 190)
                             .cornerRadius(10)
                             .contentShape(Rectangle())
                     }
@@ -117,12 +122,18 @@ struct NoteCardView: View {
                 .shadow(color: .black.opacity(0.2), radius: 10, x: 2, y: 3)
                 .onTapGesture {
                     withAnimation(.snappy(duration: 0.2, extraBounce: 0)) {
-                        showDetailview = true
+                        showDetailView = true
                     }
                 }
             }
             // Text
             OverlayText()
+                .onTapGesture {
+                    isTextDetailContent.toggle()
+                    withAnimation(.smooth) {
+                        maxTextLines = isTextDetailContent ? .max : 5
+                    }
+                }
             
         }
         .padding(.horizontal, 3)
@@ -149,8 +160,12 @@ struct NoteCardView: View {
                 .strikethrough(note.isCompleted)
                 .foregroundStyle(.secondary)
                 .focused($isActive)
-                .lineLimit(note.isCompleted ? 1 : nil)
                 .padding(.top, 1)
+                .lineLimit(
+                    note.isCompleted ? 1 : (isTextDetailContent ? nil : maxTextLines)
+                )
+            
+            
             
             if !note.isCompleted {
                 HStack(spacing: 4) {

@@ -51,7 +51,7 @@ struct CompletedNoteList: View {
         } footer: {
             if completedList.count == 15 && !showAll && !completedList.isEmpty {
                 HStack {
-                    Text("Showing Recent 15 Tasks")
+                    Text("Showing Recent 15 Entires")
                         .foregroundStyle(.gray)
                     
                     Spacer(minLength: 0)
@@ -60,7 +60,8 @@ struct CompletedNoteList: View {
                         showAll = true
                     }
                 }
-                .font(.caption)
+                .font(.callout)
+                .padding()
             }
         }
     }

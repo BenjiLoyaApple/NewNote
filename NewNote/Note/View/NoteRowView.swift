@@ -5,6 +5,7 @@
 //  Created by Benji Loya on 10.02.2024.
 //
 
+/*
 import SwiftUI
 import WidgetKit
 
@@ -145,3 +146,4 @@ struct NoteRowView: View {
 #Preview {
     ContentView()
 }
+*/
