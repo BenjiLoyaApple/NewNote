@@ -165,8 +165,6 @@ struct NoteCardView: View {
                     note.isCompleted ? 1 : (isTextDetailContent ? nil : maxTextLines)
                 )
             
-            
-            
             if !note.isCompleted {
                 HStack(spacing: 4) {
                     if let tag = note.tag {

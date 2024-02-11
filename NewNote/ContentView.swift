@@ -8,10 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
+    @AppStorage("log_status") var logStatus: Bool = false
     var body: some View {
-        NavigationStack {
+     ///    Redirecting User Based on Log Status
+        if logStatus {
+//            IntosView()
             Home()
                 .navigationTitle("Just Journal")
+        } else {
+            HomeOnBoard()
         }
     }
 }
