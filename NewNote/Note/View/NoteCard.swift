@@ -15,10 +15,7 @@ struct NoteCardView: View {
     @Environment(\.modelContext) private var context
     @Environment(\.scenePhase) private var phase
     
-    @State private var detailviewAnimation: Bool = false
-    
     @State private var showDetailview: Bool = false
-    @State private var isMuted: Bool = true
     
     // Date Properties
     private let dateFormatter: DateFormatter = {
@@ -26,88 +23,77 @@ struct NoteCardView: View {
         formatter.dateFormat = "MMM dd"
         return formatter }()
     
-    @State private var offset: CGSize = .zero
-    
     init(note: Note) {
         _note = Bindable(note)
         
     }
-
+    
     var body: some View {
+        SwipeAction(cornerRadius: 15, direction: .trailing) {
             
-        CardView()
-            .listRowInsets(.init(top: 10, leading: 10, bottom: 10, trailing: 10))
-            .animation(.snappy, value: isActive)
-            .onAppear {
-                isActive = note.title.isEmpty
-            }
-            .swipeActions(edge: .leading, allowsFullSwipe: false) {
-                if !isActive && !note.title.isEmpty {
-                    /// Complete
-                    Button(action: {
-                        note.isCompleted.toggle()
-                        note.date = .now
-                        WidgetCenter.shared.reloadAllTimelines()
-                    }, label: {
-                        Image(systemName: note.isCompleted ? "checkmark.circle.fill" : "circle")
-                            .font(.title2)
-                            .padding(3)
-                            .contentShape(.rect)
-                            .foregroundStyle(note.isCompleted ? .gray : .accentColor)
-                            .contentTransition(.symbolEffect(.replace))
-                    })
-                }
-            }
-            /// Swipe to delete
-            .swipeActions(edge: .trailing, allowsFullSwipe: false) {
-                /// Delete
-                Button {
-                    context.delete(note)
-                    WidgetCenter.shared.reloadAllTimelines()
-                } label: {
-                    Image(systemName: "trash")
-                        .font(.largeTitle)
-                        .foregroundStyle(.red)
-                }
-                .tint(.red)
+            CardView()
+            
+        } actions: {
+            /// Complete
+            Action(tint: ColorManager.bgColor, icon: note.isCompleted ? "checkmark.circle.fill" : "checkmark.circle.fill", iconTint: note.isCompleted ? .green : .mint) {
+                print("Complete note")
                 
-                /// Edit
-                Button {
-             //       context.delete(note)
-              //      WidgetCenter.shared.reloadAllTimelines()
-                } label: {
-                    Image(systemName: "pencil")
-                        .font(.largeTitle)
-                        .foregroundStyle(.red)
-                }
-                .tint(.blue)
-               
-
-                
-//                Button("", systemImage: "trash") {
-//                    context.delete(note)
-//                    WidgetCenter.shared.reloadAllTimelines()
-//                }
-//                .tint(ColorManager.bgColor)
-                
-            }
-            .onSubmit(of: .text) {
-                if note.title.isEmpty {
-                    /// Deleting Empty Todo
-                    context.delete(note)
+                withAnimation {
+                    note.isCompleted.toggle()
+                    note.date = .now
                     WidgetCenter.shared.reloadAllTimelines()
                 }
             }
-            .onChange(of: phase) { oldValue, newValue in
-                if newValue != .active && note.title.isEmpty {
+            /// Edit
+            Action(tint: ColorManager.bgColor, icon: "pencil.circle.fill", iconTint: .blue) {
+                print("Edit note")
+                showDetailview.toggle()
+            }
+            /// Delete
+            Action(tint: ColorManager.bgColor, icon: "trash.circle.fill", iconTint: .red) {
+                print("Delete note")
+                withAnimation {
                     context.delete(note)
                     WidgetCenter.shared.reloadAllTimelines()
                 }
+                
+                ///In app Toast
+                //                Toast.shared.present(
+                //                    title: "Deleted",
+                //                    symbol: "xmark.circle",
+                //                    tintSymbol: Color.red,
+                //                    isUserInteractionEnabled: true,
+                //                    timing: .medium
+                //                )
             }
-            .task {
-                note.isCompleted = note.isCompleted
+        }
+        
+        .padding(.horizontal, 10)
+        .padding(.vertical, 4)
+        .animation(.snappy, value: isActive)
+        .onAppear {
+            isActive = note.title.isEmpty
+        }
+        .onSubmit(of: .text) {
+            if note.title.isEmpty {
+                /// Deleting Empty Todo
+                context.delete(note)
+                WidgetCenter.shared.reloadAllTimelines()
             }
-  
+        }
+        .onChange(of: phase) { oldValue, newValue in
+            if newValue != .active && note.title.isEmpty {
+                context.delete(note)
+                WidgetCenter.shared.reloadAllTimelines()
+            }
+        }
+        .task {
+            note.isCompleted = note.isCompleted
+        }
+        .fullScreenCover(isPresented: $showDetailview) {
+            EditNoteView()
+        }
+        
     }
     
     //MARK: - CARD View
@@ -115,36 +101,35 @@ struct NoteCardView: View {
     func CardView() -> some View {
         VStack(spacing: 0) {
             if !note.isCompleted {
-            VStack {
-                // Image
-                if let imageData = note.image,
-                   let uiImage = UIImage(data: imageData) {
-                    Image(uiImage: uiImage)
-                        .resizable()
-                        .scaledToFill()
-                        .frame(height: 170)
-                        .cornerRadius(10)
-                        .contentShape(Rectangle())
+                VStack {
+                    // Image
+                    if let imageData = note.image,
+                       let uiImage = UIImage(data: imageData) {
+                        Image(uiImage: uiImage)
+                            .resizable()
+                            .scaledToFill()
+                            .frame(height: 170)
+                            .cornerRadius(10)
+                            .contentShape(Rectangle())
+                    }
+                }
+                .cornerRadius(12)
+                .shadow(color: .black.opacity(0.2), radius: 10, x: 2, y: 3)
+                .onTapGesture {
+                    withAnimation(.snappy(duration: 0.2, extraBounce: 0)) {
+                        showDetailview = true
+                    }
                 }
             }
-            .cornerRadius(12)
-            .shadow(color: .black.opacity(0.2), radius: 10, x: 2, y: 3)
-            .onTapGesture {
-                withAnimation(.snappy(duration: 0.2, extraBounce: 0)) {
-                    showDetailview = true
-                }
-            }
+            // Text
+            OverlayText()
+            
         }
-                
-                // Text
-                OverlayText()
-            
-            }
-            .padding(.horizontal, 3)
-            .padding(.top, 3)
-            .background(Color.gray.opacity(0.15))
-            .cornerRadius(14)
-            
+        .padding(.horizontal, 3)
+        .padding(.top, 3)
+        .background(Color.gray.opacity(0.15))
+        .cornerRadius(14)
+        
     }
     
     // Text
@@ -203,7 +188,6 @@ struct NoteCardView: View {
                 .foregroundColor(.primary.opacity(0.4))
                 .padding(.top, 10)
             }
-            
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .multilineTextAlignment(.leading)

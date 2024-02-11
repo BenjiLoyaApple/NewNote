@@ -24,24 +24,37 @@ struct Home: View {
     @State private var deleteNoteTip = DeleteNoteTip()
     
     var body: some View {
-           List {
-//        ScrollView(.vertical) {
-//            VStack {
-                Section(activeSectionTitle) {
+//           List {
+        ScrollView(.vertical) {
+            VStack {
+                Section {
                     ForEach(activeList) {
                      //   NoteRowView(note: $0)
                         NoteCardView(note: $0)
-                            .listRowSeparator(.hidden)
+                       //     .listRowSeparator(.hidden)
                     }
+                } header: {
+                    HStack {
+                        Text("Active (\(activeSectionTitle.count))")
+                            .font(.subheadline.bold())
+                            .foregroundStyle(.secondary)
+                            .padding(.leading)
+                        
+                        Spacer(minLength: 0)
+                        
+                        
+                    }
+                    
                 }
                 
                 /// Completed List
                 CompletedNoteList(showAll: $showAll)
+          //         .listRowSeparator(.hidden)
                 
-//            }
+            }
         }
-     //   .scrollIndicators(.hidden)
-           .listStyle(.plain)
+        .scrollIndicators(.hidden)
+//           .listStyle(.plain)
         .toolbar {
             ToolbarItem(placement: .bottomBar) {
                 Button(action: {

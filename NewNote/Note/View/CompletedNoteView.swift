@@ -34,8 +34,13 @@ struct CompletedNoteList: View {
         } header: {
             HStack {
                 Text("Completed")
+                    .font(.subheadline.bold())
+                    .foregroundStyle(.secondary)
+                    .padding(.leading)
+                    .padding(.top)
                 
                 Spacer(minLength: 0)
+                
                 if showAll && !completedList.isEmpty {
                     Button("Show Recents") {
                         showAll = false
