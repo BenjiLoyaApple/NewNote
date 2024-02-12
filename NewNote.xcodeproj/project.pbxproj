@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E46392BB2B7A7CF500B85B0C /* ScrollProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46392BA2B7A7CF500B85B0C /* ScrollProgress.swift */; };
+		E46392BD2B7A838200B85B0C /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46392BC2B7A838200B85B0C /* EditView.swift */; };
 		E4FC87FE2B774CA8005DCC4B /* NewNoteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FC87FD2B774CA8005DCC4B /* NewNoteApp.swift */; };
 		E4FC88002B774CA8005DCC4B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FC87FF2B774CA8005DCC4B /* ContentView.swift */; };
 		E4FC88022B774CA9005DCC4B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4FC88012B774CA9005DCC4B /* Assets.xcassets */; };
@@ -63,6 +65,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E46392BA2B7A7CF500B85B0C /* ScrollProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollProgress.swift; sourceTree = "<group>"; };
+		E46392BC2B7A838200B85B0C /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 		E4FC87FA2B774CA8005DCC4B /* NewNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4FC87FD2B774CA8005DCC4B /* NewNoteApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteApp.swift; sourceTree = "<group>"; };
 		E4FC87FF2B774CA8005DCC4B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -118,6 +122,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E46392BE2B7A86D900B85B0C /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		E4FC87F12B774CA8005DCC4B = {
 			isa = PBXGroup;
 			children = (
@@ -145,7 +156,6 @@
 				E4FC88312B7755F1005DCC4B /* NewNote.entitlements */,
 				E4FC882E2B775088005DCC4B /* App */,
 				E4FC884A2B792363005DCC4B /* Core */,
-				E4FC882F2B775090005DCC4B /* Note */,
 				E4FC88352B775F3E005DCC4B /* Extensions */,
 				E4FC87FF2B774CA8005DCC4B /* ContentView.swift */,
 				E4FC88012B774CA9005DCC4B /* Assets.xcassets */,
@@ -181,6 +191,7 @@
 				E4FC88332B775D3B005DCC4B /* AddNoteView.swift */,
 				E4FC883F2B77E523005DCC4B /* EditNoteView.swift */,
 				E4FC88132B774D06005DCC4B /* NoteRowView.swift */,
+				E46392BC2B7A838200B85B0C /* EditView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -230,6 +241,7 @@
 				E4FC88432B77FCD2005DCC4B /* Tips.swift */,
 				E4FC88452B7900F2005DCC4B /* SwipeScroll.swift */,
 				E4FC88472B790113005DCC4B /* OffsetKey.swift */,
+				E46392BA2B7A7CF500B85B0C /* ScrollProgress.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -237,6 +249,8 @@
 		E4FC884A2B792363005DCC4B /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				E46392BE2B7A86D900B85B0C /* Components */,
+				E4FC882F2B775090005DCC4B /* Note */,
 				E4FC884B2B7923A5005DCC4B /* onBoarding */,
 			);
 			path = Core;
@@ -372,12 +386,14 @@
 			files = (
 				E4FC883E2B776463005DCC4B /* ViewExtensions.swift in Sources */,
 				E4FC88422B77FBE1005DCC4B /* NoteCard.swift in Sources */,
+				E46392BD2B7A838200B85B0C /* EditView.swift in Sources */,
 				E4FC88002B774CA8005DCC4B /* ContentView.swift in Sources */,
 				E4FC87FE2B774CA8005DCC4B /* NewNoteApp.swift in Sources */,
 				E4FC88122B774CF9005DCC4B /* CompletedNoteView.swift in Sources */,
 				E4FC885B2B7924DA005DCC4B /* CustomTextField.swift in Sources */,
 				E4FC88572B7924AA005DCC4B /* PageIntro.swift in Sources */,
 				E4FC885D2B7924E7005DCC4B /* CustomIndicatorView.swift in Sources */,
+				E46392BB2B7A7CF500B85B0C /* ScrollProgress.swift in Sources */,
 				E4FC88402B77E523005DCC4B /* EditNoteView.swift in Sources */,
 				E4FC88462B7900F2005DCC4B /* SwipeScroll.swift in Sources */,
 				E4FC88142B774D06005DCC4B /* NoteRowView.swift in Sources */,

@@ -158,7 +158,7 @@ struct NoteCardView: View {
             Text(note.subTitle)
                 .font(.callout)
                 .strikethrough(note.isCompleted)
-                .foregroundStyle(.secondary)
+                .foregroundStyle(.primary.opacity(0.8))
                 .focused($isActive)
                 .padding(.top, 1)
                 .lineLimit(

@@ -18,14 +18,19 @@ struct EditNoteView: View {
     @State private var image: Data? = nil
     @State private var tag: Tag?
     
-    var displayTag: Bool = true
     /// Photo
     @State private var selectedPhoto: PhotosPickerItem?
     ///showing Pickers
     @State private var showPhotoPicker = false
     @State private var showDatePicker = false
+    @State private var isDateVisible = false
     
-    @State private var isMuted: Bool = true
+    // Date Properties
+    private let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM dd"
+        return formatter }()
+    
     
     var body: some View {
         NavigationStack {
@@ -37,7 +42,6 @@ struct EditNoteView: View {
                 
                 TitleDetail()
                     .padding(.horizontal)
-                
             }
             .padding(.bottom, 330)
             
@@ -194,12 +198,44 @@ struct EditNoteView: View {
                 .foregroundColor(.primary)
                 .shadow(color: ColorManager.myBg, radius: 2)
                 .onChange(of: title) {
-                    if title.count > 30 {
-                        title = String(title.prefix(30))
+                    if title.count > 20 {
+                        title = String(title.prefix(20))
                     }
                 }
             
             TextField("Description", text: $subTitle, axis: .vertical)
+            
+            HStack(spacing: 4) {
+                if isDateVisible {
+                    Text(date, formatter: dateFormatter)
+                        .transition(.opacity)
+                }
+                
+                Spacer()
+                
+                if let tag = tag {
+                    Circle()
+                        .frame(height: 10)
+                        .foregroundColor(tag.color)
+                        .padding(4)
+                    
+                    Text(tag.name)
+                }
+            }
+            .font(.footnote)
+            .foregroundColor(.primary.opacity(0.4))
+            .padding(.top, 10)
+            .onChange(of: date) { newDate in
+                withAnimation {
+                    isDateVisible = true
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                    withAnimation {
+                        isDateVisible = false
+                    }
+                }
+            }
+            
         }
     }
     
