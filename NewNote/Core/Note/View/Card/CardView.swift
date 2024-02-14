@@ -17,7 +17,6 @@ struct CardView: View {
             
             // Text
             TextCard(note: note)
-            
         }
         .padding(.horizontal, 3)
         .padding(.top, 3)

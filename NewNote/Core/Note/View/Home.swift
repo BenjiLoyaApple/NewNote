@@ -10,16 +10,15 @@ import SwiftData
 import TipKit
 
 struct Home: View {
-    ///Active Todo's
+    ///Active Notes
     @Query(filter: #Predicate<Note> { !$0.isCompleted}, sort: [SortDescriptor(\Note.date, order: .reverse)], animation: .snappy) private var activeList: [Note]
     
     /// Model Context
     @Environment(\.modelContext) private var context
     @State private var showAll: Bool = false
-    
     @State private var addNote: Bool = false
     
-    // Note Tip
+    /// Note Tip
     @State private var noteTip = NoteTip()
     @State private var deleteNoteTip = DeleteNoteTip()
     
@@ -36,7 +35,7 @@ struct Home: View {
                     }
                 } header: {
                     HStack {
-                      //  Text("Active (\(activeSectionTitle.count))")
+//                        Text("Active (\(activeSectionTitle.count))")
                         Text("Active")
                             .font(.subheadline.bold())
                             .foregroundStyle(.secondary)

@@ -22,6 +22,7 @@ struct NoteCardView: View {
     }
     
     var body: some View {
+        
         SwipeAction(cornerRadius: 15, direction: .trailing) {
             
             CardView(note: note)
@@ -87,9 +88,7 @@ struct NoteCardView: View {
         .fullScreenCover(isPresented: $showEditView) {
             EditNoteView(note: note)
         }
-        
     }
-    
 }
 
 #Preview {
@@ -99,6 +98,3 @@ struct NoteCardView: View {
             .modelContainer(preview.container)
     }
 }
-
-
-

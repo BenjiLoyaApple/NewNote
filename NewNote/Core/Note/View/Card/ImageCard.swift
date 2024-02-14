@@ -38,3 +38,11 @@ struct ImageCard: View {
         }
     }
 }
+
+#Preview {
+    let preview = Preview(Note.self)
+    return  NavigationStack {
+        ImageCard(note: Note.sampleNotes[1])
+            .modelContainer(preview.container)
+    }
+}

@@ -50,8 +50,8 @@ struct TextCard: View {
             if !note.isCompleted {
                 
                 Divider()
-                    .padding(.top)
-                
+                    .padding(.top, 10)
+                    
                 HStack(spacing: 4) {
                     if let tag = note.tag {
                         Menu {
@@ -85,12 +85,20 @@ struct TextCard: View {
                 }
                 .font(.footnote)
                 .foregroundColor(.primary.opacity(0.4))
-                .padding(.top, 10)
+                .padding(.top, 5)
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .multilineTextAlignment(.leading)
         .padding(10)
         
+    }
+}
+
+#Preview {
+    let preview = Preview(Note.self)
+    return  NavigationStack {
+        TextCard(note: Note.sampleNotes[1])
+            .modelContainer(preview.container)
     }
 }
