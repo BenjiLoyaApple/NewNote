@@ -17,6 +17,7 @@
 		E47482072B7D1B270036B5C2 /* CustomDatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47482062B7D1B270036B5C2 /* CustomDatePickerView.swift */; };
 		E4B05C7D2B81CD5300080748 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B05C7C2B81CD5300080748 /* Toast.swift */; };
 		E4B05C7F2B821BAA00080748 /* FavoritesNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B05C7E2B821BAA00080748 /* FavoritesNoteView.swift */; };
+		E4B05C812B82249A00080748 /* TransparentBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B05C802B82249A00080748 /* TransparentBlurView.swift */; };
 		E4FC87FE2B774CA8005DCC4B /* NewNoteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FC87FD2B774CA8005DCC4B /* NewNoteApp.swift */; };
 		E4FC88002B774CA8005DCC4B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FC87FF2B774CA8005DCC4B /* ContentView.swift */; };
 		E4FC88022B774CA9005DCC4B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4FC88012B774CA9005DCC4B /* Assets.xcassets */; };
@@ -82,6 +83,7 @@
 		E47482062B7D1B270036B5C2 /* CustomDatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDatePickerView.swift; sourceTree = "<group>"; };
 		E4B05C7C2B81CD5300080748 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		E4B05C7E2B821BAA00080748 /* FavoritesNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesNoteView.swift; sourceTree = "<group>"; };
+		E4B05C802B82249A00080748 /* TransparentBlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransparentBlurView.swift; sourceTree = "<group>"; };
 		E4FC87FA2B774CA8005DCC4B /* NewNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4FC87FD2B774CA8005DCC4B /* NewNoteApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteApp.swift; sourceTree = "<group>"; };
 		E4FC87FF2B774CA8005DCC4B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 				E4FC88472B790113005DCC4B /* OffsetKey.swift */,
 				E46392BA2B7A7CF500B85B0C /* ScrollProgress.swift */,
 				E4B05C7C2B81CD5300080748 /* Toast.swift */,
+				E4B05C802B82249A00080748 /* TransparentBlurView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -417,6 +420,7 @@
 				E4FC883E2B776463005DCC4B /* ViewExtensions.swift in Sources */,
 				E47481FB2B7BDD040036B5C2 /* ImageCard.swift in Sources */,
 				E4FC88422B77FBE1005DCC4B /* NoteCard.swift in Sources */,
+				E4B05C812B82249A00080748 /* TransparentBlurView.swift in Sources */,
 				E4B05C7F2B821BAA00080748 /* FavoritesNoteView.swift in Sources */,
 				E4FC88002B774CA8005DCC4B /* ContentView.swift in Sources */,
 				E4FC87FE2B774CA8005DCC4B /* NewNoteApp.swift in Sources */,

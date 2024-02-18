@@ -21,9 +21,22 @@ struct Home: View {
     /// Note Tip
     @State private var noteTip = NoteTip()
     @State private var deleteNoteTip = DeleteNoteTip()
-        
+     
+    @State private var blurType: BlurType = .freeStyle
+    
     var body: some View {
         ScrollView(.vertical) {
+            TransparentBlurView(removeAllFilters: true)
+                .blur(radius: 15, opaque: blurType == .clipped)
+//                .padding([.horizontal, .top], -30)
+//                .frame(height: 50 + safeArea.top)
+                .visualEffect { view, proxy in
+                    view
+                        .offset(y: (proxy.bounds(of: .scrollView)?.maxY ?? 0))
+                }
+                /// Placing it above all the Views
+                .zIndex(1000)
+            
             
             TipView(deleteNoteTip)
                 .padding(.horizontal)
@@ -61,20 +74,6 @@ struct Home: View {
                         .fontWeight(.light)
                 }
             }
-            
-            /// Add Note
-//            ToolbarItem(placement: .bottomBar) {
-//                Button {
-//                    addNote.toggle()
-//                    noteTip.invalidate(reason: .actionPerformed)
-//                } label: {
-//                    Image(systemName: "plus.circle.fill")
-//                        .fontWeight(.light)
-//                        .font(.system(size: 41))
-//                }
-//                .popoverTip(noteTip)
-//                .sensoryFeedback(.start, trigger: addNote)
-//            }
         }
         .sheet(isPresented: $addNote) {
             AddNotesView()
@@ -82,11 +81,10 @@ struct Home: View {
               .onAppear {
                   Task { await DeleteNoteTip.deleteNoteVisitedEvent.donate()}
               }
-            
         }
         .overlay(alignment: .bottom) {
                 HStack() {
-                    
+                    // Add Note Button
                     Button {
                         addNote.toggle()
                         noteTip.invalidate(reason: .actionPerformed)
@@ -94,22 +92,21 @@ struct Home: View {
                         Image(systemName: "plus.circle.fill")
                             .fontWeight(.light)
                             .font(.system(size: 60))
-                            .foregroundStyle(.white, .indigo.gradient)
+                            .foregroundStyle(ColorManager.plus, ColorManager.circle.gradient)
                     }
                     .popoverTip(noteTip)
+                    .shadow(radius: 10)
                     
                 }
                 .frame(maxWidth: .infinity)
-                .frame(height: 50)
-             //   .padding(.horizontal, 22)
-                .background(LinearGradient(colors: [
-                    .clear,
-                    ColorManager.bgColor.opacity(0.4),
-                    ColorManager.bgColor.opacity(0.6),
-                    ColorManager.bgColor.opacity(0.8),
-                    ColorManager.bgColor.opacity(0.9)],
-                                           startPoint: .top,
-                                           endPoint: .bottom))
+                .padding(.bottom, 40)
+                .ignoresSafeArea(.all)
+                .background {
+                    TransparentBlurView(removeAllFilters: true)
+                        .blur(radius: 5, opaque: blurType == .clipped)
+                       
+                }
+                .offset(y: 50)
         }
 //        .overlay {
 //            if activeList.isEmpty {
@@ -138,11 +135,17 @@ struct Home: View {
         .modelContainer(preview.container)
         .environment(\.locale, Locale(identifier: "EN"))
         .task {
-            try? Tips.resetDatastore()
+        //    try? Tips.resetDatastore()
             /// Configure and load your tips at app launch.
             try? Tips.configure([
                 // .displayFrequency(.immediate),
                 .datastoreLocation(.applicationDefault)
             ])
         }
+}
+
+/// Blur State
+enum BlurType: String, CaseIterable {
+    case clipped = "Clipped"
+    case freeStyle = "Free Style"
 }

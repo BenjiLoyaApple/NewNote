@@ -18,4 +18,8 @@ struct ColorManager {
     
     /// Toast Color
     static let toastBg = Color("toastBg")
+    
+    /// Add Note Button Color
+    static let plus = Color("plus")
+    static let circle = Color("circle")
 }
