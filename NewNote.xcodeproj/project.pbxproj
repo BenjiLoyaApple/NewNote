@@ -15,6 +15,8 @@
 		E47482032B7BE3C70036B5C2 /* NoteText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47482022B7BE3C70036B5C2 /* NoteText.swift */; };
 		E47482052B7BE5190036B5C2 /* OverlayButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47482042B7BE5190036B5C2 /* OverlayButtons.swift */; };
 		E47482072B7D1B270036B5C2 /* CustomDatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47482062B7D1B270036B5C2 /* CustomDatePickerView.swift */; };
+		E4B05C7D2B81CD5300080748 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B05C7C2B81CD5300080748 /* Toast.swift */; };
+		E4B05C7F2B821BAA00080748 /* FavoritesNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B05C7E2B821BAA00080748 /* FavoritesNoteView.swift */; };
 		E4FC87FE2B774CA8005DCC4B /* NewNoteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FC87FD2B774CA8005DCC4B /* NewNoteApp.swift */; };
 		E4FC88002B774CA8005DCC4B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FC87FF2B774CA8005DCC4B /* ContentView.swift */; };
 		E4FC88022B774CA9005DCC4B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4FC88012B774CA9005DCC4B /* Assets.xcassets */; };
@@ -78,6 +80,8 @@
 		E47482022B7BE3C70036B5C2 /* NoteText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteText.swift; sourceTree = "<group>"; };
 		E47482042B7BE5190036B5C2 /* OverlayButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayButtons.swift; sourceTree = "<group>"; };
 		E47482062B7D1B270036B5C2 /* CustomDatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDatePickerView.swift; sourceTree = "<group>"; };
+		E4B05C7C2B81CD5300080748 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
+		E4B05C7E2B821BAA00080748 /* FavoritesNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesNoteView.swift; sourceTree = "<group>"; };
 		E4FC87FA2B774CA8005DCC4B /* NewNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4FC87FD2B774CA8005DCC4B /* NewNoteApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteApp.swift; sourceTree = "<group>"; };
 		E4FC87FF2B774CA8005DCC4B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -213,6 +217,7 @@
 				E47481F92B7BDCE60036B5C2 /* Card */,
 				E4FC880F2B774CE8005DCC4B /* Home.swift */,
 				E4FC88112B774CF9005DCC4B /* CompletedNoteView.swift */,
+				E4B05C7E2B821BAA00080748 /* FavoritesNoteView.swift */,
 				E4FC88332B775D3B005DCC4B /* AddNoteView.swift */,
 				E4FC883F2B77E523005DCC4B /* EditNoteView.swift */,
 			);
@@ -265,6 +270,7 @@
 				E4FC88452B7900F2005DCC4B /* SwipeScroll.swift */,
 				E4FC88472B790113005DCC4B /* OffsetKey.swift */,
 				E46392BA2B7A7CF500B85B0C /* ScrollProgress.swift */,
+				E4B05C7C2B81CD5300080748 /* Toast.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -411,6 +417,7 @@
 				E4FC883E2B776463005DCC4B /* ViewExtensions.swift in Sources */,
 				E47481FB2B7BDD040036B5C2 /* ImageCard.swift in Sources */,
 				E4FC88422B77FBE1005DCC4B /* NoteCard.swift in Sources */,
+				E4B05C7F2B821BAA00080748 /* FavoritesNoteView.swift in Sources */,
 				E4FC88002B774CA8005DCC4B /* ContentView.swift in Sources */,
 				E4FC87FE2B774CA8005DCC4B /* NewNoteApp.swift in Sources */,
 				E4FC88122B774CF9005DCC4B /* CompletedNoteView.swift in Sources */,
@@ -420,6 +427,7 @@
 				E4FC88572B7924AA005DCC4B /* PageIntro.swift in Sources */,
 				E4FC885D2B7924E7005DCC4B /* CustomIndicatorView.swift in Sources */,
 				E46392BB2B7A7CF500B85B0C /* ScrollProgress.swift in Sources */,
+				E4B05C7D2B81CD5300080748 /* Toast.swift in Sources */,
 				E4FC88402B77E523005DCC4B /* EditNoteView.swift in Sources */,
 				E4FC88462B7900F2005DCC4B /* SwipeScroll.swift in Sources */,
 				E47481FF2B7BDD890036B5C2 /* CardView.swift in Sources */,
@@ -592,7 +600,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NewNote/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Just Journal";
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -626,7 +634,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NewNote/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Just Journal";
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

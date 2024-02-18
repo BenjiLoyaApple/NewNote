@@ -31,12 +31,20 @@ struct NoteCardView: View {
             /// Complete
             Action(tint: ColorManager.bgColor, icon: note.isCompleted ? "checkmark.circle.fill" : "checkmark.circle.fill", iconTint: note.isCompleted ? .green : .mint) {
                 print("Complete note")
-                
                 withAnimation {
                     note.isCompleted.toggle()
                     note.date = .now
                     WidgetCenter.shared.reloadAllTimelines()
                 }
+                
+                ///In app Toast
+                Toast.shared.present(
+                    title: note.isCompleted ? "Completed" : "Uncompleted",
+                    symbol: note.isCompleted ? "checkmark.circle.fill" : "checkmark.circle.badge.xmark",
+                    tintSymbol: Color.mint,
+                    isUserInteractionEnabled: true,
+                    timing: .medium
+                )
             }
             /// Edit
             Action(tint: ColorManager.bgColor, icon: "pencil.circle.fill", iconTint: .blue) {
@@ -53,13 +61,13 @@ struct NoteCardView: View {
                 }
                 
                 ///In app Toast
-                //                Toast.shared.present(
-                //                    title: "Deleted",
-                //                    symbol: "xmark.circle",
-                //                    tintSymbol: Color.red,
-                //                    isUserInteractionEnabled: true,
-                //                    timing: .medium
-                //                )
+                Toast.shared.present(
+                    title: "Deleted",
+                    symbol: "xmark.circle",
+                    tintSymbol: Color.red,
+                    isUserInteractionEnabled: true,
+                    timing: .medium
+                )
             }
         }
         

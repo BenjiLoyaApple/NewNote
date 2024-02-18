@@ -21,7 +21,7 @@ struct Home: View {
     /// Note Tip
     @State private var noteTip = NoteTip()
     @State private var deleteNoteTip = DeleteNoteTip()
-    
+        
     var body: some View {
         ScrollView(.vertical) {
             
@@ -51,18 +51,30 @@ struct Home: View {
         }
         .scrollIndicators(.hidden)
         .toolbar {
-            ToolbarItem(placement: .bottomBar) {
+            /// Sort Notes
+            ToolbarItem(placement: .topBarTrailing) {
                 Button {
-                    addNote.toggle()
-                    noteTip.invalidate(reason: .actionPerformed)
+                    // sort action
                 } label: {
-                    Image(systemName: "plus.circle.fill")
+                    Image(systemName: "line.3.horizontal.decrease.circle")
+                        .font(.title3)
                         .fontWeight(.light)
-                        .font(.system(size: 41))
                 }
-                .popoverTip(noteTip)
-                .sensoryFeedback(.start, trigger: addNote)
             }
+            
+            /// Add Note
+//            ToolbarItem(placement: .bottomBar) {
+//                Button {
+//                    addNote.toggle()
+//                    noteTip.invalidate(reason: .actionPerformed)
+//                } label: {
+//                    Image(systemName: "plus.circle.fill")
+//                        .fontWeight(.light)
+//                        .font(.system(size: 41))
+//                }
+//                .popoverTip(noteTip)
+//                .sensoryFeedback(.start, trigger: addNote)
+//            }
         }
         .sheet(isPresented: $addNote) {
             AddNotesView()
@@ -72,6 +84,43 @@ struct Home: View {
               }
             
         }
+        .overlay(alignment: .bottom) {
+                HStack() {
+                    
+                    Button {
+                        addNote.toggle()
+                        noteTip.invalidate(reason: .actionPerformed)
+                    } label: {
+                        Image(systemName: "plus.circle.fill")
+                            .fontWeight(.light)
+                            .font(.system(size: 60))
+                            .foregroundStyle(.white, .indigo.gradient)
+                    }
+                    .popoverTip(noteTip)
+                    
+                }
+                .frame(maxWidth: .infinity)
+                .frame(height: 50)
+             //   .padding(.horizontal, 22)
+                .background(LinearGradient(colors: [
+                    .clear,
+                    ColorManager.bgColor.opacity(0.4),
+                    ColorManager.bgColor.opacity(0.6),
+                    ColorManager.bgColor.opacity(0.8),
+                    ColorManager.bgColor.opacity(0.9)],
+                                           startPoint: .top,
+                                           endPoint: .bottom))
+        }
+//        .overlay {
+//            if activeList.isEmpty {
+//                ContentUnavailableView {
+//                    Label("No Entries", systemImage: "tray.fill")
+//                        .frame(width: 200)
+//                }
+//            }
+//        }
+        
+        
     }
     
     var activeSectionTitle: String {
@@ -85,7 +134,7 @@ struct Home: View {
     let preview = Preview(Note.self)
     let notes = Note.sampleNotes
     preview.addExamples(notes)
-    return Home()
+    return ContentView()
         .modelContainer(preview.container)
         .environment(\.locale, Locale(identifier: "EN"))
         .task {

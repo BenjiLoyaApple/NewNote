@@ -26,8 +26,8 @@ struct ScrollProgress: View {
                                 Color.clear.preference(key: OffsetKey.self, value: ScrollViewGeo.frame(in: .global).minY)
                             })
                             .frame(height: 0).id(0)
+                            
                             VStack {
-                                
                                 Image("cali")
                                     .resizable()
                                     .aspectRatio(contentMode: .fill)
@@ -38,6 +38,7 @@ struct ScrollProgress: View {
                             }
                             .padding(.horizontal)
                             .frame(maxWidth: .infinity, alignment: .leading)
+                            
                             // 2
                             .background(GeometryReader { contentGeo in
                                 Color.clear.preference(key: ContentPreferenceKey.self, value: contentGeo.size.height)
@@ -87,15 +88,15 @@ struct ScrollProgress: View {
             Group {
                 ZStack(alignment: .leading) {
                     RoundedRectangle(cornerRadius: 40)
-                        .frame(width: 250, height: 55)
+                        .frame(width: 200, height: 45)
                         .foregroundStyle(.ultraThinMaterial)
                     HStack {
                         Text("\(progressPercentage)%")
                             .font(.title3)
                             .bold()
                         RoundedRectangle(cornerRadius: 20)
-                            .foregroundStyle(.green)
-                            .frame(width: 150 * progress, height: 8)
+                            .foregroundStyle(.blue)
+                            .frame(width: 115 * progress, height: 8)
                     }
                     .padding(.horizontal)
                     .opacity(progressPercentage > 0 && progressPercentage < 100 ? 1 : 0)
@@ -103,9 +104,9 @@ struct ScrollProgress: View {
                     
                 }
             }
-            .opacity(progressPercentage > 0 ? 0.9 : 0)
+            .opacity(progressPercentage > 0 ? 1 : 0)
             Button {
-                withAnimation(.easeInOut(duration: 0.5)) {
+                withAnimation(.easeInOut(duration: 0.2)) {
                     ScrollProxy.scrollTo(0)
                 }
             } label: {
@@ -118,7 +119,7 @@ struct ScrollProgress: View {
         }
         .mask(
             RoundedRectangle(cornerRadius: 40)
-            .frame(width: progressPercentage > 0 && progressPercentage < 100 ? 250 : 55, height: 55)
+            .frame(width: progressPercentage > 0 && progressPercentage < 100 ? 200 : 55, height: 45)
             .animation(.easeInOut(duration: 0.33), value: progressPercentage)
         )
         .frame(maxHeight: .infinity, alignment: .bottom)

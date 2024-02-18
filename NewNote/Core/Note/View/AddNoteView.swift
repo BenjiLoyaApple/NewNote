@@ -121,16 +121,16 @@ struct AddNotesView: View {
         /// Closing view, once the Data has been Added Successfully!
         dismiss()
         
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-//            //MARK: Toast notification
-//            Toast.shared.present(
-//                title: "Entry Added",
-//                symbol: "tray.full",
-//                tintSymbol: Color.teal,
-//                isUserInteractionEnabled: true,
-//                timing: .medium
-//            )
-//        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            //MARK: Toast notification
+            Toast.shared.present(
+                title: "Entry Added",
+                symbol: "tray.full",
+                tintSymbol: Color.teal,
+                isUserInteractionEnabled: true,
+                timing: .medium
+            )
+        }
     }
 }
 

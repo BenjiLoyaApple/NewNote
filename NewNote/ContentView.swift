@@ -17,6 +17,7 @@ struct ContentView: View {
                 // IntosView()
                 Home()
                     .navigationTitle("Just Journal")
+                    .accentColor(.primary)
             } else {
                 HomeOnBoard()
             }

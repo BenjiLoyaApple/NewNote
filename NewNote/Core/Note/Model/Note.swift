@@ -17,6 +17,7 @@ class Note {
     var image: Data?
     var isCompleted: Bool = false
     var tag: Tag?
+    var isfavorite: Bool = false
     
     init(
         title: String,

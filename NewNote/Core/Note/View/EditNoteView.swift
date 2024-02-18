@@ -76,13 +76,13 @@ struct EditNoteView: View {
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                         //MARK: Toast notification
-//                        Toast.shared.present(
-//                            title: "Changes saved",
-//                            symbol: "checkmark.circle",
-//                            tintSymbol: Color.green,
-//                            isUserInteractionEnabled: true,
-//                            timing: .medium
-//                        )
+                        Toast.shared.present(
+                            title: "Changes saved",
+                            symbol: "checkmark.circle",
+                            tintSymbol: Color.green,
+                            isUserInteractionEnabled: true,
+                            timing: .medium
+                        )
                     }
                     
                 }, label: {
