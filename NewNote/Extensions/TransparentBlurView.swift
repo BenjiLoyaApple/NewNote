@@ -11,7 +11,7 @@ import SwiftUI
 struct TransparentBlurView: UIViewRepresentable {
     var removeAllFilters: Bool = false
     func makeUIView(context: Context) -> UIVisualEffectView {
-        let view = UIVisualEffectView(effect: UIBlurEffect(style: .systemUltraThinMaterial))
+        let view = UIVisualEffectView(effect: UIBlurEffect(style: .systemUltraThinMaterialLight))
         
         return view
     }

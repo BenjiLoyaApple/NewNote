@@ -8,6 +8,7 @@
 import SwiftUI
 import SwiftData
 import PhotosUI
+import WidgetKit
 
 struct AddNotesView: View {
     /// View Properties
@@ -41,7 +42,7 @@ struct AddNotesView: View {
                         .padding(.top, 10)
                         .padding(.horizontal, 10)
                     
-                    NoteText(title: $title, subTitle: $subTitle, tag: $tag, date: $date, isDateVisible: $isDateVisible)
+                    NoteText(title: $title, subTitle: $subTitle)
                         .padding(.horizontal)
                 }
                 .padding(.bottom, 330)
@@ -84,7 +85,7 @@ struct AddNotesView: View {
                 CustomDatePickerView(date: $date)
             }
             .photosPicker(isPresented: $showPhotoPicker, selection: $selectedPhoto, matching: .any(of: [.images]))
-            .onChange(of: selectedPhoto) { newValue in
+            .onChange(of: selectedPhoto) { oldValue, newValue in
                 Task {
                     do {
                         /// преобразуем фото в данные
@@ -117,20 +118,20 @@ struct AddNotesView: View {
             tag: tag ?? nil
         )
         context.insert(note)
-        
+        WidgetCenter.shared.reloadAllTimelines()
         /// Closing view, once the Data has been Added Successfully!
         dismiss()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            //MARK: Toast notification
-            Toast.shared.present(
-                title: "Entry Added",
-                symbol: "tray.full",
-                tintSymbol: Color.teal,
-                isUserInteractionEnabled: true,
-                timing: .medium
-            )
-        }
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+//            //MARK: Toast notification
+//            Toast.shared.present(
+//                title: "Entry Added",
+//                symbol: "tray.full",
+//                tintSymbol: Color.teal,
+//                isUserInteractionEnabled: true,
+//                timing: .medium
+//            )
+//        }
     }
 }
 

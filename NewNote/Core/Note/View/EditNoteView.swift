@@ -40,7 +40,7 @@ struct EditNoteView: View {
                     .padding(.top, 10)
                     .padding(.horizontal, 10)
                 
-                NoteText(title: $title, subTitle: $subTitle, tag: $tag, date: $date, isDateVisible: $isDateVisible)
+                NoteText(title: $title, subTitle: $subTitle)
                     .padding(.horizontal)
             }
             .padding(.bottom, 330)
@@ -73,17 +73,7 @@ struct EditNoteView: View {
                         note.tag = tag
                     }
                     dismiss()
-                    
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        //MARK: Toast notification
-                        Toast.shared.present(
-                            title: "Changes saved",
-                            symbol: "checkmark.circle",
-                            tintSymbol: Color.green,
-                            isUserInteractionEnabled: true,
-                            timing: .medium
-                        )
-                    }
+                   
                     
                 }, label: {
                     Text("Done")
@@ -100,7 +90,7 @@ struct EditNoteView: View {
             CustomDatePickerView(date: $date)
         }
         .photosPicker(isPresented: $showPhotoPicker, selection: $selectedPhoto, matching: .any(of: [.images]))
-        .onChange(of: selectedPhoto) { newValue in
+        .onChange(of: selectedPhoto) { oldValue, newValue in
             Task {
                 do {
                     /// преобразуем фото в данные
@@ -135,7 +125,7 @@ struct EditNoteView: View {
 #Preview {
     let preview = Preview(Note.self)
    return  NavigationStack {
-       EditNoteView(note: Note.sampleNotes[5])
+       EditNoteView(note: Note.sampleNotes[4])
            .modelContainer(preview.container)
     }
 }

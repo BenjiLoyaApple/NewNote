@@ -23,7 +23,6 @@ struct OverlayButtons: View {
                 Text("Select Photo")
                 Image(systemName: "photo.on.rectangle.angled")
             })
-            .sensoryFeedback(.selection, trigger: showPhotoPicker)
             
             ///Calendar
             Button(action: {

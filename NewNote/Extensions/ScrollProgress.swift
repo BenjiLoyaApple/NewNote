@@ -23,7 +23,7 @@ struct ScrollProgress: View {
                         ScrollView(.vertical) {
                             // 3
                             GeometryReader(content: { ScrollViewGeo in
-                                Color.clear.preference(key: OffsetKey.self, value: ScrollViewGeo.frame(in: .global).minY)
+                                Color.clear.preference(key: OffsetKey1.self, value: ScrollViewGeo.frame(in: .global).minY)
                             })
                             .frame(height: 0).id(0)
                             
@@ -45,7 +45,7 @@ struct ScrollProgress: View {
                             })
                         }
                         .scrollIndicators(.hidden)
-                        .onPreferenceChange(OffsetKey.self) {
+                        .onPreferenceChange(OffsetKey1.self) {
                             self.scrollOffset = $0 - fullView.safeAreaInsets.top
                         }
                         .onPreferenceChange(ContentPreferenceKey.self) {

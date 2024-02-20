@@ -18,6 +18,7 @@ struct Home: View {
     @State private var showAll: Bool = false
     @State private var addNote: Bool = false
     
+    @State private var showAllFavorites: Bool = false
     /// Note Tip
     @State private var noteTip = NoteTip()
     @State private var deleteNoteTip = DeleteNoteTip()
@@ -26,17 +27,6 @@ struct Home: View {
     
     var body: some View {
         ScrollView(.vertical) {
-            TransparentBlurView(removeAllFilters: true)
-                .blur(radius: 15, opaque: blurType == .clipped)
-//                .padding([.horizontal, .top], -30)
-//                .frame(height: 50 + safeArea.top)
-                .visualEffect { view, proxy in
-                    view
-                        .offset(y: (proxy.bounds(of: .scrollView)?.maxY ?? 0))
-                }
-                /// Placing it above all the Views
-                .zIndex(1000)
-            
             
             TipView(deleteNoteTip)
                 .padding(.horizontal)
@@ -60,7 +50,12 @@ struct Home: View {
                 /// Completed List
                 CompletedNoteList(showAll: $showAll)
                 
+             //   FavoritesNoteView(showAllBookmark: $showAllBookmark)
+                
             }
+            .padding(.bottom, 65)
+            
+            
         }
         .scrollIndicators(.hidden)
         .toolbar {
@@ -95,7 +90,7 @@ struct Home: View {
                             .foregroundStyle(ColorManager.plus, ColorManager.circle.gradient)
                     }
                     .popoverTip(noteTip)
-                    .shadow(radius: 10)
+                    .shadow(color: .black.opacity(0.25), radius: 15, x: 7, y: 10)
                     
                 }
                 .frame(maxWidth: .infinity)
@@ -131,7 +126,7 @@ struct Home: View {
     let preview = Preview(Note.self)
     let notes = Note.sampleNotes
     preview.addExamples(notes)
-    return ContentView()
+    return Home()
         .modelContainer(preview.container)
         .environment(\.locale, Locale(identifier: "EN"))
         .task {

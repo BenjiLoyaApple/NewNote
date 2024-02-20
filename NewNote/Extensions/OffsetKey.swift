@@ -8,9 +8,37 @@
 import SwiftUI
 
 /// Offset Key
-struct OffsetKey: PreferenceKey {
+struct OffsetKey1: PreferenceKey {
     static var defaultValue: CGFloat = .zero
+
     static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
         value = nextValue()
+    }
+}
+
+
+struct OffsetKey: PreferenceKey{
+    static var defaultValue: CGRect = .zero
+    
+    static func reduce(value: inout CGRect, nextValue: () -> CGRect) {
+        value = nextValue()
+    }
+}
+
+extension View{
+    @ViewBuilder
+    func offset(name: String = "SCROLL",completion: @escaping (CGRect)->())->some View{
+        self
+            .overlay {
+                GeometryReader{
+                    let rect = $0.frame(in: .named(name))
+                    
+                    Color.clear
+                        .preference(key: OffsetKey.self, value: rect)
+                        .onPreferenceChange(OffsetKey.self) { value in
+                            completion(value)
+                        }
+                }
+            }
     }
 }
