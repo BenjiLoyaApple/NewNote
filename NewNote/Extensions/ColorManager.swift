@@ -22,4 +22,6 @@ struct ColorManager {
     /// Add Note Button Color
     static let plus = Color("plus")
     static let circle = Color("circle")
+    
+    static let cardStroke = Color("cardStroke")
 }

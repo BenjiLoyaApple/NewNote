@@ -30,7 +30,7 @@ struct NewHome: View{
     
     var body: some View{
         let config = Config(
-            leading: .init(name: "magnifyingglass", title: "Search"),
+            leading: .init(name: "circle.badge.checkmark", title: "Completed"),
             center: .init(name: "arrow.counterclockwise", title: "Refresh"),
             trailing: .init(name: "bookmark", title: "Bookmark")
         )
@@ -43,23 +43,31 @@ struct NewHome: View{
                     .padding(.horizontal)
                 
                 VStack {
-                    Section {
-                        ForEach(activeList) {
-                            NoteCardView(note: $0)
-                        }
-                    } header: {
-                        HStack {
-    //                        Text("Active (\(activeSectionTitle.count))")
-                            Text("Active")
-                                .font(.subheadline.bold())
-                                .foregroundStyle(.secondary)
-                                .padding(.leading)
-                            
-                            Spacer(minLength: 0)
-                        }
+                    
+                    ForEach(activeList) {
+                        NoteCardView(note: $0)
+//                        Card(note: $0)
                     }
+                    .padding(.top, 10)
+                    
+                    
+//                    Section {
+//                        ForEach(activeList) {
+//                            NoteCardView(note: $0)
+//                        }
+//                    } 
+//                header: {
+//                        HStack {
+//                            Text("Active")
+//                                .font(.subheadline.bold())
+//                                .foregroundStyle(.secondary)
+//                                .padding(.leading)
+//                            
+//                            Spacer(minLength: 0)
+//                        }
+//                    }
                     /// Completed List
-                    CompletedNoteList(showAll: $showAll)
+             //       CompletedNoteList(showAll: $showAll)
                                         
                 }
                 .padding(.bottom, 65)
@@ -74,31 +82,34 @@ struct NewHome: View{
             }
             
         } navbar: {
-            HStack(spacing: 0) {
-                Text("Just Journal")
-                    .font(.title.bold())
+            VStack(spacing: 0) {
+                HStack(spacing: 0) {
+                    Text("Just Journal")
+                        .font(.title.bold())
+                    
+                    Spacer()
+                }
                 
-                Spacer()
+                TextField("Search", text: .constant(""))
+                    .font(.callout)
+                    .padding(.vertical,8)
+                    .padding(.horizontal,15)
+                    .background {
+                        Capsule()
+                            .fill(.thickMaterial)
+                    }
+                    .padding(.vertical,10)
             }
-//            TextField("File Name", text: .constant(""))
-//                .font(.callout)
-//                .padding(.vertical,8)
-//                .padding(.horizontal,15)
-//                .background {
-//                    Capsule()
-//                        .fill(.thickMaterial)
-//                }
-//            .padding(.vertical,10)
-            
         } leadingAction: {
             showSearchView.toggle()
         } centerAction: {
-            
+            // Refresh View
         } trailingAction: {
             showBookmarkView.toggle()
         }
         .sheet(isPresented: $showSearchView) {
          //   SearchView()
+            CompletedNoteList(showAll: $showAll)
         }
         .sheet(isPresented: $showBookmarkView) {
             BookmarkNoteView(showAllFavorites: $showAllBookmark)

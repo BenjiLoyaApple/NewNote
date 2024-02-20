@@ -90,8 +90,8 @@ struct NoteWidgetEntryView : View {
                 Text("No Entires")
                     .font(.largeTitle)
                     .fontWeight(.black)
-                    .foregroundStyle(.black)
-                    .shadow(color: .gray.opacity(0.25), radius: 2, x: 7, y: 10)
+                    .foregroundStyle(.primary)
+                    .shadow(color: .black.opacity(0.1), radius: 2, x: 7, y: 10)
                     .transition(.push(from: .bottom))
             }
         }

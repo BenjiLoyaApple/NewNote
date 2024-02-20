@@ -19,7 +19,7 @@
 		E48AAA722B826A280043A00A /* UniversalInteractionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48AAA712B826A280043A00A /* UniversalInteractionManager.swift */; };
 		E48AAA742B826A330043A00A /* ChromeScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48AAA732B826A330043A00A /* ChromeScrollView.swift */; };
 		E48AAA762B83B4CE0043A00A /* ButtonCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48AAA752B83B4CE0043A00A /* ButtonCard.swift */; };
-		E4B05C7D2B81CD5300080748 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B05C7C2B81CD5300080748 /* Toast.swift */; };
+		E48AAA782B8514400043A00A /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48AAA772B8514400043A00A /* Card.swift */; };
 		E4B05C7F2B821BAA00080748 /* BookmarkNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B05C7E2B821BAA00080748 /* BookmarkNoteView.swift */; };
 		E4B05C812B82249A00080748 /* TransparentBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B05C802B82249A00080748 /* TransparentBlurView.swift */; };
 		E4FC87FE2B774CA8005DCC4B /* NewNoteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FC87FD2B774CA8005DCC4B /* NewNoteApp.swift */; };
@@ -44,7 +44,6 @@
 		E4FC88402B77E523005DCC4B /* EditNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FC883F2B77E523005DCC4B /* EditNoteView.swift */; };
 		E4FC88422B77FBE1005DCC4B /* NoteCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FC88412B77FBE1005DCC4B /* NoteCard.swift */; };
 		E4FC88442B77FCD2005DCC4B /* Tips.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FC88432B77FCD2005DCC4B /* Tips.swift */; };
-		E4FC88462B7900F2005DCC4B /* SwipeScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FC88452B7900F2005DCC4B /* SwipeScroll.swift */; };
 		E4FC88482B790113005DCC4B /* OffsetKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FC88472B790113005DCC4B /* OffsetKey.swift */; };
 		E4FC88572B7924AA005DCC4B /* PageIntro.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FC88562B7924AA005DCC4B /* PageIntro.swift */; };
 		E4FC88592B7924CD005DCC4B /* HomeOnBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FC88582B7924CD005DCC4B /* HomeOnBoard.swift */; };
@@ -89,7 +88,7 @@
 		E48AAA712B826A280043A00A /* UniversalInteractionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversalInteractionManager.swift; sourceTree = "<group>"; };
 		E48AAA732B826A330043A00A /* ChromeScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChromeScrollView.swift; sourceTree = "<group>"; };
 		E48AAA752B83B4CE0043A00A /* ButtonCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCard.swift; sourceTree = "<group>"; };
-		E4B05C7C2B81CD5300080748 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
+		E48AAA772B8514400043A00A /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		E4B05C7E2B821BAA00080748 /* BookmarkNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkNoteView.swift; sourceTree = "<group>"; };
 		E4B05C802B82249A00080748 /* TransparentBlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransparentBlurView.swift; sourceTree = "<group>"; };
 		E4FC87FA2B774CA8005DCC4B /* NewNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,7 +116,6 @@
 		E4FC883F2B77E523005DCC4B /* EditNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNoteView.swift; sourceTree = "<group>"; };
 		E4FC88412B77FBE1005DCC4B /* NoteCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCard.swift; sourceTree = "<group>"; };
 		E4FC88432B77FCD2005DCC4B /* Tips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tips.swift; sourceTree = "<group>"; };
-		E4FC88452B7900F2005DCC4B /* SwipeScroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeScroll.swift; sourceTree = "<group>"; };
 		E4FC88472B790113005DCC4B /* OffsetKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffsetKey.swift; sourceTree = "<group>"; };
 		E4FC88492B791877005DCC4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		E4FC88562B7924AA005DCC4B /* PageIntro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageIntro.swift; sourceTree = "<group>"; };
@@ -165,6 +163,7 @@
 				E47481FA2B7BDD040036B5C2 /* ImageCard.swift */,
 				E47481FC2B7BDD390036B5C2 /* TextCard.swift */,
 				E48AAA752B83B4CE0043A00A /* ButtonCard.swift */,
+				E48AAA772B8514400043A00A /* Card.swift */,
 			);
 			path = Card;
 			sourceTree = "<group>";
@@ -304,10 +303,8 @@
 				E4FC88362B775F52005DCC4B /* ColorManager.swift */,
 				E4FC883D2B776463005DCC4B /* ViewExtensions.swift */,
 				E4FC88432B77FCD2005DCC4B /* Tips.swift */,
-				E4FC88452B7900F2005DCC4B /* SwipeScroll.swift */,
 				E4FC88472B790113005DCC4B /* OffsetKey.swift */,
 				E46392BA2B7A7CF500B85B0C /* ScrollProgress.swift */,
-				E4B05C7C2B81CD5300080748 /* Toast.swift */,
 				E4B05C802B82249A00080748 /* TransparentBlurView.swift */,
 			);
 			path = Extensions;
@@ -462,6 +459,7 @@
 				E4FC88002B774CA8005DCC4B /* ContentView.swift in Sources */,
 				E4FC87FE2B774CA8005DCC4B /* NewNoteApp.swift in Sources */,
 				E48AAA762B83B4CE0043A00A /* ButtonCard.swift in Sources */,
+				E48AAA782B8514400043A00A /* Card.swift in Sources */,
 				E4FC88122B774CF9005DCC4B /* CompletedNoteView.swift in Sources */,
 				E47482032B7BE3C70036B5C2 /* NoteText.swift in Sources */,
 				E47482072B7D1B270036B5C2 /* CustomDatePickerView.swift in Sources */,
@@ -470,9 +468,7 @@
 				E4FC885D2B7924E7005DCC4B /* CustomIndicatorView.swift in Sources */,
 				E46392BB2B7A7CF500B85B0C /* ScrollProgress.swift in Sources */,
 				E48AAA722B826A280043A00A /* UniversalInteractionManager.swift in Sources */,
-				E4B05C7D2B81CD5300080748 /* Toast.swift in Sources */,
 				E4FC88402B77E523005DCC4B /* EditNoteView.swift in Sources */,
-				E4FC88462B7900F2005DCC4B /* SwipeScroll.swift in Sources */,
 				E4FC883C2B775FD9005DCC4B /* PreviewContainer.swift in Sources */,
 				E4FC883A2B775FC8005DCC4B /* NoteContent.swift in Sources */,
 				E4FC88482B790113005DCC4B /* OffsetKey.swift in Sources */,

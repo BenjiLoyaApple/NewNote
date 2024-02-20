@@ -29,7 +29,7 @@ struct DeleteNoteTip: Tip {
         Text("Entry Actions")
     }
     var message: Text? {
-        Text("Swipe left to edit or delete entry.")
+        Text("Swipe down to see options")
     }
 //    var image: Image? {
 //        Image(systemName: "trash")

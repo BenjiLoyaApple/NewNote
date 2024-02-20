@@ -24,13 +24,15 @@ class Note {
         subTitle: String,
         date: Date = Date.now,
         image: Data? = nil,
-        tag: Tag? = nil
+        tag: Tag? = nil,
+        isfavorite: Bool = false
     ) {
         self.title = title
         self.subTitle = subTitle
         self.date = date
         self.image = image
         self.tag = tag
+        self.isfavorite = isfavorite
     }
 }
 

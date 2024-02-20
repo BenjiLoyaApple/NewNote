@@ -13,7 +13,6 @@ import TipKit
 struct NewNoteApp: App {
     var body: some Scene {
         WindowGroup {
-     //       RootView {
                 ContentView()
                 //MARK: - TipKit
                     .task {
@@ -22,7 +21,6 @@ struct NewNoteApp: App {
                             //  .displayFrequency(.immediate),
                             .datastoreLocation(.applicationDefault)
                         ])
-   //                 }
             }
         }
         .modelContainer(for: Note.self)
