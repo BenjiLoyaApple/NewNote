@@ -45,7 +45,6 @@ struct Home: View{
                 VStack {
                     
                     ForEach(activeList) {
-                      //  NoteCardView(note: $0)
                         Card(note: $0)
                     }
                     .padding(.top, 10)
@@ -64,9 +63,7 @@ struct Home: View{
                   }
             }
                 
-                
-                
-            
+             
         } navbar: {
             VStack(spacing: 0) {
                 HStack(spacing: 0) {
@@ -97,11 +94,10 @@ struct Home: View{
         }
         .scrollDismissesKeyboard(.interactively)
         .sheet(isPresented: $showSearchView) {
-         //   SearchView()
             CompletedNoteList(showAll: $showAll)
         }
         .sheet(isPresented: $showBookmarkView) {
-            BookmarkNoteView(showAllFavorites: $showAllBookmark)
+            BookmarkNoteView(showAllBookmark: $showAllBookmark)
         }
         .overlay(alignment: .bottom) {
                 HStack() {

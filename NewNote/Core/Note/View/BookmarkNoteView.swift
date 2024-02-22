@@ -12,17 +12,17 @@ struct BookmarkNoteView: View {
     
     @Binding var showAllBookmark: Bool
     @Query private var favoriteList: [Note]
-    init(showAllFavorites: Binding<Bool>) {
+    init(showAllBookmark: Binding<Bool>) {
         let predicate = #Predicate<Note> { $0.isfavorite }
         let sort = [SortDescriptor(\Note.date, order: .reverse)]
         
         var descriptor = FetchDescriptor(predicate: predicate, sortBy: sort)
-        if !showAllFavorites.wrappedValue {
+        if !showAllBookmark.wrappedValue {
             /// Limiting to 15
             descriptor.fetchLimit = 15
         }
         _favoriteList = Query(descriptor, animation: .snappy)
-        _showAllBookmark = showAllFavorites
+        _showAllBookmark = showAllBookmark
     }
     
     var body: some View {
@@ -36,13 +36,8 @@ struct BookmarkNoteView: View {
            Spacer()
         }
         
-//        Divider()
-//            .padding(.horizontal)
-//            .offset(y: -10)
-        
         ScrollView(.vertical) {
                 ForEach(favoriteList) {
-//                    NoteCardView(note: $0)
                     Card(note: $0)
                         .padding(.bottom, 10)
                 }
@@ -56,7 +51,7 @@ struct BookmarkNoteView: View {
     let preview = Preview(Note.self)
     let notes = Note.sampleNotes
     preview.addExamples(notes)
-    return BookmarkNoteView(showAllFavorites: .constant(true))
+    return BookmarkNoteView(showAllBookmark: .constant(true))
   //  return ContentView()
         .modelContainer(preview.container)
         .environment(\.locale, Locale(identifier: "EN"))

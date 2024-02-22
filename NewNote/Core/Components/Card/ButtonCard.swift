@@ -44,7 +44,7 @@ struct ButtonCard: View {
             //MARK: - Buttons
             HStack(spacing: 5) {
                 /// Completed
-                Button {
+                CustomButton(action: {
                     withAnimation {
                         note.isCompleted.toggle()
                         if note.isCompleted {
@@ -54,79 +54,50 @@ struct ButtonCard: View {
                         WidgetCenter.shared.reloadAllTimelines()
                     }
                     HapticManager.instance.impact(style: .light)
-                    print("PRESS - Completed")
-                } label: {
+                }, label: {
                     Image(systemName: note.isCompleted ? "checkmark.circle.badge.xmark" : "checkmark.circle")
                         .foregroundStyle(note.isCompleted ? .green : .primary.opacity(0.6))
-                        .padding(10)
-                        .background {
-                            TransparentBlurView(removeAllFilters: false)
-                                .background(.clear.opacity(0.1))
-                        }
-                        .clipShape(Circle())
-                }
+                })
                 
                 /// Edit
-                Button {
+                CustomButton(action: {
                     withAnimation {
                         showEditView.toggle()
                         WidgetCenter.shared.reloadAllTimelines()
                     }
                     HapticManager.instance.impact(style: .light)
-                    print("PRESS - Edit")
-                } label: {
+                }, label: {
                     Image(systemName: "pencil.tip")
-                        .padding(10)
-                        .background {
-                            TransparentBlurView(removeAllFilters: false)
-                                .background(.clear.opacity(0.1))
-                        }
-                        .clipShape(Circle())
-                }
+                })
                 
                 /// Bookmark
-                Button {
+                CustomButton(action: {
                     withAnimation {
                         note.isfavorite.toggle()
                         WidgetCenter.shared.reloadAllTimelines()
                         animateSymbol.toggle()
                     }
                     HapticManager.instance.impact(style: .soft)
-                    print("PRESS - Bookmark")
-                } label: {
+                }, label: {
                     Image(systemName: note.isfavorite ? "bookmark.fill" : "bookmark")
                         .foregroundStyle(note.isfavorite ? .red : .primary.opacity(0.6))
                         .symbolEffect(.bounce, options: .nonRepeating, value: animateSymbol)
-                        .padding(10)
-                        .background {
-                            TransparentBlurView(removeAllFilters: false)
-                                .background(.clear.opacity(0.1))
-                        }
-                        .clipShape(Circle())
-                }
+                })
                 
                 /// Delete
                 if note.isCompleted {
-                    Button(role: .destructive, action: {
+                    CustomButton(action: {
                         withAnimation {
                             context.delete(note)
                             WidgetCenter.shared.reloadAllTimelines()
                         }
                         HapticManager.instance.notification(type: .error)
-                        print("PRESS - Delete")
                     }, label: {
                         Image(systemName: "trash")
-                            .padding(10)
-                            .background {
-                                TransparentBlurView(removeAllFilters: false)
-                                    .background(.clear.opacity(0.1))
-                            }
-                            .clipShape(Circle())
                     })
                 }
             }
             .foregroundStyle(.primary.opacity(0.6))
-           
         }
         .fullScreenCover(isPresented: $showEditView) {
             EditNoteView(note: note)
@@ -149,18 +120,6 @@ struct ButtonCard: View {
             .modelContainer(preview.container)
     }
 }
-
-//#Preview("English") {
-//    let preview = Preview(Note.self)
-//    let notes = Note.sampleNotes
-//    preview.addExamples(notes)
-//    return ContentView()
-//        .modelContainer(preview.container)
-//        .environment(\.locale, Locale(identifier: "EN"))
-//}
-
-
-
 
 
 //MARK: - MENU
@@ -230,3 +189,89 @@ Menu {
  .clipShape(Circle())
 }
  */
+
+//MARK: - Buttons
+/*
+HStack(spacing: 5) {
+    /// Completed
+    Button {
+        withAnimation {
+            note.isCompleted.toggle()
+            if note.isCompleted {
+                note.isfavorite = false
+            }
+            note.date = .now
+            WidgetCenter.shared.reloadAllTimelines()
+        }
+        HapticManager.instance.impact(style: .light)
+    } label: {
+        Image(systemName: note.isCompleted ? "checkmark.circle.badge.xmark" : "checkmark.circle")
+            .foregroundStyle(note.isCompleted ? .green : .primary.opacity(0.6))
+            .padding(10)
+            .background {
+                TransparentBlurView(removeAllFilters: false)
+                    .background(.clear.opacity(0.1))
+            }
+            .clipShape(Circle())
+    }
+    
+    /// Edit
+    Button {
+        withAnimation {
+            showEditView.toggle()
+            WidgetCenter.shared.reloadAllTimelines()
+        }
+        HapticManager.instance.impact(style: .light)
+    } label: {
+        Image(systemName: "pencil.tip")
+            .padding(10)
+            .background {
+                TransparentBlurView(removeAllFilters: false)
+                    .background(.clear.opacity(0.1))
+            }
+            .clipShape(Circle())
+    }
+    
+    /// Bookmark
+    Button {
+        withAnimation {
+            note.isfavorite.toggle()
+            WidgetCenter.shared.reloadAllTimelines()
+            animateSymbol.toggle()
+        }
+        HapticManager.instance.impact(style: .soft)
+    } label: {
+        Image(systemName: note.isfavorite ? "bookmark.fill" : "bookmark")
+            .foregroundStyle(note.isfavorite ? .red : .primary.opacity(0.6))
+            .symbolEffect(.bounce, options: .nonRepeating, value: animateSymbol)
+            .padding(10)
+            .background {
+                TransparentBlurView(removeAllFilters: false)
+                    .background(.clear.opacity(0.1))
+            }
+            .clipShape(Circle())
+    }
+    
+    /// Delete
+    if note.isCompleted {
+        Button(role: .destructive, action: {
+            withAnimation {
+                context.delete(note)
+                WidgetCenter.shared.reloadAllTimelines()
+            }
+            HapticManager.instance.notification(type: .error)
+        }, label: {
+            Image(systemName: "trash")
+                .padding(10)
+                .background {
+                    TransparentBlurView(removeAllFilters: false)
+                        .background(.clear.opacity(0.1))
+                }
+                .clipShape(Circle())
+        })
+    }
+    
+    
+}
+.foregroundStyle(.primary.opacity(0.6))
+*/

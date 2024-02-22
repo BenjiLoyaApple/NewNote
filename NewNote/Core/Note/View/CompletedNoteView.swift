@@ -36,13 +36,9 @@ struct CompletedNoteList: View {
            Spacer()
         }
         
-//        Divider()
-//            .padding(.horizontal)
-//            .offset(y: -10)
         
         ScrollView(.vertical) {
             ForEach(completedList) {
-              //  NoteCardView(note: $0)
                 Card(note: $0)
                     .padding(.bottom, 10)
             }

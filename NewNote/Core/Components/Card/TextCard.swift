@@ -23,7 +23,6 @@ struct TextCard: View {
             Text(note.title)
                 .font(.headline)
                 .fontWeight(.bold)
-             //   .strikethrough(note.isCompleted)
                 .foregroundStyle(note.isCompleted ? .gray : .primary)
                 .focused($isActive)
                 .lineLimit(1)

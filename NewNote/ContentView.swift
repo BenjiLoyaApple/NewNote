@@ -24,9 +24,6 @@ struct ContentView: View {
     }
 }
 
-//#Preview {
-//    ContentView()
-//}
 
 #Preview("English") {
     let preview = Preview(Note.self)
