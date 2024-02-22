@@ -14,6 +14,7 @@
 		E47482032B7BE3C70036B5C2 /* NoteText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47482022B7BE3C70036B5C2 /* NoteText.swift */; };
 		E47482052B7BE5190036B5C2 /* OverlayButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47482042B7BE5190036B5C2 /* OverlayButtons.swift */; };
 		E47482072B7D1B270036B5C2 /* CustomDatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47482062B7D1B270036B5C2 /* CustomDatePickerView.swift */; };
+		E48A906C2B86722900DAFD8C /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48A906B2B86722900DAFD8C /* HapticManager.swift */; };
 		E48AAA6E2B8269FC0043A00A /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48AAA6D2B8269FC0043A00A /* Config.swift */; };
 		E48AAA702B826A160043A00A /* NewHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48AAA6F2B826A160043A00A /* NewHome.swift */; };
 		E48AAA722B826A280043A00A /* UniversalInteractionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48AAA712B826A280043A00A /* UniversalInteractionManager.swift */; };
@@ -83,6 +84,7 @@
 		E47482022B7BE3C70036B5C2 /* NoteText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteText.swift; sourceTree = "<group>"; };
 		E47482042B7BE5190036B5C2 /* OverlayButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayButtons.swift; sourceTree = "<group>"; };
 		E47482062B7D1B270036B5C2 /* CustomDatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDatePickerView.swift; sourceTree = "<group>"; };
+		E48A906B2B86722900DAFD8C /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		E48AAA6D2B8269FC0043A00A /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		E48AAA6F2B826A160043A00A /* NewHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHome.swift; sourceTree = "<group>"; };
 		E48AAA712B826A280043A00A /* UniversalInteractionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversalInteractionManager.swift; sourceTree = "<group>"; };
@@ -306,6 +308,7 @@
 				E4FC88472B790113005DCC4B /* OffsetKey.swift */,
 				E46392BA2B7A7CF500B85B0C /* ScrollProgress.swift */,
 				E4B05C802B82249A00080748 /* TransparentBlurView.swift */,
+				E48A906B2B86722900DAFD8C /* HapticManager.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -467,6 +470,7 @@
 				E4FC88572B7924AA005DCC4B /* PageIntro.swift in Sources */,
 				E4FC885D2B7924E7005DCC4B /* CustomIndicatorView.swift in Sources */,
 				E46392BB2B7A7CF500B85B0C /* ScrollProgress.swift in Sources */,
+				E48A906C2B86722900DAFD8C /* HapticManager.swift in Sources */,
 				E48AAA722B826A280043A00A /* UniversalInteractionManager.swift in Sources */,
 				E4FC88402B77E523005DCC4B /* EditNoteView.swift in Sources */,
 				E4FC883C2B775FD9005DCC4B /* PreviewContainer.swift in Sources */,

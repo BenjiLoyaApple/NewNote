@@ -44,8 +44,6 @@ struct TextCard: View {
                     }
                 }
             
-                Divider()
-                    .padding(.top, 10)
         }
     }
 }

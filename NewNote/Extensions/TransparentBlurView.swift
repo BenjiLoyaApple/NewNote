@@ -36,3 +36,4 @@ struct TransparentBlurView: UIViewRepresentable {
     TransparentBlurView()
         .padding(15)
 }
+

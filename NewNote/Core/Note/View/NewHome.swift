@@ -37,7 +37,7 @@ struct NewHome: View{
         
         ChromeScrollView(config: config) {
             
-            ScrollView(.vertical) {
+         //   ScrollView(.vertical) {
                 
                 TipView(deleteNoteTip)
                     .padding(.horizontal)
@@ -45,8 +45,8 @@ struct NewHome: View{
                 VStack {
                     
                     ForEach(activeList) {
-                        NoteCardView(note: $0)
-//                        Card(note: $0)
+                      //  NoteCardView(note: $0)
+                        Card(note: $0)
                     }
                     .padding(.top, 10)
                     
@@ -71,8 +71,8 @@ struct NewHome: View{
                                         
                 }
                 .padding(.bottom, 65)
-            }
-            .scrollIndicators(.hidden)
+         //   }
+          //  .scrollIndicators(.hidden)
             .sheet(isPresented: $addNote) {
                 AddNotesView()
                   .interactiveDismissDisabled()
@@ -120,6 +120,7 @@ struct NewHome: View{
                     Button {
                         addNote.toggle()
                         noteTip.invalidate(reason: .actionPerformed)
+                        HapticManager.instance.impact(style: .medium)
                         print("PRESS - Add Note")
                     } label: {
                         Image(systemName: "plus.circle.fill")

@@ -22,25 +22,29 @@ struct Card: View {
     }
     
     var body: some View {
-        VStack {
             /// Card View
             VStack(spacing: 0) {
                 // Image
                 ImageCard(note: note)
                     .padding(.horizontal, 3)
                 
-                VStack(alignment: .leading, spacing: 6) {
+                VStack(alignment: .leading, spacing: 0) {
                     // Text
                     TextCard(note: note)
                     
+                    Divider()
+                        .padding(.top, 10)
+                    
                     ButtonCard(note: note)
+                       
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .multilineTextAlignment(.leading)
-                .padding(10)
+                .padding(.horizontal, 10)
+                .padding(.top, 10)
+               
             }
             .padding(.top, 3)
-           // .foregroundStyle(.white)
             .background {
                 TransparentBlurView(removeAllFilters: true)
                     .blur(radius: 9, opaque: true)
@@ -55,7 +59,7 @@ struct Card: View {
             /// Adding Shadow
             .shadow(color: .black.opacity(0.1), radius: 4, x: 2, y: 2)
             .padding(.horizontal, 10)
-        }
+        
         .animation(.snappy, value: isActive)
         .onAppear {
             isActive = note.title.isEmpty
@@ -75,15 +79,13 @@ struct Card: View {
         }
         .task {
             note.isCompleted = note.isCompleted
-            note.isfavorite = note.isfavorite
         }
         .task {
-            
+            note.isfavorite = note.isfavorite
         }
-//        .fullScreenCover(isPresented: $showEditView) {
-//            EditNoteView(note: note)
-//        }
+        
     }
+    
 }
 
 #Preview {

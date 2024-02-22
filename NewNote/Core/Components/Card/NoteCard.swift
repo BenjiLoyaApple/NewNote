@@ -14,9 +14,7 @@ struct NoteCardView: View {
     @FocusState private var isActive: Bool
     @Environment(\.modelContext) private var context
     @Environment(\.scenePhase) private var phase
-    
-    @State private var showEditView: Bool = false
-    
+        
     init(note: Note) {
         _note = Bindable(note)
     }
@@ -39,6 +37,7 @@ struct NoteCardView: View {
         }
         .padding(.top, 3)
         .background(Color.gray.opacity(0.15))
+       
         .cornerRadius(14)
         .padding(.horizontal, 12)
         .padding(.vertical, 4)
@@ -66,9 +65,6 @@ struct NoteCardView: View {
         .task {
             
         }
-//        .fullScreenCover(isPresented: $showEditView) {
-//            EditNoteView(note: note)
-//        }
     }
 }
 

@@ -42,9 +42,11 @@ struct CompletedNoteList: View {
         
         ScrollView(.vertical) {
             ForEach(completedList) {
-                NoteCardView(note: $0)
+              //  NoteCardView(note: $0)
+                Card(note: $0)
+                    .padding(.bottom, 10)
             }
-            
+            .padding(.top, 10)
         }
         .scrollIndicators(.hidden)
         
