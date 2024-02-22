@@ -15,8 +15,7 @@ struct ContentView: View {
             /// Redirecting User Based on Log Status
             if logStatus {
                 // IntosView()
-                NewHome()
-                //    .navigationTitle("Just Journal")
+                Home()
                     .accentColor(.primary)
             } else {
                 HomeOnBoard()

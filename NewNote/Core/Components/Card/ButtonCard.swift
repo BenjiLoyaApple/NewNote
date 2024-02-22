@@ -25,7 +25,7 @@ struct ButtonCard: View {
     var body: some View {
         HStack(spacing: 25) {
             // Tag
-            HStack(spacing: 10) {
+            HStack(spacing: 8) {
                 if let tag = note.tag {
                     Image(systemName: "circle.fill")
                         .frame(height: 10)
@@ -35,13 +35,11 @@ struct ButtonCard: View {
                     
                 }
                 Text(note.date, formatter: dateFormatter)
-                    .font(.footnote)
             }
-            
-            
+            .font(.footnote)
+            .foregroundStyle(.secondary)
             
             Spacer()
-            
             
             //MARK: - Buttons
             HStack(spacing: 5) {
@@ -59,7 +57,7 @@ struct ButtonCard: View {
                     print("PRESS - Completed")
                 } label: {
                     Image(systemName: note.isCompleted ? "checkmark.circle.badge.xmark" : "checkmark.circle")
-                        .foregroundStyle(note.isCompleted ? .green : .gray)
+                        .foregroundStyle(note.isCompleted ? .green : .primary.opacity(0.6))
                         .padding(10)
                         .background {
                             TransparentBlurView(removeAllFilters: false)
@@ -67,8 +65,6 @@ struct ButtonCard: View {
                         }
                         .clipShape(Circle())
                 }
-                
-                
                 
                 /// Edit
                 Button {
@@ -88,7 +84,6 @@ struct ButtonCard: View {
                         .clipShape(Circle())
                 }
                 
-                
                 /// Bookmark
                 Button {
                     withAnimation {
@@ -100,7 +95,7 @@ struct ButtonCard: View {
                     print("PRESS - Bookmark")
                 } label: {
                     Image(systemName: note.isfavorite ? "bookmark.fill" : "bookmark")
-                        .foregroundStyle(note.isfavorite ? .red : .gray)
+                        .foregroundStyle(note.isfavorite ? .red : .primary.opacity(0.6))
                         .symbolEffect(.bounce, options: .nonRepeating, value: animateSymbol)
                         .padding(10)
                         .background {
@@ -128,15 +123,11 @@ struct ButtonCard: View {
                             }
                             .clipShape(Circle())
                     })
-                    
                 }
             }
+            .foregroundStyle(.primary.opacity(0.6))
            
-            
-            
         }
-        .foregroundStyle(.secondary)
-        
         .fullScreenCover(isPresented: $showEditView) {
             EditNoteView(note: note)
         }
@@ -231,7 +222,11 @@ Menu {
       
 } label: {
     Image(systemName: "ellipsis")
-        .font(.headline.bold())
-        .padding(5)
+ .padding(10)
+ .background {
+     TransparentBlurView(removeAllFilters: false)
+         .background(.clear.opacity(0.1))
+ }
+ .clipShape(Circle())
 }
  */

@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 import TipKit
 
-struct NewHome: View{
+struct Home: View{
     ///Active Notes
     @Query(filter: #Predicate<Note> { !$0.isCompleted}, sort: [SortDescriptor(\Note.date, order: .reverse)], animation: .snappy) private var activeList: [Note]
     
@@ -37,7 +37,7 @@ struct NewHome: View{
         
         ChromeScrollView(config: config) {
             
-         //   ScrollView(.vertical) {
+            ScrollView(.vertical) {
                 
                 TipView(deleteNoteTip)
                     .padding(.horizontal)
@@ -49,30 +49,13 @@ struct NewHome: View{
                         Card(note: $0)
                     }
                     .padding(.top, 10)
-                    
-                    
-//                    Section {
-//                        ForEach(activeList) {
-//                            NoteCardView(note: $0)
-//                        }
-//                    } 
-//                header: {
-//                        HStack {
-//                            Text("Active")
-//                                .font(.subheadline.bold())
-//                                .foregroundStyle(.secondary)
-//                                .padding(.leading)
-//                            
-//                            Spacer(minLength: 0)
-//                        }
-//                    }
-                    /// Completed List
-             //       CompletedNoteList(showAll: $showAll)
                                         
                 }
                 .padding(.bottom, 65)
-         //   }
-          //  .scrollIndicators(.hidden)
+            }
+            .scrollIndicators(.hidden)
+            .scrollDismissesKeyboard(.interactively)
+            
             .sheet(isPresented: $addNote) {
                 AddNotesView()
                   .interactiveDismissDisabled()
@@ -80,6 +63,9 @@ struct NewHome: View{
                       Task { await DeleteNoteTip.deleteNoteVisitedEvent.donate()}
                   }
             }
+                
+                
+                
             
         } navbar: {
             VStack(spacing: 0) {
@@ -96,10 +82,12 @@ struct NewHome: View{
                     .padding(.horizontal,15)
                     .background {
                         Capsule()
-                            .fill(.thickMaterial)
+                            .fill(.gray.opacity(0.1))
+                        
                     }
                     .padding(.vertical,10)
             }
+            
         } leadingAction: {
             showSearchView.toggle()
         } centerAction: {
@@ -107,6 +95,7 @@ struct NewHome: View{
         } trailingAction: {
             showBookmarkView.toggle()
         }
+        .scrollDismissesKeyboard(.interactively)
         .sheet(isPresented: $showSearchView) {
          //   SearchView()
             CompletedNoteList(showAll: $showAll)
@@ -142,6 +131,32 @@ struct NewHome: View{
                 }
                 .offset(y: 50)
         }
+        
+        .background {
+            ZStack {
+                Circle()
+                    .fill(
+                        .linearGradient(colors: [
+                            .teal.opacity(0.08),
+                            .indigo.opacity(0.15)
+                        ], startPoint: .top, endPoint: .bottom)
+                    )
+                    .frame(width: 150, height: 150)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+                    .offset(x: -25, y: 150)
+                
+                Circle()
+                    .fill(
+                        .linearGradient(colors: [
+                            .orange.opacity(0.2),
+                            .pink.opacity(0.15)
+                        ], startPoint: .top, endPoint: .bottom)
+                    )
+                    .frame(width: 180, height: 180)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
+                    .offset(x: 25, y: -25)
+            }
+        }
     }
     
 }
@@ -161,4 +176,10 @@ struct NewHome: View{
                 .datastoreLocation(.applicationDefault)
             ])
         }
+}
+
+/// Blur State
+enum BlurType: String, CaseIterable {
+    case clipped = "Clipped"
+    case freeStyle = "Free Style"
 }
