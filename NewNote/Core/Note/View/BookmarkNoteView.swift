@@ -10,40 +10,70 @@ import SwiftData
 
 struct BookmarkNoteView: View {
     
+    @Environment(\.dismiss) private var dismiss
+
     @Binding var showAllBookmark: Bool
-    @Query private var favoriteList: [Note]
+    @Query private var bookmarkList: [Note]
+    
     init(showAllBookmark: Binding<Bool>) {
         let predicate = #Predicate<Note> { $0.isfavorite }
         let sort = [SortDescriptor(\Note.date, order: .reverse)]
         
         var descriptor = FetchDescriptor(predicate: predicate, sortBy: sort)
-        if !showAllBookmark.wrappedValue {
-            /// Limiting to 15
-            descriptor.fetchLimit = 15
-        }
-        _favoriteList = Query(descriptor, animation: .snappy)
+        _bookmarkList = Query(descriptor, animation: .snappy)
         _showAllBookmark = showAllBookmark
     }
     
     var body: some View {
-        HStack {
-            Text("Bookmark")
-                .font(.title.bold())
-                .foregroundStyle(.primary)
-                .padding(.leading)
-                .padding(.top)
-            
-           Spacer()
-        }
-        
-        ScrollView(.vertical) {
-                ForEach(favoriteList) {
-                    Card(note: $0)
-                        .padding(.bottom, 10)
+      //  NavigationStack {
+            ScrollView(.vertical, showsIndicators: false) {
+                VStack(spacing: 20) {
+                    ForEach(bookmarkList) {
+                        Card(note: $0)
+                    }
+                    }
+                    .padding(.top, 10)
                 }
-                .padding(.top, 10)
-        }
-        .scrollIndicators(.hidden)
+        //    }
+            .navigationTitle("Bookmark")
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    // Close
+                    Button(action: {
+                       dismiss()
+                    }, label: {
+                        Text("Close")
+                            .foregroundStyle(.red)
+                    })
+                }
+                
+            }
+           
+            
+        
+        
+        
+//        VStack(spacing: 20) {
+//            HStack {
+//                Text("Bookmark")
+//                    .font(.title.bold())
+//                    .foregroundStyle(.primary)
+//                    .padding(.leading)
+//                    .padding(.top)
+//                
+//                Spacer()
+//            }
+//            
+//            ScrollView(.vertical) {
+//                ForEach(favoriteList) {
+//                    Card(note: $0)
+//                        .padding(.bottom, 10)
+//                }
+//                .padding(.top, 10)
+//            }
+//            .scrollIndicators(.hidden)
+//        }
+    
     }
 }
 

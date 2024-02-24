@@ -10,6 +10,8 @@ import SwiftData
 
 struct CompletedNoteList: View {
     
+    @Environment(\.dismiss) private var dismiss
+    
     @Binding var showAll: Bool
     @Query private var completedList: [Note]
     init(showAll: Binding<Bool>) {
@@ -17,34 +19,58 @@ struct CompletedNoteList: View {
         let sort = [SortDescriptor(\Note.date, order: .reverse)]
         
         var descriptor = FetchDescriptor(predicate: predicate, sortBy: sort)
-        if !showAll.wrappedValue {
-            /// Limiting to 15
-            descriptor.fetchLimit = 15
-        }
         _completedList = Query(descriptor, animation: .snappy)
         _showAll = showAll
     }
         
     var body: some View {
-        HStack {
-            Text("Completed")
-                .font(.title.bold())
-                .foregroundStyle(.primary)
-                .padding(.leading)
-                .padding(.top)
-            
-           Spacer()
-        }
+        //  NavigationStack {
+              ScrollView(.vertical, showsIndicators: false) {
+                  VStack(spacing: 20) {
+                      ForEach(completedList) {
+                          Card(note: $0)
+                      }
+                      }
+                      .padding(.top, 10)
+                  }
+          //    }
+              .navigationTitle("Completed")
+              .toolbar {
+                  ToolbarItem(placement: .topBarLeading) {
+                      // Close
+                      Button(action: {
+                         dismiss()
+                      }, label: {
+                          Text("Close")
+                              .foregroundStyle(.red)
+                      })
+                  }
+                  
+              }
         
         
-        ScrollView(.vertical) {
-            ForEach(completedList) {
-                Card(note: $0)
-                    .padding(.bottom, 10)
-            }
-            .padding(.top, 10)
-        }
-        .scrollIndicators(.hidden)
+        
+        
+        
+//        VStack(spacing: 20) {
+//            HStack {
+//                Text("Completed")
+//                    .font(.title.bold())
+//                    .foregroundStyle(.primary)
+//                    .padding(.leading)
+//                    .padding(.top)
+//                
+//                Spacer()
+//            }
+//            
+//            ScrollView(.vertical) {
+//                ForEach(completedList) {
+//                    Card(note: $0)
+//                }
+//                .padding(.top, 10)
+//            }
+//            .scrollIndicators(.hidden)
+//        }
         
     }
 }

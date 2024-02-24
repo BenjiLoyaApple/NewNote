@@ -28,6 +28,7 @@ struct Provider: TimelineProvider {
         let timeline = Timeline(entries: entries, policy: .atEnd)
         completion(timeline)
     }
+    
 }
 
 struct SimpleEntry: TimelineEntry {
@@ -39,48 +40,48 @@ struct NoteWidgetEntryView : View {
 /// Query that will fetch only three active note at a time
     @Query(noteDescriptor, animation: .snappy) private var activeList: [Note]
     var body: some View {
-            VStack {
-                ForEach(activeList) { note in
-                    HStack(spacing: 10) {
-                        ///  Intent Action Button
-                        Button(intent: ToggleButton(id: note.noteID)) {
-                            Image(systemName: "circle")
-                        }
-                        .font(.callout)
-                        .tint(note.tag?.color.gradient)
-                        .buttonBorderShape(.circle)
-                        
-                        VStack {
-                            // Image
-                            if let imageData = note.image,
-                               let uiImage = UIImage(data: imageData) {
-                                Image(uiImage: uiImage)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(width: 33, height: 33)
-                                    .contentShape(Rectangle())
-                                    .clipped()
-                            }
-                        }
-                        .cornerRadius(5)
-                        .shadow(color: .black.opacity(0.2), radius: 5, x: 2, y: 3)
-                        
-                        
-                        VStack(alignment: .leading, spacing: 2) {
-                            Text(note.title)
-                                .font(.system(size: 15).bold())
-                            //                            .font(.caption.bold())
-                                .lineLimit(1)
-                            
-                            Text(note.subTitle)
-                                .font(.caption2)
-                                .foregroundStyle(.secondary)
-                                .lineLimit(3)
-                        }
-                        
-                        Spacer(minLength: 0)
+        VStack {
+            ForEach(activeList) { note in
+                HStack(spacing: 10) {
+                    ///  Intent Action Button
+                    Button(intent: ToggleButton(id: note.noteID)) {
+                        Image(systemName: "circle")
                     }
-                    .transition(.push(from: .bottom))
+                    .font(.callout)
+                    .tint(note.tag?.color.gradient)
+                    .buttonBorderShape(.circle)
+                    
+                    //                        VStack {
+                    //                            // Image
+                    //                            if let imageData = note.image,
+                    //                               let uiImage = UIImage(data: imageData) {
+                    //                                Image(uiImage: uiImage)
+                    //                                    .resizable()
+                    //                                    .aspectRatio(contentMode: .fill)
+                    //                                    .frame(width: 33, height: 33)
+                    //                                    .contentShape(Rectangle())
+                    //                                    .clipped()
+                    //                            }
+                    //                        }
+                    //                        .cornerRadius(5)
+                    //                        .shadow(color: .black.opacity(0.2), radius: 5, x: 2, y: 3)
+                    
+                    
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text(note.title)
+                            .font(.system(size: 15).bold())
+                        //                            .font(.caption.bold())
+                            .lineLimit(1)
+                        
+                        Text(note.subTitle)
+                            .font(.caption2)
+                            .foregroundStyle(.secondary)
+                            .lineLimit(3)
+                    }
+                    
+                    Spacer(minLength: 0)
+                }
+                .transition(.push(from: .bottom))
                 
             }
         }
@@ -118,13 +119,13 @@ struct NoteWidget: Widget {
             /// Setting up SwiftData Container
                     .modelContainer(for: Note.self)
         }
-        .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
+        .supportedFamilies([.systemMedium])
         .configurationDisplayName("Notes")
         .description("This is a Note List.")
     }
 }
 
-#Preview(as: .systemSmall) {
+#Preview(as: .systemMedium) {
     NoteWidget()
 } timeline: {
     SimpleEntry(date: .now)

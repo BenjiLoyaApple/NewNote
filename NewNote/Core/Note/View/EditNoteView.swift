@@ -25,13 +25,6 @@ struct EditNoteView: View {
     @State private var showDatePicker = false
     @State private var isDateVisible = false
     
-    // Date Properties
-    private let dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MMM dd"
-        return formatter }()
-    
-    
     var body: some View {
         NavigationStack {
         ScrollView(.vertical, showsIndicators: false) {
