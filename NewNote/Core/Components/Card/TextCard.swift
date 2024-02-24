@@ -54,4 +54,3 @@ struct TextCard: View {
             .modelContainer(preview.container)
     }
 }
-

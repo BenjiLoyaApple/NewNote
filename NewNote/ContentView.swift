@@ -14,7 +14,7 @@ struct ContentView: View {
         NavigationStack {
             /// Redirecting User Based on Log Status
             if logStatus {
-                // IntosView()
+//                 IntosView()
                 Home()
                     .accentColor(.primary)
             } else {

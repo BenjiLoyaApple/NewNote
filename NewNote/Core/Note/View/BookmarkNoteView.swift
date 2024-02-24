@@ -77,15 +77,15 @@ struct BookmarkNoteView: View {
     }
 }
 
-#Preview("English") {
-    let preview = Preview(Note.self)
-    let notes = Note.sampleNotes
-    preview.addExamples(notes)
-    return BookmarkNoteView(showAllBookmark: .constant(true))
-  //  return ContentView()
-        .modelContainer(preview.container)
-        .environment(\.locale, Locale(identifier: "EN"))
-}
+//#Preview("English") {
+//    let preview = Preview(Note.self)
+//    let notes = Note.sampleNotes
+//    preview.addExamples(notes)
+//    return BookmarkNoteView(showAllBookmark: .constant(true))
+//  //  return ContentView()
+//        .modelContainer(preview.container)
+//        .environment(\.locale, Locale(identifier: "EN"))
+//}
 
 
 /*

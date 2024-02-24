@@ -35,11 +35,6 @@ struct Search: View {
             ScrollView(.vertical) {
                 LazyVStack {
                     FilterNotesView(tag: selectedTag, searchText: filterText) { notes in
-//                        ScrollView(.vertical) {
-//                            ForEach(notes) { note in
-//                                Card(note: note)
-//                            }
-                            
                             VStack(spacing: 10) {
                                 
                                 ForEach(notes) {
@@ -48,8 +43,6 @@ struct Search: View {
                                 .padding(.top, 10)
                                                     
                             }
-                            
-                    //    }
                     }
                 }
             }

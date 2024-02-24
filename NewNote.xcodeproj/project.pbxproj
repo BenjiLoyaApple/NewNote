@@ -10,6 +10,8 @@
 		E446400E2B8A0FAE004B9A46 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = E446400D2B8A0FAE004B9A46 /* Search.swift */; };
 		E44640102B8A1B78004B9A46 /* FilterNotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E446400F2B8A1B78004B9A46 /* FilterNotesView.swift */; };
 		E44640122B8A4757004B9A46 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = E44640112B8A4757004B9A46 /* Localizable.xcstrings */; };
+		E44640162B8A4C4E004B9A46 /* IntoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44640142B8A4C4E004B9A46 /* IntoModel.swift */; };
+		E44640172B8A4C4E004B9A46 /* IntoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44640152B8A4C4E004B9A46 /* IntoView.swift */; };
 		E46392BB2B7A7CF500B85B0C /* ScrollProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46392BA2B7A7CF500B85B0C /* ScrollProgress.swift */; };
 		E47481FB2B7BDD040036B5C2 /* ImageCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47481FA2B7BDD040036B5C2 /* ImageCard.swift */; };
 		E47481FD2B7BDD390036B5C2 /* TextCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47481FC2B7BDD390036B5C2 /* TextCard.swift */; };
@@ -83,6 +85,8 @@
 		E446400D2B8A0FAE004B9A46 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		E446400F2B8A1B78004B9A46 /* FilterNotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterNotesView.swift; sourceTree = "<group>"; };
 		E44640112B8A4757004B9A46 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		E44640142B8A4C4E004B9A46 /* IntoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntoModel.swift; sourceTree = "<group>"; };
+		E44640152B8A4C4E004B9A46 /* IntoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntoView.swift; sourceTree = "<group>"; };
 		E46392BA2B7A7CF500B85B0C /* ScrollProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollProgress.swift; sourceTree = "<group>"; };
 		E47481FA2B7BDD040036B5C2 /* ImageCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCard.swift; sourceTree = "<group>"; };
 		E47481FC2B7BDD390036B5C2 /* TextCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCard.swift; sourceTree = "<group>"; };
@@ -159,6 +163,15 @@
 				E48A906F2B890C3200DAFD8C /* HomeBG.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		E44640132B8A4C4E004B9A46 /* Intro */ = {
+			isa = PBXGroup;
+			children = (
+				E44640142B8A4C4E004B9A46 /* IntoModel.swift */,
+				E44640152B8A4C4E004B9A46 /* IntoView.swift */,
+			);
+			path = Intro;
 			sourceTree = "<group>";
 		};
 		E46392BE2B7A86D900B85B0C /* Components */ = {
@@ -334,6 +347,7 @@
 		E4FC884A2B792363005DCC4B /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				E44640132B8A4C4E004B9A46 /* Intro */,
 				E46392BE2B7A86D900B85B0C /* Components */,
 				E4FC882F2B775090005DCC4B /* Note */,
 				E4FC884B2B7923A5005DCC4B /* onBoarding */,
@@ -485,6 +499,7 @@
 				E47482032B7BE3C70036B5C2 /* NoteText.swift in Sources */,
 				E47482072B7D1B270036B5C2 /* CustomDatePickerView.swift in Sources */,
 				E4FC885B2B7924DA005DCC4B /* CustomTextField.swift in Sources */,
+				E44640162B8A4C4E004B9A46 /* IntoModel.swift in Sources */,
 				E4FC88572B7924AA005DCC4B /* PageIntro.swift in Sources */,
 				E4FC885D2B7924E7005DCC4B /* CustomIndicatorView.swift in Sources */,
 				E46392BB2B7A7CF500B85B0C /* ScrollProgress.swift in Sources */,
@@ -492,6 +507,7 @@
 				E48AAA722B826A280043A00A /* UniversalInteractionManager.swift in Sources */,
 				E4FC88402B77E523005DCC4B /* EditNoteView.swift in Sources */,
 				E48A906E2B87F8D200DAFD8C /* CustomButtonCard.swift in Sources */,
+				E44640172B8A4C4E004B9A46 /* IntoView.swift in Sources */,
 				E4FC883C2B775FD9005DCC4B /* PreviewContainer.swift in Sources */,
 				E4FC883A2B775FC8005DCC4B /* NoteContent.swift in Sources */,
 				E4FC88482B790113005DCC4B /* OffsetKey.swift in Sources */,
@@ -735,6 +751,7 @@
 				INFOPLIST_FILE = NoteWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = NoteWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -744,9 +761,11 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.benjiloya.Notes.NoteWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -763,6 +782,7 @@
 				INFOPLIST_FILE = NoteWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = NoteWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -772,9 +792,11 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.benjiloya.Notes.NoteWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
