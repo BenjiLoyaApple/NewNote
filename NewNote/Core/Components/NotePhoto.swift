@@ -52,7 +52,7 @@ struct NotePhoto: View {
             }) {
                 Image(systemName: "xmark.circle.fill")
                     .font(.title3)
-                    .foregroundStyle(ColorManager.cardBg)
+                    .foregroundStyle(ColorManager.bgColor)
                     .background(Color.gray)
                     .padding(Constants.deleteButtonPadding)
                     .clipShape(Circle())

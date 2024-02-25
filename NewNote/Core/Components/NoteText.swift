@@ -26,7 +26,6 @@ struct NoteText: View {
             .font(.title)
             .fontWeight(.black)
             .foregroundColor(.primary)
-            .shadow(color: ColorManager.myBg, radius: 2)
             .onChange(of: title) { oldTitle, newTitle in
                 enforceTitleMaxLength()
             }

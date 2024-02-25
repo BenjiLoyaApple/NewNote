@@ -84,6 +84,31 @@ struct Card: View {
             note.isfavorite = note.isfavorite
         }
         
+        .contextMenu{
+            /// Share
+            Button {
+                    // share option
+            } label: {
+                Text("Share")
+                Image(systemName: "square.and.arrow.up")
+            }
+            
+            Divider()
+            
+            /// Delete
+            Button(role: .destructive, action: {
+                    context.delete(note)
+                    WidgetCenter.shared.reloadAllTimelines()
+            }, label: {
+                Text("Delete")
+                Image(systemName: "trash")
+            })
+              
+        } preview: {
+            ImageCard(note: note)
+        }
+        
+        
     }
     
 }

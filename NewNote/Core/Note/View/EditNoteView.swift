@@ -39,7 +39,7 @@ struct EditNoteView: View {
             .padding(.bottom, 330)
             
         }
-        .navigationTitle("Edit Entry")
+        .navigationTitle("Edit")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {

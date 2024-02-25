@@ -11,6 +11,7 @@ import TipKit
 
 @main
 struct NewNoteApp: App {
+    
     var body: some Scene {
         WindowGroup {
                 ContentView()

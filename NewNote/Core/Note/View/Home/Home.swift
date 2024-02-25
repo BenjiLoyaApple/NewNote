@@ -29,7 +29,8 @@ struct Home: View {
     
     var body: some View {
         let config = Config(
-            leading: .init(name: "circle.badge.checkmark", title: "Completed"),
+            leading: .init(name: "magnifyingglass", title: "Search"),
+          //  circle.badge.checkmark
             center: .init(name: "arrow.counterclockwise", title: "Refresh"),
             trailing: .init(name: "bookmark", title: "Bookmark")
         )
@@ -41,10 +42,11 @@ struct Home: View {
                 TipView(deleteNoteTip)
                     .padding(.horizontal)
                 
-                VStack(spacing: 10) {
+                LazyVStack(spacing: 10) {
                     
                     ForEach(activeList) {
                         Card(note: $0)
+                            .zIndex(10)
                     }
                     .padding(.top, 10)
                                         
@@ -90,7 +92,8 @@ struct Home: View {
         
         .fullScreenCover(isPresented: $showCompleteView) {
             NavigationStack {
-                CompletedNoteList(showAll: $showAll)
+              //  CompletedNoteList(showAll: $showAll)
+                SearchView()
             }
         }
        
@@ -131,16 +134,14 @@ struct Home: View {
         .background {
             HomeBG()
         }
-//        .overlay {
-//            if showBookmarkView {
-//                withAnimation(.bouncy) {
-//                    BookmarkNoteView(showAllBookmark: $showAllBookmark)
-//                        .background(Color.white)
-//                        .transition(.move(edge: .trailing))
-//                }
-//            }
-//        }
         
+        /*
+        .overlay {
+            if showView {
+              
+            }
+        }
+        */
     }
     
 }

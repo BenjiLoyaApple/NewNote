@@ -25,29 +25,26 @@ struct BookmarkNoteView: View {
     }
     
     var body: some View {
-      //  NavigationStack {
-            ScrollView(.vertical, showsIndicators: false) {
-                VStack(spacing: 20) {
-                    ForEach(bookmarkList) {
-                        Card(note: $0)
-                    }
-                    }
-                    .padding(.top, 10)
+        ScrollView(.vertical, showsIndicators: false) {
+            VStack(spacing: 20) {
+                ForEach(bookmarkList) {
+                    Card(note: $0)
                 }
-        //    }
-            .navigationTitle("Bookmark")
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    // Close
-                    Button(action: {
-                       dismiss()
-                    }, label: {
-                        Text("Close")
-                            .foregroundStyle(.red)
-                    })
-                }
-                
             }
+            .padding(.top, 10)
+        }
+        .navigationTitle("Bookmark")
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                // Close
+                Button(action: {
+                    dismiss()
+                }, label: {
+                    Text("Close")
+                        .foregroundStyle(.red)
+                })
+            }
+        }
            
             
         
@@ -77,15 +74,15 @@ struct BookmarkNoteView: View {
     }
 }
 
-//#Preview("English") {
-//    let preview = Preview(Note.self)
-//    let notes = Note.sampleNotes
-//    preview.addExamples(notes)
-//    return BookmarkNoteView(showAllBookmark: .constant(true))
-//  //  return ContentView()
-//        .modelContainer(preview.container)
-//        .environment(\.locale, Locale(identifier: "EN"))
-//}
+#Preview("English") {
+    let preview = Preview(Note.self)
+    let notes = Note.sampleNotes
+    preview.addExamples(notes)
+    return BookmarkNoteView(showAllBookmark: .constant(true))
+  //  return ContentView()
+        .modelContainer(preview.container)
+        .environment(\.locale, Locale(identifier: "EN"))
+}
 
 
 /*

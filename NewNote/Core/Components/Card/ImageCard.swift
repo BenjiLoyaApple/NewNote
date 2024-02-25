@@ -32,7 +32,6 @@ struct ImageCard: View {
             .onTapGesture {
                 withAnimation(.snappy(duration: 0.2, extraBounce: 0)) {
                     showDetailView = true
-                    print("Show Edit View")
                 }
             }
         } 

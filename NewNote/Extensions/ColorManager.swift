@@ -8,20 +8,15 @@ import SwiftUI
 
 struct ColorManager {
     
-    ///    Colors
-    static let redBlue = Color("redBlue")
-    static let myBg = Color("myBg")
+    /// Colors
     static let bgColor = Color("bgColor")
     static let textColor = Color("textColor")
-    static let textGroup = Color("textGroup")
-    static let cardBg = Color("cardBg")
-    
-    /// Toast Color
-    static let toastBg = Color("toastBg")
     
     /// Add Note Button Color
     static let plus = Color("plus")
     static let circle = Color("circle")
     
+    /// Card
     static let cardStroke = Color("cardStroke")
+    static let cardBookmark = Color("cardBookmark")
 }

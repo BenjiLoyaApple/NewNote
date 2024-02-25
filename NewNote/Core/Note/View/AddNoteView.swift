@@ -41,7 +41,7 @@ struct AddNotesView: View {
                 .padding(.bottom, 330)
                 
             }
-            .navigationTitle("Add Entry")
+            .navigationTitle("New Entry")
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     // Cancel

@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+
+    },
     "%lld%%" : {
 
     },
@@ -25,6 +28,7 @@
       }
     },
     "Add Entry" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -114,6 +118,19 @@
         }
       }
     },
+    "Delete" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удалить"
+          }
+        }
+      }
+    },
+    "description" : {
+
+    },
     "Description" : {
       "localizations" : {
         "ru" : {
@@ -134,7 +151,11 @@
         }
       }
     },
+    "Edit" : {
+
+    },
     "Edit Entry" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -220,6 +241,9 @@
     "medium" : {
 
     },
+    "New Entry" : {
+
+    },
     "Next" : {
       "localizations" : {
         "ru" : {
@@ -276,7 +300,11 @@
     "Scroll Progress" : {
 
     },
+    "Search" : {
+
+    },
     "Search Entires" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -316,6 +344,9 @@
         }
       }
     },
+    "Share" : {
+
+    },
     "soft" : {
 
     },
@@ -341,6 +372,9 @@
           }
         }
       }
+    },
+    "title" : {
+
     },
     "Title" : {
       "localizations" : {
