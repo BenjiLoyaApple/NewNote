@@ -26,12 +26,19 @@ struct BookmarkNoteView: View {
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
-            VStack(spacing: 20) {
-                ForEach(bookmarkList) {
-                    Card(note: $0)
+            if bookmarkList.isEmpty {
+                VStack {
+                    Spacer(minLength: 290)
+                    ContentUnavailableView("Bookmark is empty", systemImage: "bookmark", description: nil)
                 }
+            } else {
+                VStack(spacing: 20) {
+                    ForEach(bookmarkList) {
+                        Card(note: $0)
+                    }
+                }
+                .padding(.top, 10)
             }
-            .padding(.top, 10)
         }
         .navigationTitle("Bookmark")
         .toolbar {
@@ -45,32 +52,6 @@ struct BookmarkNoteView: View {
                 })
             }
         }
-           
-            
-        
-        
-        
-//        VStack(spacing: 20) {
-//            HStack {
-//                Text("Bookmark")
-//                    .font(.title.bold())
-//                    .foregroundStyle(.primary)
-//                    .padding(.leading)
-//                    .padding(.top)
-//                
-//                Spacer()
-//            }
-//            
-//            ScrollView(.vertical) {
-//                ForEach(favoriteList) {
-//                    Card(note: $0)
-//                        .padding(.bottom, 10)
-//                }
-//                .padding(.top, 10)
-//            }
-//            .scrollIndicators(.hidden)
-//        }
-    
     }
 }
 

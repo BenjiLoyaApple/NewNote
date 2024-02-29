@@ -25,6 +25,11 @@ struct EditNoteView: View {
     @State private var showDatePicker = false
     @State private var isDateVisible = false
     
+    // View Properties
+    @State private var detailviewAnimation: Bool = false
+    @State private var showDetailview: Bool = false
+    @State private var offset: CGSize = .zero
+    
     var body: some View {
         NavigationStack {
         ScrollView(.vertical, showsIndicators: false) {
@@ -32,6 +37,11 @@ struct EditNoteView: View {
                 NotePhoto(image: $image)
                     .padding(.top, 10)
                     .padding(.horizontal, 10)
+                    .onTapGesture {
+                        withAnimation(.snappy(duration: 0.6, extraBounce: 0)) {
+                            showDetailview = true
+                        }
+                    }
                 
                 NoteText(title: $title, subTitle: $subTitle)
                     .padding(.horizontal)
@@ -103,6 +113,45 @@ struct EditNoteView: View {
             tag = note.tag
         }
     }
+        .overlay {
+            if showDetailview {
+                GeometryReader { proxy in
+                    let size = proxy.size
+                    let safeArea = proxy.safeAreaInsets
+                    DetailView(note: note, showDetailview: $showDetailview,
+                               detailviewAnimation: $detailviewAnimation,
+                               size: size,
+                               safeArea: safeArea)
+                    .transition(.scale)
+                    .cornerRadius(40)
+                    .shadow(radius: 40)
+                    .offset(offset)
+                    .opacity(1 - Double(abs(offset.height) / (proxy.size.height / 1)))
+                    .gesture(
+                        DragGesture()
+                            .onChanged { value in
+                                withAnimation(.bouncy) {
+                                    offset = value.translation
+                                }
+                            }
+                            .onEnded { value in
+                                withAnimation(.bouncy) {
+                                    let screenHeight = proxy.size.height
+                                    let closeThreshold = screenHeight / 2
+                                    
+                                    if value.translation.height > closeThreshold {
+                                        showDetailview = false
+                                        offset = .zero
+                                    } else {
+                                        offset = .zero
+                                    }
+                                }
+                            }
+                    )
+                }
+                .ignoresSafeArea()
+            }
+        }
 }
     
     var changed: Bool {
@@ -118,7 +167,7 @@ struct EditNoteView: View {
 #Preview {
     let preview = Preview(Note.self)
    return  NavigationStack {
-       EditNoteView(note: Note.sampleNotes[4])
+       EditNoteView(note: Note.sampleNotes[1])
            .modelContainer(preview.container)
     }
 }

@@ -10,11 +10,14 @@ import SwiftData
 
 struct ContentView: View {
     @AppStorage("log_status") var logStatus: Bool = false
+    
+    @State private var showIntro = false
+    
     var body: some View {
         NavigationStack {
             /// Redirecting User Based on Log Status
             if logStatus {
-//                 IntosView()
+              //   Intro()
                 Home()
                     .accentColor(.primary)
             } else {
@@ -23,7 +26,6 @@ struct ContentView: View {
         }
     }
 }
-
 
 #Preview("English") {
     let preview = Preview(Note.self)

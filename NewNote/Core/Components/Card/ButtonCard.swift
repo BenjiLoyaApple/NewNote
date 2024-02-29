@@ -47,9 +47,9 @@ struct ButtonCard: View {
                 CustomButton(action: {
                     withAnimation {
                         note.isCompleted.toggle()
-                        if note.isCompleted {
+                      //  if note.isCompleted {
                             note.isfavorite = false
-                        }
+                     //   }
                         note.date = .now
                         WidgetCenter.shared.reloadAllTimelines()
                     }

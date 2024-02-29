@@ -11,8 +11,6 @@ import SwiftUI
 struct ImageCard: View {
     @Bindable var note: Note
     
-    @State private var showDetailView: Bool = false
-    
     var body: some View {
         if !note.isCompleted {
             VStack {
@@ -29,14 +27,7 @@ struct ImageCard: View {
             }
             .cornerRadius(12)
             .shadow(color: .black.opacity(0.2), radius: 10, x: 2, y: 3)
-            .onTapGesture {
-                withAnimation(.snappy(duration: 0.2, extraBounce: 0)) {
-                    showDetailView = true
-                }
-            }
         } 
-        
-        
     }
 }
 

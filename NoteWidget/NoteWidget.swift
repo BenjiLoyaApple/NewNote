@@ -153,6 +153,7 @@ struct ToggleButton: AppIntent {
         let descriptor = FetchDescriptor(predicate: #Predicate<Note> { $0.noteID == id })
         if let todo = try context.fetch(descriptor).first {
             todo.isCompleted = true
+            todo.isfavorite = false
             todo.date = .now
             /// Saving Context
             try context.save()

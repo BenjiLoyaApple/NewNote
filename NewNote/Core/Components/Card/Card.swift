@@ -22,43 +22,43 @@ struct Card: View {
     }
     
     var body: some View {
-            /// Card View
-            VStack(spacing: 0) {
-                // Image
-                ImageCard(note: note)
-                    .padding(.horizontal, 3)
+        /// Card View
+        VStack(spacing: 0) {
+            // Image
+            ImageCard(note: note)
+                .padding(.horizontal, 3)
+            
+            VStack(alignment: .leading, spacing: 0) {
+                // Text
+                TextCard(note: note)
                 
-                VStack(alignment: .leading, spacing: 0) {
-                    // Text
-                    TextCard(note: note)
-                    
-                    Divider()
-                        .padding(.top, 10)
-                    
-                    ButtonCard(note: note)
-                       
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .multilineTextAlignment(.leading)
-                .padding(.horizontal, 10)
-                .padding(.top, 10)
-               
+                Divider()
+                    .padding(.top, 10)
+                
+                ButtonCard(note: note)
+                
             }
-            .padding(.top, 3)
-            .background {
-                TransparentBlurView(removeAllFilters: true)
-                    .blur(radius: 9, opaque: true)
-                    .background(.white.opacity(0.05))
-            }
-            .clipShape(.rect(cornerRadius: 14, style: .continuous))
-            /// Light White Border
-            .background {
-                RoundedRectangle(cornerRadius: 14, style: .continuous)
-                    .stroke(ColorManager.cardStroke.opacity(0.3), lineWidth: 1.5)
-            }
-            /// Adding Shadow
-            .shadow(color: .black.opacity(0.1), radius: 4, x: 2, y: 2)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .multilineTextAlignment(.leading)
             .padding(.horizontal, 10)
+            .padding(.top, 10)
+            
+        }
+        .padding(.top, 3)
+        .background {
+            TransparentBlurView(removeAllFilters: true)
+                .blur(radius: 9, opaque: true)
+                .background(.white.opacity(0.05))
+        }
+        .clipShape(.rect(cornerRadius: 14, style: .continuous))
+        /// Light White Border
+        .background {
+            RoundedRectangle(cornerRadius: 14, style: .continuous)
+                .stroke(ColorManager.cardStroke.opacity(0.3), lineWidth: 1.5)
+        }
+        /// Adding Shadow
+        .shadow(color: .black.opacity(0.1), radius: 4, x: 2, y: 2)
+        .padding(.horizontal, 10)
         
         .animation(.snappy, value: isActive)
         .onAppear {
@@ -86,31 +86,29 @@ struct Card: View {
         
         .contextMenu{
             /// Share
-            Button {
-                    // share option
-            } label: {
-                Text("Share")
-                Image(systemName: "square.and.arrow.up")
-            }
-            
-            Divider()
+            //            Button {
+            //                    // share option
+            //            } label: {
+            //                Text("Share")
+            //                Image(systemName: "square.and.arrow.up")
+            //            }
+            //
+            //            Divider()
             
             /// Delete
             Button(role: .destructive, action: {
-                    context.delete(note)
-                    WidgetCenter.shared.reloadAllTimelines()
+                context.delete(note)
+                WidgetCenter.shared.reloadAllTimelines()
             }, label: {
                 Text("Delete")
                 Image(systemName: "trash")
             })
-              
+            
         } preview: {
             ImageCard(note: note)
         }
-        
-        
-    }
     
+    }
 }
 
 #Preview {
@@ -120,3 +118,5 @@ struct Card: View {
             .modelContainer(preview.container)
     }
 }
+
+

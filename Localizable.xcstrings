@@ -58,6 +58,16 @@
         }
       }
     },
+    "Bookmark is empty" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Избранное пусто"
+          }
+        }
+      }
+    },
     "Cancel" : {
       "localizations" : {
         "ru" : {
@@ -128,9 +138,6 @@
         }
       }
     },
-    "description" : {
-
-    },
     "Description" : {
       "localizations" : {
         "ru" : {
@@ -152,7 +159,14 @@
       }
     },
     "Edit" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Редактировать"
+          }
+        }
+      }
     },
     "Edit Entry" : {
       "extractionState" : "stale",
@@ -161,6 +175,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Редактировать"
+          }
+        }
+      }
+    },
+    "Enter your first entire." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавьте свою первую запись"
           }
         }
       }
@@ -208,6 +233,16 @@
     "heavy" : {
 
     },
+    "Hold and move left or right" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удерживайте и сместите влево или вправо"
+          }
+        }
+      }
+    },
     "Important" : {
       "localizations" : {
         "ru" : {
@@ -242,7 +277,14 @@
 
     },
     "New Entry" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Новая запись"
+          }
+        }
+      }
     },
     "Next" : {
       "localizations" : {
@@ -294,6 +336,16 @@
         }
       }
     },
+    "Refresh" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Обновить"
+          }
+        }
+      }
+    },
     "rigid" : {
 
     },
@@ -301,7 +353,14 @@
 
     },
     "Search" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поиск"
+          }
+        }
+      }
     },
     "Search Entires" : {
       "extractionState" : "stale",
@@ -345,13 +404,31 @@
       }
     },
     "Share" : {
-
+      "extractionState" : "stale",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поделиться"
+          }
+        }
+      }
     },
     "soft" : {
 
     },
     "success" : {
 
+    },
+    "Swipe Down" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Проведите вниз"
+          }
+        }
+      }
     },
     "Swipe down to see options" : {
       "localizations" : {
@@ -372,9 +449,6 @@
           }
         }
       }
-    },
-    "title" : {
-
     },
     "Title" : {
       "localizations" : {

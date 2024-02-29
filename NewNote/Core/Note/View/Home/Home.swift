@@ -24,13 +24,14 @@ struct Home: View {
     /// Sheet
     @State private var showAll: Bool = false
     @State private var showAllBookmark: Bool = false
-    /// Search
-    @State private var searchText: String = ""
+    
+    /// Learn
+    @State private var isLearnViewVisible = false
+    @AppStorage("learn_Status") var learnStatus: Bool = false
     
     var body: some View {
         let config = Config(
             leading: .init(name: "magnifyingglass", title: "Search"),
-          //  circle.badge.checkmark
             center: .init(name: "arrow.counterclockwise", title: "Refresh"),
             trailing: .init(name: "bookmark", title: "Bookmark")
         )
@@ -42,29 +43,22 @@ struct Home: View {
                 TipView(deleteNoteTip)
                     .padding(.horizontal)
                 
-                LazyVStack(spacing: 10) {
-                    
-                    ForEach(activeList) {
-                        Card(note: $0)
-                            .zIndex(10)
+                    VStack(spacing: 10) {
+                        ForEach(activeList) {
+                            Card(note: $0)
+                                .zIndex(10)
+                        }
+                        .padding(.top, 10)
+                        /// Completed List
+                        CompletedNoteList(showAll: $showAll)
                     }
-                    .padding(.top, 10)
-                                        
-                }
-                .padding(.bottom, 65)
+                    .padding(.bottom, 65)
+                    
+                
             }
             .scrollIndicators(.hidden)
             .scrollDismissesKeyboard(.interactively)
             
-            .sheet(isPresented: $addNote) {
-                //  Search()
-                AddNotesView()
-                  .interactiveDismissDisabled()
-                  .onAppear {
-                      Task { await DeleteNoteTip.deleteNoteVisitedEvent.donate()}
-                  }
-            }
-               
         } navbar: {
             VStack(spacing: 0) {
                 HStack(spacing: 0) {
@@ -75,9 +69,6 @@ struct Home: View {
                     
                     Spacer()
                 }
-                
-           //    Search()
-               //     .padding(.vertical,10)
             }
             .padding(.top, 10)
             
@@ -88,13 +79,17 @@ struct Home: View {
         } trailingAction: {
             showBookmarkView.toggle()
         }
-        .scrollDismissesKeyboard(.interactively)
+        
+        .sheet(isPresented: $addNote) {
+            AddNotesView()
+              .interactiveDismissDisabled()
+              .onAppear {
+                  Task { await DeleteNoteTip.deleteNoteVisitedEvent.donate()}
+              }
+        }
         
         .fullScreenCover(isPresented: $showCompleteView) {
-            NavigationStack {
-              //  CompletedNoteList(showAll: $showAll)
                 SearchView()
-            }
         }
        
         .fullScreenCover(isPresented: $showBookmarkView) {
@@ -104,7 +99,6 @@ struct Home: View {
         }
         
         .overlay(alignment: .bottom) {
-            if searchText.isEmpty {
             HStack() {
                 // Add Note Button
                 Button {
@@ -129,19 +123,33 @@ struct Home: View {
                 
             }
             .offset(y: 50)
-            }
+            
         }
         .background {
             HomeBG()
         }
         
-        /*
+        ///Learn view
         .overlay {
-            if showView {
-              
+         //   if !learnStatus {
+                LearnView()
+                    .opacity(isLearnViewVisible ? 1 : 0)
+                    .onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+                            withAnimation(.smooth) {
+                                isLearnViewVisible = true
+                            }
+                        }
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 5.5) {
+                            withAnimation(.smooth) {
+                                isLearnViewVisible = false
+                                learnStatus = true
+                            }
+           //             }
+                    }
             }
         }
-        */
+         
     }
     
 }

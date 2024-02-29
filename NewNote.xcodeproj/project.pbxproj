@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E42C4CF42B8E44020092563E /* Intro.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42C4CF32B8E44020092563E /* Intro.swift */; };
+		E42C4CF62B8E5EFD0092563E /* LearnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42C4CF52B8E5EFD0092563E /* LearnView.swift */; };
+		E42C4CF82B90E6E10092563E /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42C4CF72B90E6E10092563E /* DetailView.swift */; };
 		E446400E2B8A0FAE004B9A46 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = E446400D2B8A0FAE004B9A46 /* Search.swift */; };
 		E44640102B8A1B78004B9A46 /* FilterNotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E446400F2B8A1B78004B9A46 /* FilterNotesView.swift */; };
 		E44640122B8A4757004B9A46 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = E44640112B8A4757004B9A46 /* Localizable.xcstrings */; };
@@ -80,6 +83,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E42C4CF32B8E44020092563E /* Intro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intro.swift; sourceTree = "<group>"; };
+		E42C4CF52B8E5EFD0092563E /* LearnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnView.swift; sourceTree = "<group>"; };
+		E42C4CF72B90E6E10092563E /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		E446400D2B8A0FAE004B9A46 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		E446400F2B8A1B78004B9A46 /* FilterNotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterNotesView.swift; sourceTree = "<group>"; };
 		E44640112B8A4757004B9A46 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
@@ -161,13 +167,6 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
-		E44640132B8A4C4E004B9A46 /* Intro */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Intro;
-			sourceTree = "<group>";
-		};
 		E46392BE2B7A86D900B85B0C /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -188,6 +187,7 @@
 				E47481FC2B7BDD390036B5C2 /* TextCard.swift */,
 				E48AAA752B83B4CE0043A00A /* ButtonCard.swift */,
 				E48A906D2B87F8D200DAFD8C /* CustomButtonCard.swift */,
+				E42C4CF72B90E6E10092563E /* DetailView.swift */,
 			);
 			path = Card;
 			sourceTree = "<group>";
@@ -275,6 +275,8 @@
 		E4FC880C2B774CB7005DCC4B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E42C4CF32B8E44020092563E /* Intro.swift */,
+				E42C4CF52B8E5EFD0092563E /* LearnView.swift */,
 				E446400C2B8A0F9B004B9A46 /* Home */,
 				E4FC88112B774CF9005DCC4B /* CompletedNoteView.swift */,
 				E4B05C7E2B821BAA00080748 /* BookmarkNoteView.swift */,
@@ -341,7 +343,6 @@
 		E4FC884A2B792363005DCC4B /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				E44640132B8A4C4E004B9A46 /* Intro */,
 				E46392BE2B7A86D900B85B0C /* Components */,
 				E4FC882F2B775090005DCC4B /* Note */,
 				E4FC884B2B7923A5005DCC4B /* onBoarding */,
@@ -486,12 +487,14 @@
 				E4B05C812B82249A00080748 /* TransparentBlurView.swift in Sources */,
 				E4B05C7F2B821BAA00080748 /* BookmarkNoteView.swift in Sources */,
 				E4FC88002B774CA8005DCC4B /* ContentView.swift in Sources */,
+				E42C4CF82B90E6E10092563E /* DetailView.swift in Sources */,
 				E4FC87FE2B774CA8005DCC4B /* NewNoteApp.swift in Sources */,
 				E48AAA762B83B4CE0043A00A /* ButtonCard.swift in Sources */,
 				E48AAA782B8514400043A00A /* Card.swift in Sources */,
 				E4FC88122B774CF9005DCC4B /* CompletedNoteView.swift in Sources */,
 				E47482032B7BE3C70036B5C2 /* NoteText.swift in Sources */,
 				E47482072B7D1B270036B5C2 /* CustomDatePickerView.swift in Sources */,
+				E42C4CF42B8E44020092563E /* Intro.swift in Sources */,
 				E4FC885B2B7924DA005DCC4B /* CustomTextField.swift in Sources */,
 				E4FC88572B7924AA005DCC4B /* PageIntro.swift in Sources */,
 				E4FC885D2B7924E7005DCC4B /* CustomIndicatorView.swift in Sources */,
@@ -501,6 +504,7 @@
 				E4FC88402B77E523005DCC4B /* EditNoteView.swift in Sources */,
 				E48A906E2B87F8D200DAFD8C /* CustomButtonCard.swift in Sources */,
 				E4FC883C2B775FD9005DCC4B /* PreviewContainer.swift in Sources */,
+				E42C4CF62B8E5EFD0092563E /* LearnView.swift in Sources */,
 				E4FC883A2B775FC8005DCC4B /* NoteContent.swift in Sources */,
 				E4FC88482B790113005DCC4B /* OffsetKey.swift in Sources */,
 				E47482052B7BE5190036B5C2 /* OverlayButtons.swift in Sources */,

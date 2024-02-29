@@ -10,7 +10,7 @@ import SwiftData
 import TipKit
 
 enum SortOrder: LocalizedStringResource, Identifiable, CaseIterable {
-    case title, description
+    case Title, Description
     
     var id: Self {
         self
@@ -20,18 +20,22 @@ enum SortOrder: LocalizedStringResource, Identifiable, CaseIterable {
 struct SearchView: View {
     @Environment(\.dismiss) private var dismiss
     
-    @State private var sortOrder = SortOrder.title
+    @State private var sortOrder = SortOrder.Title
     @State private var searchText = ""
     var body: some View {
         NavigationStack {
             ScrollView(.vertical) {
                 
-                SearchList(sortOrder: sortOrder, filterString: searchText)
-                    .searchable(text: $searchText, prompt: Text("Search"))
+                VStack {
+                        SearchList(sortOrder: sortOrder, filterString: searchText)
+                }
+                .searchable(text: $searchText, prompt: Text("Search"))
+                                
             }
+            .navigationTitle("Search")
             .scrollIndicators(.hidden)
             .scrollDismissesKeyboard(.interactively)
-            .navigationTitle("Search")
+            
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     // Close Button
@@ -43,20 +47,24 @@ struct SearchView: View {
                     })
                 }
                 
-                ToolbarItem(placement: .topBarTrailing) {
-                    Picker("", selection: $sortOrder) {
-                        ForEach(SortOrder.allCases) { sortOrder in
-                            Text(sortOrder.rawValue)
-                                .tag(sortOrder)
-                        }
-                    }
-                    .buttonStyle(.automatic)
-                }
+//                ToolbarItem(placement: .topBarTrailing) {
+//                    Menu {
+//                        ForEach(SortOrder.allCases) { sortOrder in
+//                            Button(action: {
+//                                self.sortOrder = sortOrder
+//                            }) {
+//                                Text(sortOrder.rawValue)
+//                            }
+//                        }
+//                    } label: {
+//                        Image(systemName: "line.3.horizontal.decrease.circle")
+//                            .foregroundStyle(ColorManager.textColor)
+//                    }
+//                }
                 
             }
-            .toolbar(.hidden, for: .tabBar)
-            .navigationBarBackButtonHidden(true)
         }
+        .accentColor(.primary)
     }
 }
 
@@ -69,33 +77,46 @@ struct SearchView: View {
         .environment(\.locale, Locale(identifier: "EN"))
 }
 
+
+//MARK: - List
 struct SearchList: View {
-    @Environment(\.modelContext) private var context
-//    @Query private var notes: [Note]
+    @Query private var notes: [Note]
     
-    @Query(filter: #Predicate<Note> { !$0.isCompleted}, sort: [SortDescriptor(\Note.date, order: .reverse)], animation: .snappy) private var notes: [Note]
+  //  @Query(filter: #Predicate<Note> { !$0.isCompleted}, sort: [SortDescriptor(\Note.date, order: .reverse)], animation: .snappy) private var activeList: [Note]
+    
+    @State private var searchText = ""
     
     init(sortOrder: SortOrder, filterString: String) {
-        let sortDescriptors: [SortDescriptor<Note>] = switch sortOrder {
-        case .title:
-            [SortDescriptor(\Note.title)]
-        case .description:
-            [SortDescriptor(\Note.subTitle)]
+        var sortDescriptors: [SortDescriptor<Note>]
+        
+        switch sortOrder {
+        case .Title:
+            sortDescriptors = [SortDescriptor(\Note.title)]
+        case .Description:
+            sortDescriptors = [SortDescriptor(\Note.subTitle)]
         }
+        
         let predicate = #Predicate<Note> { note in
             note.title.localizedStandardContains(filterString)
-            || note.subTitle.localizedStandardContains(filterString)
-            || filterString.isEmpty
+                || note.subTitle.localizedStandardContains(filterString)
+        //    || note.date
+                || filterString.isEmpty
         }
-        _notes = Query(filter: predicate, sort: sortDescriptors)
+        
+        _notes = Query(filter: predicate, sort: sortDescriptors, animation: .snappy)
     }
-    
+
     var body: some View {
-            LazyVStack(spacing: 10) {
+        VStack(spacing: 10) {
+            if notes.isEmpty {
+                ContentUnavailableView.search(text: searchText)
+                    .padding(.top, 270)
+            } else {
                 ForEach(notes) {
                     Card(note: $0)
                 }
                 .padding(.top, 10)
             }
+        }
     }
 }
