@@ -114,11 +114,12 @@ struct EditNoteView: View {
         }
     }
         .overlay {
+            /// Show Full view Photo
             if showDetailview {
                 GeometryReader { proxy in
                     let size = proxy.size
                     let safeArea = proxy.safeAreaInsets
-                    DetailView(note: note, showDetailview: $showDetailview,
+                    DetailView(image: $image, showDetailview: $showDetailview,
                                detailviewAnimation: $detailviewAnimation,
                                size: size,
                                safeArea: safeArea)
@@ -126,7 +127,7 @@ struct EditNoteView: View {
                     .cornerRadius(40)
                     .shadow(radius: 40)
                     .offset(offset)
-                    .opacity(1 - Double(abs(offset.height) / (proxy.size.height / 1)))
+                    .opacity(1 - Double(abs(offset.height) / (proxy.size.height / 0.25)))
                     .gesture(
                         DragGesture()
                             .onChanged { value in

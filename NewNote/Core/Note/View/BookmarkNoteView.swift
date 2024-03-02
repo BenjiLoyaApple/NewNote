@@ -29,7 +29,7 @@ struct BookmarkNoteView: View {
             if bookmarkList.isEmpty {
                 VStack {
                     Spacer(minLength: 290)
-                    ContentUnavailableView("Bookmark is empty", systemImage: "bookmark", description: nil)
+                    ContentUnavailableView("Bookmark is empty", systemImage: "bookmark", description: Text("Add your favorite entries here"))
                 }
             } else {
                 VStack(spacing: 20) {

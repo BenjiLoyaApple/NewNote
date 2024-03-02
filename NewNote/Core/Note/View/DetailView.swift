@@ -10,7 +10,7 @@ import SwiftUI
 //MARK: - Detail View
 struct DetailView: View {
     
-    @Bindable var note: Note
+    @Binding var image: Data?
     
     @Binding var showDetailview: Bool
     @Binding var detailviewAnimation: Bool
@@ -30,7 +30,7 @@ struct DetailView: View {
             
             ZStack {
                 // Photo Content
-                if let imageData = note.image, let uiImage = UIImage(data: imageData) {
+                if let imageData = image, let uiImage = UIImage(data: imageData) {
                     /// Image Detail
                     Image(uiImage: uiImage)
                         .resizable()

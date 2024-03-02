@@ -18,13 +18,12 @@ struct Home: View {
     /// Note Tip
     @State private var noteTip = NoteTip()
     @State private var deleteNoteTip = DeleteNoteTip()
-    // Show Any view
+    /// Show Any view
     @State private var showBookmarkView: Bool = false
     @State private var showCompleteView: Bool = false
     /// Sheet
     @State private var showAll: Bool = false
     @State private var showAllBookmark: Bool = false
-    
     /// Learn
     @State private var isLearnViewVisible = false
     @AppStorage("learn_Status") var learnStatus: Bool = false
@@ -54,7 +53,6 @@ struct Home: View {
                     }
                     .padding(.bottom, 65)
                     
-                
             }
             .scrollIndicators(.hidden)
             .scrollDismissesKeyboard(.interactively)
@@ -73,13 +71,16 @@ struct Home: View {
             .padding(.top, 10)
             
         } leadingAction: {
-            showCompleteView.toggle()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                showCompleteView.toggle()
+            }
         } centerAction: {
             // Refresh View
         } trailingAction: {
-            showBookmarkView.toggle()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                showBookmarkView.toggle()
+            }
         }
-        
         .sheet(isPresented: $addNote) {
             AddNotesView()
               .interactiveDismissDisabled()
@@ -87,17 +88,14 @@ struct Home: View {
                   Task { await DeleteNoteTip.deleteNoteVisitedEvent.donate()}
               }
         }
-        
         .fullScreenCover(isPresented: $showCompleteView) {
                 SearchView()
         }
-       
         .fullScreenCover(isPresented: $showBookmarkView) {
             NavigationStack {
                 BookmarkNoteView(showAllBookmark: $showAllBookmark)
             }
         }
-        
         .overlay(alignment: .bottom) {
             HStack() {
                 // Add Note Button
@@ -131,7 +129,7 @@ struct Home: View {
         
         ///Learn view
         .overlay {
-         //   if !learnStatus {
+            if !learnStatus {
                 LearnView()
                     .opacity(isLearnViewVisible ? 1 : 0)
                     .onAppear {
@@ -145,7 +143,7 @@ struct Home: View {
                                 isLearnViewVisible = false
                                 learnStatus = true
                             }
-           //             }
+                        }
                     }
             }
         }

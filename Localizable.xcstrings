@@ -38,6 +38,16 @@
         }
       }
     },
+    "Add your favorite entries here" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавьте сюда понравившиеся записи"
+          }
+        }
+      }
+    },
     "Blue" : {
       "localizations" : {
         "ru" : {
