@@ -14,7 +14,7 @@ struct NoteText: View {
     @Binding var subTitle: String
   
     var body: some View {
-        VStack(alignment: .leading, spacing: 15) {
+        VStack(alignment: .leading, spacing: 10) {
             titleTextField
             subTitleTextField
         }
@@ -23,7 +23,7 @@ struct NoteText: View {
     //MARK: - Title
     private var titleTextField: some View {
         TextField("Title", text: $title)
-            .font(.title)
+            .font(.title2)
             .fontWeight(.black)
             .foregroundColor(.primary)
             .onChange(of: title) { oldTitle, newTitle in
@@ -38,8 +38,8 @@ struct NoteText: View {
     
     
     private func enforceTitleMaxLength() {
-        if title.count > 20 {
-            title = String(title.prefix(20))
+        if title.count > 22 {
+            title = String(title.prefix(22))
         }
     }
     

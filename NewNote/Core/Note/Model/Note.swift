@@ -36,7 +36,6 @@ class Note {
     }
 }
 
-
 enum Tag: String, Codable, Identifiable, CaseIterable {
     case yellow, orange, red, green, blue, purple, gray, personal, work,  important
 

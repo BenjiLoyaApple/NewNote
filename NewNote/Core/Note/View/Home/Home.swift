@@ -28,6 +28,8 @@ struct Home: View {
     @State private var isLearnViewVisible = false
     @AppStorage("learn_Status") var learnStatus: Bool = false
     
+    @State private var nameText: String = "Just Journal"
+    
     var body: some View {
         let config = Config(
             leading: .init(name: "magnifyingglass", title: "Search"),
@@ -60,10 +62,16 @@ struct Home: View {
         } navbar: {
             VStack(spacing: 0) {
                 HStack(spacing: 0) {
-                    Text("Just Journal")
+                    Text(nameText)
                         .font(.largeTitle)
                         .fontWeight(.black)
                         .shadow(color: ColorManager.textColor.opacity(0.2), radius: 1, x: 2, y: 2)
+                    //MARK: App Name
+//                        .onTapGesture {
+//                            ///action
+//                            nameText = "Benji Loya"
+//                            HapticManager.instance.impact(style: .light)
+//                        }
                     
                     Spacer()
                 }
@@ -92,9 +100,7 @@ struct Home: View {
                 SearchView()
         }
         .fullScreenCover(isPresented: $showBookmarkView) {
-            NavigationStack {
                 BookmarkNoteView(showAllBookmark: $showAllBookmark)
-            }
         }
         .overlay(alignment: .bottom) {
             HStack() {
@@ -126,7 +132,6 @@ struct Home: View {
         .background {
             HomeBG()
         }
-        
         ///Learn view
         .overlay {
             if !learnStatus {

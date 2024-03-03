@@ -114,7 +114,6 @@ struct EditNoteView: View {
         }
     }
         .overlay {
-            /// Show Full view Photo
             if showDetailview {
                 GeometryReader { proxy in
                     let size = proxy.size

@@ -23,48 +23,49 @@ struct SearchView: View {
     @State private var sortOrder = SortOrder.Title
     @State private var searchText = ""
     var body: some View {
-        NavigationStack {
-            ScrollView(.vertical) {
-                
-                VStack {
+            NavigationStack {
+                ScrollView(.vertical) {
+                    
+                    VStack {
                         SearchList(sortOrder: sortOrder, filterString: searchText)
+                    }
+                    .searchable(text: $searchText, prompt: Text("Search"))
                 }
-                .searchable(text: $searchText, prompt: Text("Search"))
-                                
-            }
-            .navigationTitle("Search")
-            .scrollIndicators(.hidden)
-            .scrollDismissesKeyboard(.interactively)
-            
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    // Close Button
-                    Button(action: {
-                        dismiss()
-                    }, label: {
-                        Text("Close")
-                            .foregroundStyle(.red)
-                    })
+                .navigationTitle("Search")
+                .scrollIndicators(.hidden)
+                .scrollDismissesKeyboard(.interactively)
+                
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        // Close Button
+                        Button(action: {
+                            dismiss()
+                        }, label: {
+                            Text("Close")
+                                .foregroundStyle(.red)
+                        })
+                    }
+                    
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Menu {
+                            ForEach(SortOrder.allCases) { sortOrder in
+                                Button(action: {
+                                    self.sortOrder = sortOrder
+                                    HapticManager.instance.impact(style: .soft)
+                                }) {
+                                    Text(sortOrder.rawValue)
+                                }
+                            }
+                        } label: {
+                            Image(systemName: "line.3.horizontal.decrease")
+                                .foregroundStyle(.primary)
+                        }
+                    }
+                    
                 }
-                
-//                ToolbarItem(placement: .topBarTrailing) {
-//                    Menu {
-//                        ForEach(SortOrder.allCases) { sortOrder in
-//                            Button(action: {
-//                                self.sortOrder = sortOrder
-//                            }) {
-//                                Text(sortOrder.rawValue)
-//                            }
-//                        }
-//                    } label: {
-//                        Image(systemName: "line.3.horizontal.decrease.circle")
-//                            .foregroundStyle(ColorManager.textColor)
-//                    }
-//                }
-                
             }
-        }
-        .accentColor(.primary)
+            .accentColor(.primary)
+        
     }
 }
 

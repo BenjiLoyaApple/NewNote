@@ -25,31 +25,33 @@ struct BookmarkNoteView: View {
     }
     
     var body: some View {
-        ScrollView(.vertical, showsIndicators: false) {
-            if bookmarkList.isEmpty {
-                VStack {
-                    Spacer(minLength: 290)
-                    ContentUnavailableView("Bookmark is empty", systemImage: "bookmark", description: Text("Add your favorite entries here"))
-                }
-            } else {
-                VStack(spacing: 20) {
-                    ForEach(bookmarkList) {
-                        Card(note: $0)
+        NavigationStack {
+            ScrollView(.vertical, showsIndicators: false) {
+                if bookmarkList.isEmpty {
+                    VStack {
+                        Spacer(minLength: 290)
+                        ContentUnavailableView("Bookmark is empty", systemImage: "bookmark", description: Text("Add your favorite entries here"))
                     }
+                } else {
+                    VStack(spacing: 20) {
+                        ForEach(bookmarkList) {
+                            Card(note: $0)
+                        }
+                    }
+                    .padding(.top, 10)
                 }
-                .padding(.top, 10)
             }
-        }
-        .navigationTitle("Bookmark")
-        .toolbar {
-            ToolbarItem(placement: .topBarLeading) {
-                // Close
-                Button(action: {
-                    dismiss()
-                }, label: {
-                    Text("Close")
-                        .foregroundStyle(.red)
-                })
+            .navigationTitle("Bookmark")
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    // Close
+                    Button(action: {
+                        dismiss()
+                    }, label: {
+                        Text("Close")
+                            .foregroundStyle(.red)
+                    })
+                }
             }
         }
     }
