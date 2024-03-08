@@ -10,7 +10,7 @@ import SwiftData
 import TipKit
 
 enum SortOrder: LocalizedStringResource, Identifiable, CaseIterable {
-    case Title, Description
+    case Title, Date
     
     var id: Self {
         self
@@ -91,14 +91,13 @@ struct SearchList: View {
         switch sortOrder {
         case .Title:
             sortDescriptors = [SortDescriptor(\Note.title)]
-        case .Description:
-            sortDescriptors = [SortDescriptor(\Note.subTitle)]
+        case .Date:
+            sortDescriptors = [SortDescriptor(\Note.date, order: .reverse)]
         }
         
         let predicate = #Predicate<Note> { note in
             note.title.localizedStandardContains(filterString)
                 || note.subTitle.localizedStandardContains(filterString)
-        //    || note.date
                 || filterString.isEmpty
         }
         

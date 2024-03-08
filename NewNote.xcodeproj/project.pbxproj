@@ -13,7 +13,6 @@
 		E446400E2B8A0FAE004B9A46 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = E446400D2B8A0FAE004B9A46 /* Search.swift */; };
 		E44640122B8A4757004B9A46 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = E44640112B8A4757004B9A46 /* Localizable.xcstrings */; };
 		E45304ED2B9B0F46004243DC /* HeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45304EC2B9B0F46004243DC /* HeaderViewModel.swift */; };
-		E46392BB2B7A7CF500B85B0C /* ScrollProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46392BA2B7A7CF500B85B0C /* ScrollProgress.swift */; };
 		E47481FB2B7BDD040036B5C2 /* ImageCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47481FA2B7BDD040036B5C2 /* ImageCard.swift */; };
 		E47481FD2B7BDD390036B5C2 /* TextCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47481FC2B7BDD390036B5C2 /* TextCard.swift */; };
 		E47482012B7BE39B0036B5C2 /* NotePhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47482002B7BE39B0036B5C2 /* NotePhoto.swift */; };
@@ -89,7 +88,6 @@
 		E446400D2B8A0FAE004B9A46 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		E44640112B8A4757004B9A46 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		E45304EC2B9B0F46004243DC /* HeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderViewModel.swift; sourceTree = "<group>"; };
-		E46392BA2B7A7CF500B85B0C /* ScrollProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollProgress.swift; sourceTree = "<group>"; };
 		E47481FA2B7BDD040036B5C2 /* ImageCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCard.swift; sourceTree = "<group>"; };
 		E47481FC2B7BDD390036B5C2 /* TextCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCard.swift; sourceTree = "<group>"; };
 		E47482002B7BE39B0036B5C2 /* NotePhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotePhoto.swift; sourceTree = "<group>"; };
@@ -349,7 +347,6 @@
 				E4FC883D2B776463005DCC4B /* ViewExtensions.swift */,
 				E4FC88432B77FCD2005DCC4B /* Tips.swift */,
 				E4FC88472B790113005DCC4B /* OffsetKey.swift */,
-				E46392BA2B7A7CF500B85B0C /* ScrollProgress.swift */,
 				E4B05C802B82249A00080748 /* TransparentBlurView.swift */,
 				E48A906B2B86722900DAFD8C /* HapticManager.swift */,
 			);
@@ -514,7 +511,6 @@
 				E4FC885B2B7924DA005DCC4B /* CustomTextField.swift in Sources */,
 				E4FC88572B7924AA005DCC4B /* PageIntro.swift in Sources */,
 				E4FC885D2B7924E7005DCC4B /* CustomIndicatorView.swift in Sources */,
-				E46392BB2B7A7CF500B85B0C /* ScrollProgress.swift in Sources */,
 				E48A906C2B86722900DAFD8C /* HapticManager.swift in Sources */,
 				E48AAA722B826A280043A00A /* UniversalInteractionManager.swift in Sources */,
 				E45304ED2B9B0F46004243DC /* HeaderViewModel.swift in Sources */,

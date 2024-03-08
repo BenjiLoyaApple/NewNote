@@ -40,7 +40,7 @@ struct DeleteNoteTip: Tip {
             event.donations.count == 0
         }
         #Rule(Self.deleteNoteVisitedEvent) { event in
-            event.donations.count > 2
+            event.donations.count > 5
         }
     }
 }
