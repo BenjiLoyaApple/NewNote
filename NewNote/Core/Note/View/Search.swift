@@ -83,8 +83,6 @@ struct SearchView: View {
 struct SearchList: View {
     @Query private var notes: [Note]
     
-  //  @Query(filter: #Predicate<Note> { !$0.isCompleted}, sort: [SortDescriptor(\Note.date, order: .reverse)], animation: .snappy) private var activeList: [Note]
-    
     @State private var searchText = ""
     
     init(sortOrder: SortOrder, filterString: String) {

@@ -47,7 +47,6 @@ struct Home: View {
                     VStack(spacing: 10) {
                         ForEach(activeList) {
                             Card(note: $0)
-                                .zIndex(10)
                         }
                         .padding(.top, 10)
                         /// Completed List
@@ -60,23 +59,7 @@ struct Home: View {
             .scrollDismissesKeyboard(.interactively)
             
         } navbar: {
-            VStack(spacing: 0) {
-                HStack(spacing: 0) {
-                    Text(nameText)
-                        .font(.largeTitle)
-                        .fontWeight(.black)
-                        .shadow(color: ColorManager.textColor.opacity(0.2), radius: 1, x: 2, y: 2)
-                    //MARK: App Name
-//                        .onTapGesture {
-//                            ///action
-//                            nameText = "Benji Loya"
-//                            HapticManager.instance.impact(style: .light)
-//                        }
-                    
-                    Spacer()
-                }
-            }
-            .padding(.top, 10)
+          HeaderView()
             
         } leadingAction: {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
@@ -124,10 +107,8 @@ struct Home: View {
             .background {
                 TransparentBlurView(removeAllFilters: true)
                     .blur(radius: 10)
-                
             }
             .offset(y: 50)
-            
         }
         .background {
             HomeBG()

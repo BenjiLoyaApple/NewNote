@@ -37,8 +37,8 @@ struct TextCard: View {
                     note.isCompleted ? 1 : (isTextDetailContent ? nil : maxTextLines)
                 )
                 .onTapGesture {
-                    isTextDetailContent.toggle()
                     withAnimation(.smooth) {
+                    isTextDetailContent.toggle()
                         maxTextLines = isTextDetailContent ? .max : 5
                     }
                 }
