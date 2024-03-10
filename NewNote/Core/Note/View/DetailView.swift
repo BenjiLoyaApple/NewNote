@@ -19,10 +19,13 @@ struct DetailView: View {
     var safeArea: EdgeInsets
         
     @State  private var currentAmount: CGFloat = 0
+  //  @State private var offset: CGSize = .zero
     
     // Dispatch Tasks
     @State private var startTask1: DispatchWorkItem?
     @State private var startTask2: DispatchWorkItem?
+    
+    var namespace: Namespace.ID
     
     var body: some View {
         VStack(spacing: 0) {
@@ -38,6 +41,8 @@ struct DetailView: View {
                         .containerRelativeFrame(.horizontal)
                         .clipped()
                         .scaleEffect(1 + currentAmount)
+                   //     .offset(offset)
+                        .matchedGeometryEffect(id: "image", in: namespace)
                         .gesture(
                             MagnificationGesture()
                                 .onChanged { value in
@@ -49,6 +54,19 @@ struct DetailView: View {
                                     }
                                 }
                         )
+//                        .gesture(
+//                            DragGesture()
+//                                .onChanged { value in
+//                                    withAnimation(.spring()) {
+//                                        offset = value.translation
+//                                    }
+//                                }
+//                                .onEnded { value in
+//                                    withAnimation(.spring()) {
+//                                        offset = .zero
+//                                    }
+//                                }
+//                    )
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                         .background(Color.black)
                           ///Close Button
@@ -112,5 +130,13 @@ struct DetailView: View {
             self.startTask1 = nil
             self.startTask2 = nil
         }
+    }
+}
+
+#Preview {
+    let preview = Preview(Note.self)
+   return  NavigationStack {
+       EditNoteView(note: Note.sampleNotes[1])
+           .modelContainer(preview.container)
     }
 }

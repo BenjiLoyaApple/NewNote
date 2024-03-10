@@ -27,11 +27,13 @@ struct AddNotesView: View {
     @State private var showPhotoPicker: Bool = false
     @State private var showDatePicker = false
     
+    @Namespace private var namespace
+    
     var body: some View {
         NavigationStack {
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(spacing: 20) {
-                    NotePhoto(image: $image)
+                    NotePhoto(image: $image, namespace: namespace)
                         .padding(.top, 10)
                         .padding(.horizontal, 10)
                     

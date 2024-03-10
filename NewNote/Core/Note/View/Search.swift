@@ -25,8 +25,7 @@ struct SearchView: View {
     var body: some View {
             NavigationStack {
                 ScrollView(.vertical) {
-                    
-                    VStack {
+                    LazyVStack {
                         SearchList(sortOrder: sortOrder, filterString: searchText)
                     }
                     .searchable(text: $searchText, prompt: Text("Search"))
@@ -50,7 +49,9 @@ struct SearchView: View {
                         Menu {
                             ForEach(SortOrder.allCases) { sortOrder in
                                 Button(action: {
-                                    self.sortOrder = sortOrder
+                                    withAnimation {
+                                        self.sortOrder = sortOrder
+                                    }
                                     HapticManager.instance.impact(style: .soft)
                                 }) {
                                     Text(sortOrder.rawValue)
@@ -61,21 +62,10 @@ struct SearchView: View {
                                 .foregroundStyle(.primary)
                         }
                     }
-                    
                 }
             }
             .accentColor(.primary)
-        
     }
-}
-
-#Preview("English") {
-    let preview = Preview(Note.self)
-    let notes = Note.sampleNotes
-    preview.addExamples(notes)
-    return SearchView()
-        .modelContainer(preview.container)
-        .environment(\.locale, Locale(identifier: "EN"))
 }
 
 
@@ -88,6 +78,7 @@ struct SearchList: View {
     init(sortOrder: SortOrder, filterString: String) {
         var sortDescriptors: [SortDescriptor<Note>]
         
+        /// Sort
         switch sortOrder {
         case .Title:
             sortDescriptors = [SortDescriptor(\Note.title)]
@@ -95,6 +86,7 @@ struct SearchList: View {
             sortDescriptors = [SortDescriptor(\Note.date, order: .reverse)]
         }
         
+        /// Search
         let predicate = #Predicate<Note> { note in
             note.title.localizedStandardContains(filterString)
                 || note.subTitle.localizedStandardContains(filterString)
@@ -117,4 +109,13 @@ struct SearchList: View {
             }
         }
     }
+}
+
+#Preview("English") {
+    let preview = Preview(Note.self)
+    let notes = Note.sampleNotes
+    preview.addExamples(notes)
+    return SearchView()
+        .modelContainer(preview.container)
+        .environment(\.locale, Locale(identifier: "EN"))
 }

@@ -27,7 +27,7 @@ struct ImageCard: View {
             }
             .cornerRadius(12)
             .shadow(color: .black.opacity(0.2), radius: 10, x: 2, y: 3)
-        } 
+        }
     }
 }
 

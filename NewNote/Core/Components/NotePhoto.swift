@@ -17,9 +17,12 @@ struct NotePhoto: View {
     @State private var selectedPhoto: PhotosPickerItem?
     @State private var showPhotoPicker: Bool = false
     
+    var namespace: Namespace.ID
+    
     var body: some View {
         VStack {
             displayImage()
+                .matchedGeometryEffect(id: "image", in: namespace)
                 .shadow(color: .black.opacity(0.25), radius: 10, x: 2, y: 7)
                 .overlay(deleteButton(), alignment: .topTrailing)
         }
@@ -80,5 +83,9 @@ struct NotePhoto: View {
 }
 
 #Preview {
-    AddNotesView()
+    let preview = Preview(Note.self)
+   return  NavigationStack {
+       EditNoteView(note: Note.sampleNotes[1])
+           .modelContainer(preview.container)
+    }
 }

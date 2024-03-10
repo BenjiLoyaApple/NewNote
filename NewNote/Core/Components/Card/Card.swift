@@ -63,6 +63,7 @@ struct Card: View {
         .animation(.snappy, value: isActive)
         .onAppear {
             isActive = note.title.isEmpty
+          //  checkDate()
         }
         .onSubmit(of: .text) {
             if note.title.isEmpty {
@@ -83,7 +84,6 @@ struct Card: View {
         .task {
             note.isfavorite = note.isfavorite
         }
-        
         .contextMenu{
             /// Share
             //            Button {
@@ -107,8 +107,30 @@ struct Card: View {
         } preview: {
             ImageCard(note: note)
         }
+//        .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
+//                    checkDate() // Вызываем функцию проверки даты при возврате из фонового режима
+//                }
     
     }
+    
+    func checkDate() {
+            if Date() > note.date {
+                withAnimation {
+                    note.isCompleted = true
+                    note.isfavorite = false
+                    WidgetCenter.shared.reloadAllTimelines()
+                    
+                    // Добавляем таймер на удаление через сутки после выполнения
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 24 * 60 * 60) {
+                        context.delete(note)
+                        WidgetCenter.shared.reloadAllTimelines()
+                        HapticManager.instance.notification(type: .error)
+                    }
+                }
+            }
+        }
+
+    
 }
 
 #Preview {
@@ -118,5 +140,3 @@ struct Card: View {
             .modelContainer(preview.container)
     }
 }
-
-

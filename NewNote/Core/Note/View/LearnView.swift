@@ -123,6 +123,12 @@ struct ActionTextView: View {
             
             Spacer()
                 
+//            VStack(spacing: 10) {
+//                Image(systemName: "circle.badge.checkmark")
+//                Text("Completed")
+//                    .font(.caption2)
+//            }
+            
             VStack(spacing: 10) {
                 Image(systemName: "bookmark")
                 Text("Bookmark")

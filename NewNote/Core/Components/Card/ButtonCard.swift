@@ -46,21 +46,30 @@ struct ButtonCard: View {
                 /// Completed
                 CustomButton(action: {
                     withAnimation {
-                        note.isCompleted.toggle()
-                      //  if note.isCompleted {
+                            note.isCompleted.toggle()
                             note.isfavorite = false
-                     //   }
-                        note.date = .now
+                        if note.isCompleted == false {
+//                            let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: Date()) ?? Date()
+//                            note.date = tomorrow
+                            note.date = .now
+                        }
+
                         WidgetCenter.shared.reloadAllTimelines()
+                        
+                        /// Delete + 1 day
+//                        DispatchQueue.main.asyncAfter(deadline: .now() + 24 * 60 * 60) {
+//                                context.delete(note)
+//                        }
                     }
                     HapticManager.instance.impact(style: .light)
+                    
                 }, label: {
                     Image(systemName: note.isCompleted ? "checkmark.circle.badge.xmark" : "checkmark.circle")
                         .foregroundStyle(note.isCompleted ? .green : .primary.opacity(0.6))
                 })
                 
+                /// Edit
                 if !note.isCompleted { /// Don't show in Complete list
-                    /// Edit
                     CustomButton(action: {
                         withAnimation {
                             showEditView.toggle()
@@ -106,15 +115,9 @@ struct ButtonCard: View {
             EditNoteView(note: note)
         }
     }
-}
 
-//#Preview {
-//    let preview = Preview(Note.self)
-//    return  NavigationStack {
-//        ButtonCard(note: Note.sampleNotes[1])
-//            .modelContainer(preview.container)
-//    }
-//}
+    
+}
 
 #Preview {
     let preview = Preview(Note.self)
@@ -123,72 +126,3 @@ struct ButtonCard: View {
             .modelContainer(preview.container)
     }
 }
-
-
-//MARK: - MENU
-/*
-Menu {
-    /// Completed
-    Button {
-        withAnimation {
-            note.isCompleted.toggle()
-            if note.isCompleted {
-                note.isfavorite = false
-            }
-            note.date = .now
-            WidgetCenter.shared.reloadAllTimelines()
-        }
-        print("PRESS - Completed")
-    } label: {
-        Text(note.isCompleted ? "Uncompleted" : "Completed")
-        Image(systemName: note.isCompleted ? "checkmark.circle.badge.xmark" : "checkmark.circle")
-    }
-    
-    /// Edit
-    Button {
-        withAnimation {
-            showEditView.toggle()
-            WidgetCenter.shared.reloadAllTimelines()
-        }
-        print("PRESS - Edit")
-    } label: {
-        Text("Edit")
-        Image(systemName: "pencil.tip")
-    }
-    
-    /// Bookmark
-    Button {
-        withAnimation {
-            note.isfavorite.toggle()
-            WidgetCenter.shared.reloadAllTimelines()
-        }
-        print("PRESS - Bookmark")
-    } label: {
-        Text(note.isfavorite ? "Remove bookmark" : "Bookmark")
-        Image(systemName: note.isfavorite ? "bookmark.slash" : "bookmark")
-    }
-    
-    Divider()
-    
-    /// Delete
-    Button(role: .destructive, action: {
-        withAnimation {
-            context.delete(note)
-            WidgetCenter.shared.reloadAllTimelines()
-        }
-        print("PRESS - Delete")
-    }, label: {
-        Text("Delete")
-        Image(systemName: "trash")
-    })
-      
-} label: {
-    Image(systemName: "ellipsis")
- .padding(10)
- .background {
-     TransparentBlurView(removeAllFilters: false)
-         .background(.clear.opacity(0.1))
- }
- .clipShape(Circle())
-}
- */

@@ -16,18 +16,18 @@
      @Environment(\.modelContext) private var context
      @State private var addNote: Bool = false
      /// Note Tip
-     @State private var noteTip = NoteTip()
      @State private var deleteNoteTip = DeleteNoteTip()
      /// Show Any view
      @State private var showBookmarkView: Bool = false
-     @State private var showCompleteView: Bool = false
+     @State private var showSearch: Bool = false
      /// Sheet
      @State private var showAll: Bool = false
      @State private var showAllBookmark: Bool = false
      /// Learn
      @State private var isLearnViewVisible = false
      @AppStorage("learn_Status") var learnStatus: Bool = false
-          
+       
+     
      var body: some View {
          let config = Config(
              leading: .init(name: "magnifyingglass", title: "Search"),
@@ -41,27 +41,26 @@
                  TipView(deleteNoteTip)
                      .padding(.horizontal)
                  
-                //     VStack(spacing: 10) {
+                     VStack(spacing: 10) {
                          ForEach(activeList) {
                              Card(note: $0)
                          }
                          .padding(.top, 10)
                          /// Completed List
-                         CompletedNoteList(showAll: $showAll)
-               //      }
+                      //   CompletedNoteList(showAll: $showAll)
+                     }
                      .padding(.bottom, 65)
                      
              }
              .scrollIndicators(.hidden)
-             .scrollDismissesKeyboard(.interactively)
-             
              
          } navbar: {
-           HeaderView()
+             ///Header Text
+                 HeaderView()
              
          } leadingAction: {
              DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                 showCompleteView.toggle()
+                 showSearch.toggle()
              }
          } centerAction: {
              // Refresh View
@@ -77,18 +76,18 @@
                    Task { await DeleteNoteTip.deleteNoteVisitedEvent.donate()}
                }
          }
-         .fullScreenCover(isPresented: $showCompleteView) {
+         .fullScreenCover(isPresented: $showSearch) {
                  SearchView()
          }
          .fullScreenCover(isPresented: $showBookmarkView) {
                  BookmarkNoteView(showAllBookmark: $showAllBookmark)
+           //  CompletedNoteList(showAll: $showAll)
          }
          .overlay(alignment: .bottom) {
              HStack() {
                  // Add Note Button
                  Button {
                      addNote.toggle()
-                     noteTip.invalidate(reason: .actionPerformed)
                      HapticManager.instance.impact(style: .medium)
                  } label: {
                      Image(systemName: "plus.circle.fill")
@@ -96,7 +95,6 @@
                          .font(.system(size: 60))
                          .foregroundStyle(ColorManager.plus, ColorManager.circle.gradient)
                  }
-                 .popoverTip(noteTip)
                  .shadow(color: .black.opacity(0.25), radius: 15, x: 7, y: 10)
              }
              .frame(maxWidth: .infinity)
@@ -133,7 +131,6 @@
          }
           
      }
-     
  }
 
  #Preview("English") {
@@ -144,7 +141,7 @@
          .modelContainer(preview.container)
          .environment(\.locale, Locale(identifier: "EN"))
          .task {
-         //    try? Tips.resetDatastore()
+             try? Tips.resetDatastore()
              /// Configure and load your tips at app launch.
              try? Tips.configure([
                  // .displayFrequency(.immediate),

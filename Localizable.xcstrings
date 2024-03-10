@@ -105,6 +105,16 @@
         }
       }
     },
+    "Completed is empty" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пусто"
+          }
+        }
+      }
+    },
     "Continue" : {
       "localizations" : {
         "ru" : {
@@ -193,6 +203,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Добавьте свою первую запись"
+          }
+        }
+      }
+    },
+    "Entires will appear here" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Записи появятся здесь"
           }
         }
       }
@@ -414,6 +434,36 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Поделиться"
+          }
+        }
+      }
+    },
+    "Show All" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Показать все"
+          }
+        }
+      }
+    },
+    "Show Recents" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Показать недавние"
+          }
+        }
+      }
+    },
+    "Showing Recent 10" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Последние записи 10"
           }
         }
       }

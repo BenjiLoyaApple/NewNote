@@ -30,11 +30,14 @@ struct EditNoteView: View {
     @State private var showDetailview: Bool = false
     @State private var offset: CGSize = .zero
     
+    @Namespace private var namespace
+    
+    
     var body: some View {
         NavigationStack {
         ScrollView(.vertical, showsIndicators: false) {
             VStack(spacing: 20) {
-                NotePhoto(image: $image)
+                NotePhoto(image: $image, namespace: namespace)
                     .padding(.top, 10)
                     .padding(.horizontal, 10)
                     .onTapGesture {
@@ -121,7 +124,8 @@ struct EditNoteView: View {
                     DetailView(image: $image, showDetailview: $showDetailview,
                                detailviewAnimation: $detailviewAnimation,
                                size: size,
-                               safeArea: safeArea)
+                               safeArea: safeArea,
+                               namespace: namespace)
                     .transition(.scale)
                     .cornerRadius(40)
                     .shadow(radius: 40)
