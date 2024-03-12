@@ -12,7 +12,7 @@
  struct Home: View {
      ///Active Notes
      @Query(filter: #Predicate<Note> { !$0.isCompleted}, sort: [SortDescriptor(\Note.date, order: .reverse)], animation: .snappy) private var activeList: [Note]
-//     /// Model Context
+     /// Model Context
      @Environment(\.modelContext) private var context
      @State private var addNote: Bool = false
      /// Note Tip
