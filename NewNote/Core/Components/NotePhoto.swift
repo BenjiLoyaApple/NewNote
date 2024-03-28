@@ -79,6 +79,4 @@ struct NotePhoto: View {
     }
 }
 
-#Preview {
-    AddNotesView()
-}
+

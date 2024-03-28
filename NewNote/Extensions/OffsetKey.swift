@@ -7,16 +7,6 @@
 
 import SwiftUI
 
-/// Offset Key
-struct OffsetKey1: PreferenceKey {
-    static var defaultValue: CGFloat = .zero
-
-    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
-        value = nextValue()
-    }
-}
-
-
 struct OffsetKey: PreferenceKey{
     static var defaultValue: CGRect = .zero
     

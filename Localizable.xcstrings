@@ -4,9 +4,6 @@
     "" : {
 
     },
-    "%lld%%" : {
-
-    },
     "Add" : {
       "localizations" : {
         "ru" : {
@@ -357,9 +354,6 @@
       }
     },
     "rigid" : {
-
-    },
-    "Scroll Progress" : {
 
     },
     "Search" : {

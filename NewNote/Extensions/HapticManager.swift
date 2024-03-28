@@ -2,7 +2,7 @@
 //  HapstickManager.swift
 //  NewNote
 //
-//  Created by Benji Loya on 21.02.2024.
+//  Created by Benji Loya on 21.01.2024.
 //
 
 import SwiftUI
@@ -23,6 +23,7 @@ class HapticManager {
     
 }
 
+/*
 struct HapticsBootcamp: View {
     var body: some View {
         VStack(spacing: 20) {
@@ -40,9 +41,11 @@ struct HapticsBootcamp: View {
         }
     }
 }
-
+ 
 struct HapticsBootcamp_Previews: PreviewProvider {
     static var previews: some View {
         HapticsBootcamp()
     }
 }
+
+*/
