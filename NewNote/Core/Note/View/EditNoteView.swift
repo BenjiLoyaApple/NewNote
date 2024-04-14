@@ -121,7 +121,8 @@ struct EditNoteView: View {
                 GeometryReader { proxy in
                     let size = proxy.size
                     let safeArea = proxy.safeAreaInsets
-                    DetailView(image: $image, showDetailview: $showDetailview,
+                    DetailView(image: $image, 
+                               showDetailview: $showDetailview,
                                detailviewAnimation: $detailviewAnimation,
                                size: size,
                                safeArea: safeArea,

@@ -9,6 +9,7 @@ import SwiftUI
 import SwiftData
 import PhotosUI
 
+
 //MARK: - Photo
 struct NotePhoto: View {
     @Binding var image: Data?
@@ -22,9 +23,9 @@ struct NotePhoto: View {
     var body: some View {
         VStack {
             displayImage()
-                .matchedGeometryEffect(id: "image", in: namespace)
                 .shadow(color: .black.opacity(0.25), radius: 10, x: 2, y: 7)
                 .overlay(deleteButton(), alignment: .topTrailing)
+             //   .matchedGeometryEffect(id: "image", in: namespace)
         }
     }
     
@@ -38,6 +39,7 @@ struct NotePhoto: View {
                 .aspectRatio(contentMode: .fill)
                 .frame(height: UIScreen.main.bounds.height * Constants.imageHeightRatio)
                 .clipShape(.rect(cornerRadius: Constants.imageCornerRadius))
+                .matchedGeometryEffect(id: "image", in: namespace)
         } else {
             Rectangle()
                 .fill(Color.clear)

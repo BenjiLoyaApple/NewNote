@@ -27,7 +27,6 @@
      @State private var isLearnViewVisible = false
      @AppStorage("learn_Status") var learnStatus: Bool = false
        
-     
      var body: some View {
          let config = Config(
              leading: .init(name: "magnifyingglass", title: "Search"),

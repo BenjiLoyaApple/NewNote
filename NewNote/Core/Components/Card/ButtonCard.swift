@@ -49,17 +49,10 @@ struct ButtonCard: View {
                             note.isCompleted.toggle()
                             note.isfavorite = false
                         if note.isCompleted == false {
-//                            let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: Date()) ?? Date()
-//                            note.date = tomorrow
                             note.date = .now
                         }
 
                         WidgetCenter.shared.reloadAllTimelines()
-                        
-                        /// Delete + 1 day
-//                        DispatchQueue.main.asyncAfter(deadline: .now() + 24 * 60 * 60) {
-//                                context.delete(note)
-//                        }
                     }
                     HapticManager.instance.impact(style: .light)
                     
